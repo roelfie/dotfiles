@@ -11,8 +11,10 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 # Change ZSH options
 
 # Create aliases
-alias l='ls -laFh'
-alias ls='ls -laFh' # to issue the original ls command, run "command ls"
+# alias ls='ls -laFh' # to issue the original ls command, run "command ls"
+alias exa='exa -laFh --git'
+alias ls='exa -laFh --git'
+alias l='ls'
 alias cls='clear'
 
 # Customize prompt
