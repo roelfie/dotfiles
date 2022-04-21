@@ -1,7 +1,8 @@
 echo "Hello from .zshrc"
 
-# Add Visual Studio Code (code)
+# Add Visual Studio Code & Beyond Compare binaries to PATH
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="$PATH:/Applications/Beyond Compare.app/Contents/MacOS"
 
 # Set variables
 # syntax highlighting for man pages using bat
@@ -22,6 +23,7 @@ alias l='ls'
 alias cls='clear'
 alias man='batman'
 alias brewdump='brew bundle dump --force --describe'
+alias cat='bat'
 
 # Customize prompt
 PROMPT='%1~ %L %# ' # current folder _ shell level
