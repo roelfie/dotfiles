@@ -1,6 +1,11 @@
 echo "Hello from .zshrc"
 
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # Set variables
+# syntax highlighting for man pages using bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Change ZSH options
 
