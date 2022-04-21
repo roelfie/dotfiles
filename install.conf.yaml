@@ -7,6 +7,12 @@
 - link:
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
+    ~/.config/gh:
+      path: ~/Dropbox/_dotfiles/config/gh
+      ignore-missing: true
+    ~/.config/bat:
+      create: true
+      path: config/bat
 
 - create:
   - ~/workspace
