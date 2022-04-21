@@ -5,7 +5,7 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # Set variables
 # syntax highlighting for man pages using bat
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 # Change ZSH options
@@ -20,6 +20,8 @@ alias l4='exa --tree --level=4'
 alias l5='exa --tree --level=5'
 alias l='ls'
 alias cls='clear'
+alias man='batman'
+alias brewdump='brew bundle dump --force --describe'
 
 # Customize prompt
 PROMPT='%1~ %L %# ' # current folder _ shell level
