@@ -14,6 +14,10 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 # alias ls='ls -laFh' # to issue the original ls command, run "command ls"
 alias exa='exa -laFh --git'
 alias ls='exa -laFh --git'
+alias l2='exa --tree --level=2'
+alias l3='exa --tree --level=3'
+alias l4='exa --tree --level=4'
+alias l5='exa --tree --level=5'
 alias l='ls'
 alias cls='clear'
 
