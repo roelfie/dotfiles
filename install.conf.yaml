@@ -4,13 +4,14 @@
 
 - clean: ['~']
 
-# - link:
-#     ~/.tmux.conf: tmux.conf
-#     ~/.vim: vim
-#     ~/.vimrc: vimrc
+- link:
+    ~/.zshrc: zshrc
+    ~/.gitconfig: gitconfig
 
 - create:
-  - ~/workspace2
+  - ~/workspace
+  - ~/workspace/courses
+  - ~/workspace/sandbox
 
 # - shell:
 #   - [git submodule update --init --recursive, Installing submodules]
