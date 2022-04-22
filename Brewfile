@@ -27,9 +27,6 @@ cask "syntax-highlight"
 # Open-source code editor
 cask "visual-studio-code"
 mas "Amphetamine", id: 937984704
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "NordVPN", id: 905953485
 mas "Numbers", id: 409203825

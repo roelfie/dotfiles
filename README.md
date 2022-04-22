@@ -31,6 +31,19 @@ mas search <app>
 mas install <app>
 ```
 
+#### removing applications
+
+If you want to remove an application (either a standard one from Apple shipped with your mac, or a 3rd party),
+
+```
+mas uninstall <app-id>
+brew bundle dump --force
+```
+
+The last step is required so that on a new dotbot install the application will not be reinstalled.
+
+the app-id can be found using `mas list`.
+
 ### dotbot
 
 Running the dotbot install script will update our packages (brews) when new versions are available. 
@@ -82,3 +95,7 @@ Casks not found (install manually from appstore):
  * pixelmator pro
  * squash (applaudables)
  * aeon timeline
+
+Remove standard apps: 
+
+ * Numbers, Notes, Pages, Music, Messages, Maps, Mail, Stocks, Siri, Contacts, Dictionary, Keynote, GarageBand and iMovie
