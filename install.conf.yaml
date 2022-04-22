@@ -5,8 +5,9 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: zshrc
-    ~/.gitconfig: gitconfig
+    ~/.zshrc: 
+    ~/.zshenv: 
+    ~/.gitconfig: 
     ~/.config/gh:
       path: ~/Dropbox/_dotfiles/config/gh
       ignore-missing: true

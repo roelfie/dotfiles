@@ -1,5 +1,7 @@
 echo "Hello from .zshrc"
 
+# .zshrc is only loaded by interactive zshrc shells
+
 # Add Visual Studio Code & Beyond Compare binaries to PATH
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH="$PATH:/Applications/Beyond Compare.app/Contents/MacOS"
@@ -30,11 +32,6 @@ PROMPT='%1~ %L %# ' # current folder _ shell level
 RPROMPT='%*'        # time (24h)
 
 # Add locations to $PATH
-
-# Handy functions
-mkcd () {
-    mkdir -p "$@" && cd "$_"
-}
 
 # ZSH plugins
 
