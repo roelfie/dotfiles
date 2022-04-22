@@ -14,7 +14,6 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 # Change ZSH options
 
 # Create aliases
-# alias ls='ls -laFh' # to issue the original ls command, run "command ls"
 alias exa='exa -laFh --git'
 alias ls='exa -laFh --git'
 alias l2='exa --tree --level=2'

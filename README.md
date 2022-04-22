@@ -159,7 +159,68 @@ exa /opt/homebrew/bin
 
 The default PATH before we start hacking additional entries into it, is `/etc/paths`.
 
-We have defined a `trail` alias in .zshrc to better view the path (each entry on a separate line).
+We have defined a `trail` alias in .zshrc to better view the path (each entry on a separate line):
 
+```
+alias trail='<<<${(F)path}'
+```
+
+`$path` is an environment variable similar to `$PATH` but it is an array instead of a colon separated string.
+
+Let's disect the above expression.
+From the zsh docs on [parameter expansion](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion):
+
+
+> The character ‘\$’ is used to introduce parameter expansions. 
+
+> ${name} : more complicated forms of substitution usually require the braces to be present
+
+> ${#spec} : If spec is an array expression, substitute the number of elements of the result.
+
+So `${#path} will print the number of elements in the $PATH.
+
+> If the opening brace is directly followed by an opening parenthesis, the string up to the matching closing parenthesis will be taken as a list of flags.
+
+> F : Join the words of arrays together using newline as a separator.
+
+So `${(F)path}` will print each element in the `path` array on a separate line.
+
+This all does the same thing:
+
+```
+echo ${(F)path}
+cat <<<${(F)path}
+<<<${(F)path}
+```
+
+`cat` is the default for a [here-string](https://tldp.org/LDP/abs/html/x17837.html) so can be omitted. 
+
+### here-documents
+
+A [here-document](https://tldp.org/LDP/abs/html/here-docs.html) is a special-purpose code block to feed a command list to an interactive program or a command (like ftp, cat or a text editor).
+
+```
+COMMAND <<InputComesFromHERE
+...
+...
+...
+InputComesFromHERE
+```
+
+### here-strings
+
+A [here-string]() can be considered as a stripped-down form of a here document.
+It consists of nothing more than 
+
+```
+COMMAND <<< $WORD
+```
+
+Example:
+
+```
+String="This is a string of words."
+read -r -a Words <<< "$String"
+```
 
 
