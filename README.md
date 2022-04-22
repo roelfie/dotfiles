@@ -7,6 +7,8 @@ Background reading:
  * [dotbot](https://github.com/anishathalye/dotbot) - tool
  * [dotfiles](https://dotfiles.github.io/) - guide
  * [Dotfiles from Start to Finish-ish](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/) - course (Udemy)
+ * [Patrick McDonalds dotfiles repo](https://github.com/eieioxyz/dotfiles_macos) - github
+ * [Youtube](https://www.youtube.com/watch?v=kIdiWut8eD8)
 
 ## Workflow
 
@@ -63,7 +65,7 @@ brew upgrade <package>
 brew upgrade -- upgrades all outdated packages and apps
 ```
 
-Upgrading of apps (casks) is managed by the application itself (GUI). Many applications can be configured (in the preferences) to auto-updated themself.
+Upgrading of apps (casks) is managed by the application itself (GUI). Many applications can be configured (in the preferences) to auto-update themself.
 
 ## TODO
 
