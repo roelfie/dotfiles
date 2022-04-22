@@ -154,3 +154,12 @@ Brew managed stuff is here
 ```
 exa /opt/homebrew/bin
 ```
+
+## PATH
+
+The default PATH before we start hacking additional entries into it, is `/etc/paths`.
+
+We have defined a `trail` alias in .zshrc to better view the path (each entry on a separate line).
+
+
+
