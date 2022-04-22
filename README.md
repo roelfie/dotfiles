@@ -44,6 +44,12 @@ The last step is required so that on a new dotbot install the application will n
 
 the app-id can be found using `mas list`.
 
+### Upgrading pre-installed packages
+
+See the section on pre-installed packages below. Summary: pre-installed packages are not brew-managed and therefore hard (or impossible?) to upgrade. 
+If you want to use the newest version of a pre-installed package you should first install the package with homebrew. You will then end up with the different versions of the same package, in two different locations (the pre-installed one and the brew one). As long as the homebrew version appears first on the PATH, the system will use that version. And from then on you can use homebrew to upgrade the package.
+
+
 ### dotbot
 
 Running the dotbot install script will update our packages (brews) when new versions are available. 
@@ -106,6 +112,15 @@ Show a list of all available shells: `$ bat /etc/shells`
 
 In macOS 12 (Monterey) `zsh` is the default interactive shell, but `zs` is the default non-interactive shell. `sh` however is just a symlink to bash. So the default non-interactive shell is still bash!
 
+### What shell is running
+
+Determine which shell is currently active:
+
+```
+echo $0 (current process)
+echo $SHELL (default login shell of the system; can be changed in the system preferences) 
+which zsh 
+```
 
 ## pre-installed software vs. brew managed software
 

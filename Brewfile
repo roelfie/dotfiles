@@ -14,16 +14,18 @@ brew "gh"
 brew "httpie"
 # Manage your Java environment
 brew "jenv"
+# Pager program similar to more
+brew "less"
 # Mac App Store command-line interface
 brew "mas"
 # Internet file retriever
 brew "wget"
+# UNIX shell (command interpreter)
+brew "zsh"
 # Bash scripts that integrate bat with various command-line tools
 brew "eth-p/software/bat-extras"
 # Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
 cask "forklift"
-# Quicklook extension for source files
-cask "syntax-highlight"
 # Open-source code editor
 cask "visual-studio-code"
 mas "Amphetamine", id: 937984704
