@@ -1,6 +1,6 @@
 echo "Hello from .zshenv"
 
-# .zshenv is only loaded by interactive zshrc shells
+# .zshenv is always sourced
 
 mkcd () {
     mkdir -p "$@" && cd "$_"

@@ -2,7 +2,7 @@
 
 echo "\n<<< Starting ZSH Setup >>>\n"
 
-# Installation unnecessary; it's in the Brewfile.
+# Installation of zsh unnecessary; it's in the Brewfile.
 
 # https://stackoverflow.com/a/4749368/1341838
 # Add the homebrew managed zsh shell to the list of default shells.
@@ -16,7 +16,7 @@ fi
 
 # Make the homebrew managed zsh shell the default shell.
 if [ "$SHELL" = "$HOMEBREW_PREFIX/bin/zsh" ]; then
-  echo '$SHELL is already $HOMEBREW_PREFIX/bin/zsh'
+  echo 'SHELL is already $HOMEBREW_PREFIX/bin/zsh'
 else
   echo "Enter user password to change login shell"
   chsh -s "$HOMEBREW_PREFIX/bin/zsh"

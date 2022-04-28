@@ -1,8 +1,7 @@
 echo "Hello from .zshrc"
 
-# .zshrc is only loaded by interactive zshrc shells
+# .zshrc is loaded by interactive shells
 
-# Add Visual Studio Code & Beyond Compare binaries to PATH
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH="$PATH:/Applications/Beyond Compare.app/Contents/MacOS"
 
@@ -23,7 +22,7 @@ alias l5='exa --tree --level=5'
 alias l='ls'
 alias cls='clear'
 alias man='batman'
-alias brewdump='brew bundle dump --force --describe'
+alias brewdump='brew bundle dump --force'
 alias cat='bat'
 # show each entry in the $PATH variable on a new line
 alias trail='<<<${(F)path}'
@@ -32,10 +31,4 @@ alias trail='<<<${(F)path}'
 PROMPT='%1~ %L %# ' # current folder _ shell level
 RPROMPT='%*'        # time (24h)
 
-# Add locations to $PATH
-
 # ZSH plugins
-
-# Miscellaneous
-
-

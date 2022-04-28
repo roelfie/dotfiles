@@ -1,243 +1,286 @@
 # dotfiles
 
-Dotbot project containing my macOS dotfiles.
+I use this project to bootstrap my MacBook.
 
-Background reading:
+It is based on [dotbot](https://github.com/anishathalye/dotbot) and does the following:
 
- * [dotbot](https://github.com/anishathalye/dotbot) - tool
- * [dotfiles](https://dotfiles.github.io/) - guide
- * [Dotfiles from Start to Finish-ish](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/) - course (Udemy)
- * [Patrick McDonalds dotfiles repo](https://github.com/eieioxyz/dotfiles_macos) - github
- * [Youtube](https://www.youtube.com/watch?v=kIdiWut8eD8)
+* install Homebrew
+* install cli tools and applications
+* install [dotfiles](https://dotfiles.github.io/) (i.e. config files for zsh, cli tools and applications)
+* generate key pair and setup ssh connection with GitHub 
+* and more ...
 
-## Workflow
 
-Some rules to keep your machine and the dotbot config in sync:
+## Prerequisites
 
-### Brew bundle dump
+* password for WiFi
+* password for Dropbox & 1Password
+* fresh macOS installation (the script is somewhat idempotent, you should be able to re-run it at any time)
 
- * Never edit Brewfile manually. 
- * Instead just `brew install package` and occasionally generate a new Brewfile with `brew bundle dump --force`.
+## Usage
 
-### mas 
-
-Mac AppStore
-
- * Apps that can not be installed with brew will be installed with `mas-cli` (mas = Mac AppStore)
-   * installation can be done automatically if it has been purchased / installed from the appstore before
-   * if it is the first time you install it, you will still have to do it manually in the appstore
+Copy the following script over to a file `~/boot.sh` on your local machine:
 
 ```
+#!/usr/bin/env zsh
+
+xcode-select --install
+
+git clone https://github.com/roelfie/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install
+# Installation process will now be taken over by dotbot, based on 'install.conf.yaml'.
+```
+
+Make it executable (`chmod 755 boot.sh`) and run it (`./boot.sh`).
+
+#### <a name="manual_steps"></a>Manual steps
+
+Once finished, perform the following steps manually:
+
+* In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation (except some applications may require a license key when you first open them; see 1Password or mailbox).
+
+
+
+## What does it do?
+
+This dotfiles project does a couple of things.
+
+#### Installing cli tools and applications
+
+* installing cli tools (packages) with Homebrew
+* installing applications (casks) with Homebrew
+  * NB 1: some apps were purchased in the App Store; they are installed with [mas](https://github.com/mas-cli/mas) (listed as  'mas' instead of 'cask' in [Brewfile](./Brewfile))
+  * NB 2: some apps were paid for, but not via the app store; they are installed as a 'cask'
+  * NB 3: some apps are not available as cask nor in the App Store; they need to be installed manually
+
+Only applications that have already been _purchased in the App Store_ can be automatically installed using `mas`. If you want to install a paid application for the first time, you have to manually pay for it in & install it from the App Store.
+
+#### Backing up configurations
+
+MacOS tools and applications typically store their configuration in [dotfiles](https://dotfiles.github.io/). For example `.zshrc` and `.gitconfig`. Or sometimes in directories, like `.config/bat`. We use two different ways of backing up these configuration files:
+
+* this GitHub project (symlinks managed by [dotbot](https://github.com/anishathalye/dotbot))
+  * use if you want to keep the config file under version control (like the `zsh` configuration files)
+* Dropbox (symlinks managed by [mackup](https://github.com/lra/mackup/blob/master/README.md))
+  * use if the config file contains confidential information (password, email, ..)
+
+Beware that `dotfiles` and `mackup` can overlap. Always make sure that dot-files stored in this `dotfiles` project are excluded from mackup (`[applications_to_ignore]` section in [mackup.cfg](./mackup.cfg)).
+
+The default backup mechanism we use is mackup (backup to Dropbox unless ignored in mackup.cfg).
+
+## HOW TO keep dotfiles up-to-date
+
+Anything you consider part of your standard toolset / configuration should be added to this dotfiles project. If this is not possible (or too hard) consider adding it to the [Manual Steps](#manual_steps) section.
+
+Disclaimer: In the following HOW TOs I describe _my_ way of working with this dotfiles project. This is not necessarilly _the (best)_ way to work with dotfiles.
+
+For all the following tasks: When you're finished, check if you need to commit any changes to the `dotfiles` project!
+
+### HOW TO - update Brewfile
+
+Whenever you install or uninstall a package or application, you want this reflected in [Brewfile](./Brewfile). Instead of editing Brewfile manually, my preferred way of working is to install or uninstall with brew, and afterwards update the Brewfile with the following command:
+
+```
+brew bundle dump --force
+brewdump # alias for the same thing
+```
+
+
+### HOW TO - install a new brew
+
+Command line tools are installed with brew. Homebrew's default install directory on Apple Silicon is `/opt/homebrew/bin` (see `$HOMEBREW_PREFIX`).
+
+Check whether a package is already installed (either with homebrew or otherwise):
+
+```
+brew search <pkg>
+brew info <pkg>
+brew bundle list --brews
+which -a <pkg>
+```
+
+Install a package:
+```
+brew install <pkg>
+```
+
+Carefully read the caveats section in the output of `brew install`. You may have to perform some manual tasks to complete the installation (like adding stuff the PATH in `.zshrc`).
+
+* update Brewfile: `brewdump`
+* commit your changes to `~/.dotfiles`
+
+
+### HOW TO - install a new PAID application
+
+Check whether an application is already installed (either as cask or with mas):
+
+```
+brew search <app>
+brew info <app>
+brew bundle list --casks
+brew bundle list --mas
+
 mas list
 mas search <app>
-mas install <app>
 ```
 
-#### removing applications
+You have two options: 
+1. buy & install in the App Store
+2. install as a brew cask
+
+The preferred way is to _not_ install with the App Store, because that will tie your purchase to the Apple account at the time of purchase, and it's not possible to transfer an app to another account. 
+
+Whenever possible, install as cask or download the application manually, and buy the license on the vendor's website (this worked for instance for 1Password, oXygen XML):
+
+* Installation:
+  * ```
+    brew install <app>
+    brewdump
+    ```
+  * buy license on vendor's website
+  * commit your changes to `~/.dotfiles`
+* Installation (App Store):
+  * if app can _only_ be purchased from the App Store, use the App Store.
+
+
+### HOW TO - install a new FREE application
+
+Check whether an application is already installed (either as cask or with mas):
+
+```
+brew search <app>
+brew info <app>
+brew bundle list --casks
+brew bundle list --mas
+
+mas list
+mas search <app>
+```
+
+* Installation (brew):
+  * ```
+    brew install <app>
+    brewdump
+    ```
+  * commit your changes to `~/.dotfiles`
+* Installation (App Store):
+  * if you can't find a brew cask for the application, use the App Store.
+
+
+#### Mismatch brew cask and mas
+
+Before installing an application (either `cask` or `mas`) always double check its version.
+
+In the case of Forklift, the version managed by `mas` is very old:
+
+```
+$ brew info forklift
+forklift: 3.5.6
+
+$ mas search forklift
+412448059  ForkLift - File Manager (2.6.6)
+$ mas info 412448059
+ForkLift - File Manager 2.6.6
+```
+
+In this example, it is better to ignore it and install the brew `cask`.
+
+
+### HOW TO - remove an application
 
 If you want to remove an application (either a standard one from Apple shipped with your mac, or a 3rd party),
 
 ```
+mas list
+mas info <app-id>
+
+brew bundle list --casks
+brew bundle list --mas
+
 mas uninstall <app-id>
-brew bundle dump --force
+
+brewdump
+
+# commmit changes to ~/.dotfiles
 ```
 
-The last step is required so that on a new dotbot install the application will not be reinstalled.
+If the application is not found with `mas list` or `brew bundle list` it was installed manually and you can probably uninstall it simply by dragging it onto the bin.
 
-the app-id can be found using `mas list`.
+### HOW TO - (un)install an Oracle JDK
 
-### Upgrading pre-installed packages
+There are detailed [instructions](https://docs.oracle.com/en/java/javase/18/install/installation-jdk-macos.html) on the Oracle website explaining how to install or remove a JDK on macOS.
 
-See the section on pre-installed packages below. Summary: pre-installed packages are not brew-managed and therefore hard (or impossible?) to upgrade. 
-If you want to use the newest version of a pre-installed package you should first install the package with homebrew. You will then end up with the different versions of the same package, in two different locations (the pre-installed one and the brew one). As long as the homebrew version appears first on the PATH, the system will use that version. And from then on you can use homebrew to upgrade the package.
+Installation: 
+
+* `brew install --cask oracle-jdk`
+* check that the JDK ends up in `/Library/Java/JavaVirtualMachines`
+* add JDK Home directory to [JAVA_HOME_LOCATIONS](./setup_java.zsh) in `setup_java.sh`
+  * Example: `/Library/Java/JavaVirtualMachines/jdk-18.jdk/Contents/Home`
+* re-run `~/.dotfiles/setup_java.sh` to have the new JDK version added to jenv
+
+Removal:
+
+* `brew uninstall --cask oracle-jdk`
+* remove JDK Home directory from [JAVA_HOME_LOCATIONS](./setup_java.zsh) in `setup_java.sh`
+* remove symlink manually from `~/.jenv/versions`
+
+TODO: the `oracle-jdk` cask has no version name. Is it possible to install multiple Oracle JDK versions alongside each other?
 
 
-### dotbot
+## HOW TO upgrade brews and apps
 
-Running the dotbot install script will update our packages (brews) when new versions are available. 
+Running the dotbot install script should upgrade all installed brews to the newest version, but may be overkill.
 
-Manual would be:
+* Upgrade brews:
+  * ```
+    brew update
+    brew outdated
+    brew upgrade
+    ```
+  * you can also upgrade one package with `brew upgrade <pkg>`
+* Upgrade apps (casks):
+  * use the application GUI
+  * many apps can be configured to auto-update
 
-```
-brew update
-brew outdated -- checks if there are outdated packages
-brew upgrade <package>
-brew upgrade -- upgrades all outdated packages and apps
-```
 
-Upgrading of apps (casks) is managed by the application itself (GUI). Many applications can be configured (in the preferences) to auto-update themself.
+### HOW TO - upgrade a pre-installed package
 
-## TODO
+MacOS comes with a list of pre-installed tools in `/usr/bin`.
+For example `less`, `keytool`, `more`, `ssh`, `zip`, etc ...
 
-Add the following casks:
-
-```
-cask "1password"
-cask "betterzip"
-cask "beyond-compare"
-cask "boxcryptor"
-cask "daisydisk"
-cask "dropbox"
-cask "forklift"
-cask "google-chrome"
-cask "google-drive"
-cask "gitkraken"
-cask "intellij-idea"
-cask "istat-menus"
-cask "kindle"
-cask "microsoft-office"
-cask "nordvpn"
-cask "open-office"
-cask "oxygen-xml-editor"
-cask "pycharm-ce"
-cask "skim"
-cask "textsniper"
-cask "visual-studio-code"
-cask "whatsapp"
-cask "xee"
-```
-
-Casks not found (install manually from appstore): 
-
- * peek (quicklook plugins)
- * pixelmator pro
- * squash (applaudables)
- * aeon timeline
-
-Remove standard apps: 
-
- * Numbers, Notes, Pages, Music, Messages, Maps, Mail, Stocks, Siri, Contacts, Dictionary, Keynote, GarageBand and iMovie
-
-## Shells
-
-Show a list of all available shells: `$ bat /etc/shells`
-
-In macOS 12 (Monterey) `zsh` is the default interactive shell, but `zs` is the default non-interactive shell. `sh` however is just a symlink to bash. So the default non-interactive shell is still bash!
-
-### What shell is running
-
-Determine which shell is currently active:
+You don't want to mess around with the tools in `/usr/bin`. 
+If you want to be able to manage one of these tools with Homebrew (and always use the latest version) you can install the tool alongside the pre-installed one:
 
 ```
-echo $0 (current process)
-echo $SHELL (default login shell of the system; can be changed in the system preferences) 
-which zsh 
+which -a <pkg>
+<pkg> --version
+
+brew search <pkg>
+brew install <pkg>
+brew info <pkg>
+
+# open a new shell
+zsh
+which -a <pkg>
+<pkg> --version
 ```
 
-## pre-installed software vs. brew managed software
+As long as `/opt/homebrew/bin` appears before `/usr/bin` on the `$PATH` the brew version will take precedence. On the last line you should see the newest version (installed with brew) instead of the pre-installed version.
 
-macOS comes shipped with a lot of tools that can typically be found in `/usr/bin`.
-These tools are not managed by brew.
-If you want to upgrade one of these tools to its newest version with brew, you will have to do a full install with brew and you will end up with two versions in two different locations:
- * the pre-installed one in `/usr/bin`
- * the brew managed one in `/opt/homebrew/bin`
-
-Example `nano`:
-
-```
-$ nano --version 
-  GNU nano version 2.0.6 (compiled 18:33:35, Oct  1 2021)
-
-$ brew info 
-  nano: stable 6.2 (bottled)
-  Not installed
-
-$ which -a nano
-  /usr/bin/nano
-
-$ brew install nano
-$ brew info nano
-  nano: stable 6.2 (bottled)
-  /opt/homebrew/Cellar/nano/6.2 (102 files, 3MB) *  
-
-$ zsh
-
-$ nano --version
-  GNU nano, version 6.2
-
-$ which -a nano
-  /opt/homebrew/bin/nano
-  /usr/bin/nano
-
-$ exa $(which -a nano)
-Permissions Size User    Date Modified Git Name
-lrwxr-xr-x    27 roelfie 22 Apr 10:16   -I /opt/homebrew/bin/nano -> ../Cellar/nano/6.2/bin/nano*
-.rwxr-xr-x  375k root    18 Oct  2021   -- /usr/bin/nano*
-```
-
-Result: We have two versions of `nano` on our system. Since the homebrew version apperars at the top, that's the one that will be used when we open `nano`.
-
-Brew managed stuff is here
-```
-exa /opt/homebrew/bin
-```
-
-## PATH
-
-The default PATH before we start hacking additional entries into it, is `/etc/paths`.
-
-We have defined a `trail` alias in .zshrc to better view the path (each entry on a separate line):
-
-```
-alias trail='<<<${(F)path}'
-```
-
-`$path` is an environment variable similar to `$PATH` but it is an array instead of a colon separated string.
-
-Let's disect the above expression.
-From the zsh docs on [parameter expansion](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion):
+See [README-UDEMY](./README-UDEMY.md) for an example (nano).
 
 
-> The character ‘\$’ is used to introduce parameter expansions. 
+## ToDo
 
-> ${name} : more complicated forms of substitution usually require the braces to be present
+Things I'd still like to automate with my dotfiles project:
 
-> ${#spec} : If spec is an array expression, substitute the number of elements of the result.
+* Uninstall pre-installed applications from Apple (like Numbers, Notes, Pages, Music, Messages, Maps, Mail, Stocks, Siri, Contacts, Dictionary, Keynote, GarageBand iMovie, ..)
 
-So `${#path} will print the number of elements in the $PATH.
 
-> If the opening brace is directly followed by an opening parenthesis, the string up to the matching closing parenthesis will be taken as a list of flags.
+## References
 
-> F : Join the words of arrays together using newline as a separator.
-
-So `${(F)path}` will print each element in the `path` array on a separate line.
-
-This all does the same thing:
-
-```
-echo ${(F)path}
-cat <<<${(F)path}
-<<<${(F)path}
-```
-
-`cat` is the default for a [here-string](https://tldp.org/LDP/abs/html/x17837.html) so can be omitted. 
-
-### here-documents
-
-A [here-document](https://tldp.org/LDP/abs/html/here-docs.html) is a special-purpose code block to feed a command list to an interactive program or a command (like ftp, cat or a text editor).
-
-```
-COMMAND <<InputComesFromHERE
-...
-...
-...
-InputComesFromHERE
-```
-
-### here-strings
-
-A [here-string]() can be considered as a stripped-down form of a here document.
-It consists of nothing more than 
-
-```
-COMMAND <<< $WORD
-```
-
-Example:
-
-```
-String="This is a string of words."
-read -r -a Words <<< "$String"
-```
-
+ * [Dotfiles from Start to Finish-ish](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/) - course (Udemy)
+ * [Patrick McDonalds dotfiles repo](https://github.com/eieioxyz/dotfiles_macos) - github
+ * [Youtube](https://www.youtube.com/watch?v=kIdiWut8eD8)
 

@@ -2,38 +2,43 @@ tap "eth-p/software"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Modern replacement for 'ls'
+brew "docker"
 brew "exa"
-# macOS CLI for managing custom icons for files and folders
 brew "fileicon"
-# GitHub command-line tool
 brew "gh"
-# User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Manage your Java environment
 brew "jenv"
-# Pager program similar to more
 brew "less"
-# Mac App Store command-line interface
+brew "mackup"
 brew "mas"
-# Internet file retriever
+brew "node"
 brew "wget"
-# UNIX shell (command interpreter)
 brew "zsh"
-# Bash scripts that integrate bat with various command-line tools
 brew "eth-p/software/bat-extras"
-# Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
+cask "betterzip"
+cask "beyond-compare"
+cask "daisydisk"
 cask "forklift"
-# Open-source code editor
+cask "gitkraken"
+cask "google-drive"
+cask "intellij-idea"
+cask "istat-menus"
+cask "microsoft-auto-update"
+cask "microsoft-office"
+cask "openoffice"
+cask "oracle-jdk"
+cask "oxygen-xml-editor"
+cask "permute"
+cask "pycharm-ce"
+cask "skim"
+cask "textsniper"
 cask "visual-studio-code"
-mas "Amphetamine", id: 937984704
+cask "whatsapp"
 mas "Kindle", id: 405399194
 mas "NordVPN", id: 905953485
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Paint S", id: 736473980
 mas "Peek", id: 1554235898
 mas "Pixelmator Pro", id: 1289583905
 mas "Xee³", id: 639764244
