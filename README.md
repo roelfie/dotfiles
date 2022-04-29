@@ -13,9 +13,10 @@ It is based on [dotbot](https://github.com/anishathalye/dotbot) and does the fol
 
 ## Prerequisites
 
-* password for WiFi
-* password for Dropbox & 1Password
-* fresh macOS installation (the script is somewhat idempotent, you should be able to re-run it at any time)
+* password WiFi
+* password Dropbox & 1Password
+* fresh [macOS installation](https://www.macworld.com/article/668644/how-to-clean-install-macos-on-your-mac.html) (the script is somewhat idempotent, you should be able to re-run it at any time)
+  * Apple ID (if you want to connect to iCloud during the macOS installation)
 
 ## Usage
 
@@ -38,8 +39,14 @@ Make it executable (`chmod 755 boot.sh`) and run it (`./boot.sh`).
 
 Once finished, perform the following steps manually:
 
-* In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation (except some applications may require a license key when you first open them; see 1Password or mailbox).
-
+* In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation
+  * except some applications may require a license key when you first open them; see 1Password or mailbox
+* sign in with Apple ID
+* System Preferences
+  * Touch ID: fingerprints
+  * BlueTooth: pair keyboard, phone & headphone
+  * Security & Privacy (see screenshots Dropbox)
+  * Users & Groups > Advanced Options > Login Shell (should be zsh from brew)
 
 
 ## What does it do?
