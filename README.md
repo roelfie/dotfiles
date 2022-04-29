@@ -20,7 +20,9 @@ It is based on [dotbot](https://github.com/anishathalye/dotbot) and does the fol
 
 ## Usage
 
-Copy the following script over to a file `~/boot.sh` on your local machine:
+If you want to do a fresh macOS install on an M1 MacBook, use the `Erase All Content and Settings` wizard under `System Preferences / System Preferences`.
+
+When up & running, copy the following script over to a file `~/boot.sh` on your local machine:
 
 ```
 #!/usr/bin/env zsh
