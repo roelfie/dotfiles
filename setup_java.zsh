@@ -3,7 +3,7 @@
 echo "\n<<< Starting JDK Setup >>>\n"
 
 JAVA_HOME_LOCATIONS=(
-    /Library/Java/JavaVirtualMachines/jdk-18.jdk/Contents/Home
+    /Library/Java/JavaVirtualMachines/jdk-18.0.1.jdk/Contents/Home
 )
 
 # Assuming the jdk(s) and jenv are already installed with Homebrew, we still have to tell jenv what jdk(s) exist.

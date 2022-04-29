@@ -32,3 +32,5 @@ PROMPT='%1~ %L %# ' # current folder _ shell level
 RPROMPT='%*'        # time (24h)
 
 # ZSH plugins
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

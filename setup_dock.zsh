@@ -15,7 +15,7 @@ STACKS=($(cd $ICONS_FOLDER; ls -1 *.icns | sed -e 's/\.icns//g'))
 APPS=(
     '//Applications//Google Chrome.app'
     '//System/Applications//Utilities//Terminal.app'
-    '//Applications//Guido//ForkLift.app'
+    '//Applications//ForkLift.app'
 )
 
 
