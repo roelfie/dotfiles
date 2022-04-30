@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Install essential Applications (Dropbox, 1Password, ..) >>>\n"
+echo "\n<<< Install essential Applications (Dropbox, 1Password, Boxcryptor) >>>\n"
 
 pressEnter() {
     vared -p "    Press [Enter] to confirm " -c REPLY
@@ -19,8 +19,10 @@ pressEnter
 cat <<EOF 
 
 1Password:
-    Login to 1Password app.
-    Activate license (see email 2019-11-29). 
+    Open 1Password.
+    Register 1Password; a backup of my 1Password 7 standalone license can be found here:
+      - in 1Password under Software Licenses
+      - in Dropbox folder 'prive/software'"
     Choose 'Sync using Dropbox'.
     1Password should automatically detect 'Dropbox/Apps/1Password/1Password.ovault'.
 EOF
@@ -39,6 +41,6 @@ cat <<EOF
 Google Chrome
     Login to Google Chrome with [at] hnu.
     Do *not* use profiles for other accounts.
-    Settings: Sync > Manage what you sync: Apps, Bookmarks, Extensions, Settings, Passwords.
+    Settings: Sync > Manage what you sync: Apps, Bookmarks, Extensions, Settings, Open Tabs, Passwords.
 EOF
 pressEnter

@@ -20,35 +20,37 @@ It is based on [dotbot](https://github.com/anishathalye/dotbot) and does the fol
 
 ## Usage
 
-If you want to do a fresh macOS install on an M1 MacBook, use the `Erase All Content and Settings` wizard under `System Preferences / System Preferences`.
+Fresh macOS install on an M1 MacBook: Use the `Erase All Content and Settings` wizard under `System Preferences / System Preferences`.
 
-When up & running, copy the following script over to a file `~/boot.sh` on your local machine:
+Then do
 
 ```
-#!/usr/bin/env zsh
-
 xcode-select --install
+```
 
+followed by
+
+```
 git clone https://github.com/roelfie/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install
-# Installation process will now be taken over by dotbot, based on 'install.conf.yaml'.
 ```
 
-Make it executable (`chmod 755 boot.sh`) and run it (`./boot.sh`).
+This will trigger Dotbot to perform all the steps described in [install.conf.yaml](./install.conf.yaml).
+
+NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation
+
 
 #### <a name="manual_steps"></a>Manual steps
 
-Once finished, perform the following steps manually:
-
-* In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation
-  * except some applications may require a license key when you first open them; see 1Password or mailbox
-* sign in with Apple ID
 * System Preferences
   * Touch ID: fingerprints
   * BlueTooth: pair keyboard, phone & headphone
   * Security & Privacy (see screenshots Dropbox)
   * Users & Groups > Advanced Options > Login Shell (should be zsh from brew)
+* Install [Meslo Nerd Font](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k), the preferred font for the powerlevel10k zsh theme
+  * vscode has this font configured for its terminal in mackup
+  * For macOS terminal you'll have to set this font manually
 
 
 ## What does it do?
