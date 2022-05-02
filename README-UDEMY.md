@@ -120,7 +120,7 @@ InputComesFromHERE
 
 ### here-strings
 
-A [here-string]() can be considered as a stripped-down form of a here document.
+A [here-string](https://tldp.org/LDP/abs/html/x17837.html) can be considered as a stripped-down form of a here document.
 It consists of nothing more than 
 
 ```
@@ -133,3 +133,42 @@ Example:
 String="This is a string of words."
 read -r -a Words <<< "$String"
 ```
+
+## node
+
+### n vs nvm
+
+both are tools that manage multiple versions of node installed on the same machine.
+
+```
+brew install n
+n help
+n doctor
+```
+
+```
+Checking n install destination priority in PATH...
+There is a version of node installed which will be found in PATH before the n installed version.
+
+Checking permissions for cache folder...
+You do not have write permission to create: /usr/local/n
+Suggestions:
+- run n with sudo, or
+- define N_PREFIX to a writeable location, or
+- make a folder you own:
+      sudo mkdir -p "/usr/local/n"
+      sudo chown roelfie "/usr/local/n"
+```
+
+we've added N_PREFIX to our zshrc so n knows where to install node versions (without permission issues)
+
+```
+n lts
+n latest
+n -- this shows a list of all installed node versions
+```
+
+The "n <version>" command installs node version X in N_PREFIX/n/versions and also switches the current node version to that installed version.
+
+However if you already had a node version installed before installing 'n' you will have seen "There is a version of node installed which will be found in PATH before the n installed version." in the output of 'n doctor' and the version changing won't work; will be FIXED later...
+

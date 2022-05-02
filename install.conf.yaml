@@ -32,13 +32,14 @@
 
 - shell:
   - ./setup_homebrew.zsh
-  - ./setup_essentials.zsh
+  - ./setup_apps_essentials.zsh
   - ./setup_apps.zsh
   - ./setup_apps_manual.zsh
   - ./setup_mackup.zsh
   - ./setup_zsh.zsh
   # - ./setup_ohmyzsh.zsh
   - ./setup_ssh_github.zsh
-  - ./setup_dock.zsh
+  - ./setup_node.zsh
   - ./setup_java.zsh
+  - ./setup_dock.zsh
   - ./setup_macos.zsh
