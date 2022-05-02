@@ -30,6 +30,7 @@ alias brewdump='brew bundle dump --force'
 alias cat='bat'
 # show each entry in the $PATH variable on a new line
 alias trail='<<<${(F)path}'
+alias rm=trash
 
 # Customize prompt
 PROMPT='%1~ %L %# ' # current folder _ shell level
