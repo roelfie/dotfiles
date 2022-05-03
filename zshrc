@@ -6,13 +6,15 @@ echo "Hello from .zshrc"
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export N_PREFIX=$HOME/.n
 
-# Give the 'n' managed version of node precedence over the homebrew managed version by *pre*pending it to the PATH.
-# Whenever you want to install or uninstall node, or switch to a different version, use 'n'!
-export PATH="$N_PREFIX/bin:$PATH"
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH="$PATH:/Applications/Beyond Compare.app/Contents/MacOS"
-
-
+# Give the 'n' managed version of node precedence over the homebrew managed version by *pre*pending it to $path.
+# Always use 'n' to (un)install node or switch the current node version.
+typeset -U path
+path=(
+    "$N_PREFIX/bin"
+    $path
+    "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+    "/Applications/Beyond Compare.app/Contents/MacOS"
+)
 
 # Change ZSH options
 
