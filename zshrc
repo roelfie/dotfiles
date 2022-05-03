@@ -3,14 +3,14 @@ echo "Hello from .zshrc"
 # .zshrc is loaded by interactive shells
 
 # Set variables
-# syntax highlighting for man pages using bat
-# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export N_PREFIX=$HOME/.n
 
+# Give the 'n' managed version of node precedence over the homebrew managed version by *pre*pending it to the PATH.
+# Whenever you want to install or uninstall node, or switch to a different version, use 'n'!
+export PATH="$N_PREFIX/bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH="$PATH:/Applications/Beyond Compare.app/Contents/MacOS"
-export PATH="$PATH:$N_PREFIX/bin"
 
 
 
