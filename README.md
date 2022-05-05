@@ -281,9 +281,17 @@ As long as `/opt/homebrew/bin` appears before `/usr/bin` on the `$PATH` the brew
 
 See [README-UDEMY](./README-UDEMY.md) for an example (nano).
 
+
+## HOW TO install a Visual Studio Code extension
+
+1. Install the extension in vscode
+2. Export the complete list of installed extensions:
+   * `cd ~/.dotfiles; ./vscode_extensions_dump.zsh`
+3. commit the change to the `.dotfiles` project
+
 ## macOS 'default' command
 
-The 'defaults' command allows users to read and write Mac OS X user defaults from the command line.
+The 'defaults' command allows users to read and write macOS user defaults from the command line.
 
 * [macos-defaults.com/](https://macos-defaults.com/)
 * Blog post on [cfprefsd](https://eclecticlight.co/2019/08/22/working-safely-and-effectively-with-preferences-in-mojave/)
