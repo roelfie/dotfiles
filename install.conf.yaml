@@ -31,15 +31,15 @@
   - ~/.config/dock/stacks
 
 - shell:
-  - ./setup_homebrew.zsh
-  - ./setup_apps_essentials.zsh
-  - ./setup_apps.zsh
-  - ./setup_apps_manual.zsh
-  - ./setup_mackup.zsh
-  - ./setup_zsh.zsh
+  - ./setup/setup_homebrew.zsh
+  - ./setup/setup_apps_essentials.zsh
+  - ./setup/setup_apps.zsh
+  - ./setup/setup_apps_manual.zsh
+  - ./setup/setup_mackup.zsh
+  - ./setup/setup_zsh.zsh
   # - ./setup_ohmyzsh.zsh
-  - ./setup_ssh_github.zsh
-  - ./setup_node.zsh
-  - ./setup_java.zsh
-  - ./setup_dock.zsh
-  - ./setup_macos.zsh
+  - ./setup/setup_ssh_github.zsh
+  - ./setup/setup_node.zsh
+  - ./setup/setup_java.zsh
+  - ./setup/setup_dock.zsh
+  - ./setup/setup_macos.zsh
