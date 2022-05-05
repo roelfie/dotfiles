@@ -281,6 +281,20 @@ As long as `/opt/homebrew/bin` appears before `/usr/bin` on the `$PATH` the brew
 
 See [README-UDEMY](./README-UDEMY.md) for an example (nano).
 
+## macOS 'default' command
+
+The 'defaults' command allows users to read and write Mac OS X user defaults from the command line.
+
+* [macos-defaults.com/](https://macos-defaults.com/)
+* Blog post on [cfprefsd](https://eclecticlight.co/2019/08/22/working-safely-and-effectively-with-preferences-in-mojave/)
+* [macOS Prefs Editor](http://apps.tempel.org/PrefsEditor/index.php)
+* Example of a [script with lots of defaults](https://github.com/mathiasbynens/dotfiles/blob/main/.macos)
+* help in the zsh terminal:
+  ```
+  man defaults
+  defaults help
+  ```
+
 
 ## ToDo
 

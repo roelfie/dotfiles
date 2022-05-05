@@ -25,6 +25,8 @@ if [ -d "$STACKS_FOLDER" ]; then
     rm -rf "$STACKS_FOLDER"
 fi
 
+defaults delete com.apple.dock persistent-apps
+defaults delete com.apple.dock persistent-others
 
 # 1: Prepare 'stacks' folders
 echo "Create new (empty) stacks"
@@ -35,21 +37,13 @@ for stack in ${STACKS[@]}; do
 done
 
 
-# 2: Reset Dock
-echo "Configure Dock"
-defaults write com.apple.dock tilesize -integer 56
-defaults write com.apple.Dock autohide -bool TRUE
-defaults delete com.apple.dock persistent-apps
-defaults delete com.apple.dock persistent-others
-
-
-# 3: Add apps to Dock
+# 2: Add apps to Dock
 echo "Add apps to Dock"
 for app in ${APPS[@]}; do
     defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 done
 
-# 4: Add folders to Dock
+# 3: Add folders to Dock
 #
 # Sort by:         Name   (1)
 # Display as:      Folder (1)
@@ -101,7 +95,7 @@ done
 killall Dock
 
 
-# 5: Populate folders
+# 4: Populate folders
 echo "Populate stacks"
 
 cd $STACKS_FOLDER/apps
@@ -134,3 +128,4 @@ cd $STACKS_FOLDER/sys
     ln -s /System/Applications/Utilities/Activity\ Monitor.app "Activity Monitor"
     ln -s /System/Applications/Utilities/System\ Information.app "System Information"
     ln -s /Applications/DaisyDisk.app "DaisyDisk"
+    ln -s /Applications/Prefs\ Editor.app "Prefs Editor"

@@ -29,6 +29,8 @@
   # https://github.com/jenv/jenv/issues/167
   - ~/.jenv/versions
   - ~/.config/dock/stacks
+  - ~/Documents/Screenshots
+  - ~/Pictures/Desktop
 
 - shell:
   - ./setup/setup_homebrew.zsh
