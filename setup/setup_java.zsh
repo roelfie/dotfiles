@@ -8,10 +8,7 @@ JAVA_HOME_LOCATIONS=(
 
 # Assuming the jdk(s) and jenv are already installed with Homebrew, we still have to tell jenv what jdk(s) exist.
 
-
-
 # jenv setup
-
 if grep -Fxq ".jenv/bin" '~/.zshrc'; then
     vared -p "~/.jenv/bin probably already added to PATH. Please check / fix manually in ~/.zshrc (see setup_java.zsh for details). Press [Enter] when done. " -c REPLY
 else
@@ -24,20 +21,11 @@ else
     echo 'eval "$(jenv init -)"' >> ~/.zshrc
 fi
 
-
-
 # jenv configuration
-
 for location in ${JAVA_HOME_LOCATIONS[@]}; do
     jenv add $location
 done
 
-
-echo "jEnv setup completed!"
-echo "The following Java versions are available with jEnv:"
-echo 
+echo "jEnv setup complete. The following Java versions are available with jEnv:"
 jenv versions
-echo "To change the active JDK, do this:"
-echo "$ jenv global <version>"
-echo 
 vared -p "Press [Enter] to continue. " -c REPLY
