@@ -39,7 +39,7 @@ sudo nvram SystemAudioVolume=" "
 # Disable transparency in the menu bar
 defaults write com.apple.universalaccess reduceTransparency -bool true
 # Set highlight color to purple (RGB normalized decimal)
-defaults write NSGlobalDomain AppleHighlightColor -string "0.870000, 0.741000, 0.937000"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.870000 0.741000 0.937000"
 # # Set sidebar icon size to medium
 # defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 # Always show scrollbars (WhenScrolling / Automatic / Always)
@@ -72,10 +72,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
-# Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
-# all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-cp $HOME/.dotfiles/desktop/*.jpg $HOME/Pictures/Desktop
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/roelfie/Pictures/Desktop/Jeju.jpg"'
+# Set a custom wallpaper image
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/roelfie/Dropbox/Photos/Desktop/Jomsom.jpg"'
 
 
 ###############################################################################
