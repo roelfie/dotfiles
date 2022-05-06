@@ -44,14 +44,17 @@ NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So
 #### <a name="manual_steps"></a>Manual steps
 
 * System Preferences
-  * Touch ID: fingerprints
   * BlueTooth: pair keyboard, phone & headphone
   * Security & Privacy (see screenshots Dropbox)
-  * Users & Groups > Advanced Options > Login Shell (should be zsh from brew)
-* Install [Meslo Nerd Font](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k), the preferred font for the powerlevel10k zsh theme
-  * vscode has this font configured for its terminal in mackup
-  * For macOS terminal you'll have to set this font manually
+* Alfred key bindings
 
+| app                | menu                             | hotkey                    | value     |
+|--------------------|----------------------------------|---------------------------|-----------|
+| System Preferences | Keyboard → Shortcuts → Spotlight | Show Spotlight search     | `^ Space` |
+| System Preferences | Keyboard → Shortcuts → Spotlight | Show Finder search window | `⌥ Space` |
+| Alfred             | General                          | Alfred Hotkey             | `⌘ Space` |
+| Alfred             | Features                         | Clipboard History         | `⌥ ⌘ C`   |
+| Alfred             | Features                         | Snippets                  | `⌥ ⌘ S`   |
 
 ## What does it do?
 

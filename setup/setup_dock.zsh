@@ -101,6 +101,7 @@ echo "Populate stacks"
 cd $STACKS_FOLDER/apps
     ln -s /Applications/BetterZip.app "BetterZip"
     ln -s /Applications/iDMSS\ Plus.app "iDMSS Plus (Dahua NVR)"
+    ln -s /Applications/Alfred\ 4.app "Alfred"
 
 cd $STACKS_FOLDER/dev
     ln -s /Applications/Oxygen\ XML\ Editor/Oxygen\ XML\ Editor.app "Oxygen XML Editor"
