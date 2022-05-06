@@ -5,21 +5,28 @@ echo "Loading .zshrc"
 # Set variables
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export N_PREFIX=$HOME/.n
+export JENV_PREFIX=$HOME/.jenv
 
-# Give the 'n' managed version of node precedence over the homebrew managed version by *pre*pending it to $path.
-# Always use 'n' to (un)install node or switch the current node version.
+# Path
 typeset -U path
+# The order of the entries in path below is important!
+# By putting 'n' and 'jenv' at the top, the node & Java versions installed with 
+# n & brew take precedence over the pre-installed versions that come with macOS.
 path=(
     "$N_PREFIX/bin"
+    "$JENV_PREFIX/bin"
     $path
     "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
     "/Applications/Beyond Compare.app/Contents/MacOS"
 )
 
-# Change ZSH options
-
-# Create aliases
-
+# Aliases
+alias cls='clear'
+alias cat='bat'
+alias man='batman'
+alias rm='trash'
+alias brewdump='cd ~/.dotfiles; brew bundle dump --force; cd -'
+alias trail='<<<${(F)path}' # each entry in $PATH on a new line
 # exa
 #  -a  Show hidden en dot files
 #  -h  Add a header row to each column
@@ -33,26 +40,15 @@ alias l='exa'
 alias la='exa -a'
 alias lsa='exa -a'
 alias lsd='exa -aD'
-lsdr() {exa -aDT --level="$1"}
 alias l2='exa --tree --level=2'
 alias l3='exa --tree --level=3'
 alias l4='exa --tree --level=4'
 alias l5='exa --tree --level=5'
-
-alias cls='clear'
-alias man='batman'
-alias brewdump='cd ~/.dotfiles; brew bundle dump --force; cd -'
-alias cat='bat'
-# show each entry in the $PATH variable on a new line
-alias trail='<<<${(F)path}'
-alias rm=trash
+lsdr() {exa -aDT --level="$1"}
 
 # Customize prompt
 PROMPT='%1~ %L %# ' # current folder _ shell level
 RPROMPT='%*'        # time (24h)
 
-# ZSH plugins
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-export PATH="$HOME/.jenv/bin:$PATH"
+# Initialize jEnv
 eval "$(jenv init -)"

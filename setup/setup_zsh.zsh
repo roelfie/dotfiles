@@ -36,3 +36,10 @@ fi
 
 echo "Enter superuser (sudo) password."
 echo "$HOMEBREW_PREFIX/bin/zsh" | sudo tee -a '/etc/shells'
+
+echo "\nThe default login shell for the current user "
+echo "should now be set to $HOMEBREW_PREFIX/bin/zsh."
+echo "Please double check this in the System Preferences: "
+echo "  [ Users & Groups > Advanced Options > Login Shell ]"
+
+vared -p "Then press [Enter] to continue." -c IGNORE_ME
