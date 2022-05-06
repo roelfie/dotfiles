@@ -43,8 +43,6 @@ cask "visual-studio-code"
 cask "whatsapp"
 mas "Kindle", id: 405399194
 mas "NordVPN", id: 905953485
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Pixelmator Pro", id: 1289583905
 mas "Xee³", id: 639764244

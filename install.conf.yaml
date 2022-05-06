@@ -30,7 +30,6 @@
   - ~/.jenv/versions
   - ~/.config/dock/stacks
   - ~/Documents/Screenshots
-  - ~/Pictures/Desktop
 
 - shell:
   - ./setup/setup_homebrew.zsh
