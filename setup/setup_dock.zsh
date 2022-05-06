@@ -4,7 +4,7 @@
 # https://www.tech-otaku.com/mac/add-recent-or-favorites-folder-to-your-dock-using-macos-terminal/
 # https://www.intego.com/mac-security-blog/unlock-the-macos-docks-hidden-secrets-in-terminal/
 
-echo "\n<<< Starting Dock Setup >>>\n"
+echo "\n<<< Setup the Dock >>>\n"
 
 HOME=~
 ICONS_FOLDER=$HOME/.dotfiles/dock/icons

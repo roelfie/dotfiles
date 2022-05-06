@@ -38,7 +38,7 @@
   - ./setup/setup_apps_manual.zsh
   - ./setup/setup_mackup.zsh
   - ./setup/setup_zsh.zsh
-  # - ./setup_ohmyzsh.zsh
+  # - ./setup/setup_ohmyzsh.zsh
   - ./setup/setup_ssh_github.zsh
   - ./setup/setup_node.zsh
   - ./setup/setup_java.zsh

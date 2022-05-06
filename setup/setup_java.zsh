@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Starting JDK Setup >>>\n"
+echo "\n<<< Setup Java / jEnv >>>\n"
 
 JAVA_HOME_LOCATIONS=(
     /Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk/Contents/Home

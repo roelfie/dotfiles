@@ -289,19 +289,15 @@ See [README-UDEMY](./README-UDEMY.md) for an example (nano).
    * `cd ~/.dotfiles; ./vscode_extensions_dump.zsh`
 3. commit the change to the `.dotfiles` project
 
-## macOS 'default' command
+## macOS 'defaults' command
 
 The 'defaults' command allows users to read and write macOS user defaults from the command line.
 
-* [macos-defaults.com/](https://macos-defaults.com/)
+* [macos-defaults.com](https://macos-defaults.com/)
 * Blog post on [cfprefsd](https://eclecticlight.co/2019/08/22/working-safely-and-effectively-with-preferences-in-mojave/)
 * [macOS Prefs Editor](http://apps.tempel.org/PrefsEditor/index.php)
 * Example of a [script with lots of defaults](https://github.com/mathiasbynens/dotfiles/blob/main/.macos)
-* help in the zsh terminal:
-  ```
-  man defaults
-  defaults help
-  ```
+* and `defaults` has its own man page: `man defaults` or `defaults help`
 
 
 ## ToDo

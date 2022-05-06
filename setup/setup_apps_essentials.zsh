@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Install essential Applications (Dropbox, 1Password, Boxcryptor) >>>\n"
+echo "\n<<< Install essential Applications (Dropbox, 1Password, Boxcryptor, Chrome) >>>\n"
 
 instruction() {
     print "\n\n$1"

@@ -5,7 +5,7 @@
 #   https://github.com/eieioxyz/dotfiles_macos/blob/master/setup_macos.zsh
 
 
-echo "\n<<< Starting macOS Setup >>>\n"
+echo "\n<<< Setup macOS defaults >>>\n"
 
 # Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
