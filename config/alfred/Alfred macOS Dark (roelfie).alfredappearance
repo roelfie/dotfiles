@@ -1,0 +1,64 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 14,
+        "colorSelected" : "#242424F3",
+        "font" : "System Light",
+        "color" : "#4C4D4DF3"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#1F1F1FFF",
+        "font" : "System Light",
+        "color" : "#F7F9FFD8"
+      },
+      "backgroundSelected" : "#89709BFF",
+      "text" : {
+        "size" : 16,
+        "colorSelected" : "#D5D8D8FF",
+        "font" : "MesloLGS NF",
+        "color" : "#FFFFFFD8"
+      },
+      "iconPaddingHorizontal" : 10,
+      "roundness" : 5,
+      "paddingVertical" : 8,
+      "iconSize" : 36
+    },
+    "search" : {
+      "backgroundSelected" : "#8E799EFF",
+      "paddingHorizontal" : 8,
+      "spacing" : 4,
+      "text" : {
+        "size" : 24,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "MesloLGS NF",
+        "color" : "#FFFFFFFF"
+      },
+      "background" : "#313131FF",
+      "roundness" : 8,
+      "paddingVertical" : 5
+    },
+    "window" : {
+      "color" : "#000000F2",
+      "paddingHorizontal" : 0,
+      "width" : 559,
+      "borderPadding" : 6,
+      "borderColor" : "#0D0C0DF2",
+      "blur" : 15,
+      "roundness" : 6,
+      "paddingVertical" : 0
+    },
+    "credit" : "Roelfie",
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#464646FF",
+      "thickness" : 10
+    },
+    "name" : "Alfred macOS Dark (roelfie)"
+  }
+}
