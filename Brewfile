@@ -31,6 +31,7 @@ cask "intellij-idea"
 cask "istat-menus"
 cask "microsoft-auto-update"
 cask "microsoft-office"
+cask "nordvpn"
 cask "openoffice"
 cask "oracle-jdk"
 cask "oxygen-xml-editor"
@@ -42,7 +43,6 @@ cask "textsniper"
 cask "visual-studio-code"
 cask "whatsapp"
 mas "Kindle", id: 405399194
-mas "NordVPN", id: 905953485
 mas "Peek", id: 1554235898
 mas "Pixelmator Pro", id: 1289583905
 mas "Xee³", id: 639764244

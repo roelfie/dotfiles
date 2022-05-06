@@ -41,7 +41,7 @@ alias l5='exa --tree --level=5'
 
 alias cls='clear'
 alias man='batman'
-alias brewdump='brew bundle dump --force'
+alias brewdump='cd ~/.dotfiles; brew bundle dump --force; cd -'
 alias cat='bat'
 # show each entry in the $PATH variable on a new line
 alias trail='<<<${(F)path}'
