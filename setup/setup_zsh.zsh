@@ -42,4 +42,6 @@ echo "should now be set to $HOMEBREW_PREFIX/bin/zsh."
 echo "Please double check this in the System Preferences: "
 echo "  [ Users & Groups > Advanced Options > Login Shell ]"
 
+open /System/Library/PreferencePanes/Accounts.prefPane
+
 vared -p "Then press [Enter] to continue." -c IGNORE_ME

@@ -1,0 +1,28 @@
+alias cls='clear'
+alias cat='bat'
+alias man='batman'
+alias rm='trash'
+
+alias brewdump='cd ~/.dotfiles; brew bundle dump --force; cd -'
+alias trail='<<<${(F)path}' # each entry in $PATH on a new line
+
+# exa
+#  -a  Show hidden en dot files
+#  -h  Add a header row to each column
+#  -l  Display extended file metadata as a table
+#  -D  List only directories
+#  -F  Display file kind indicators
+#  -T  Recurse into directories as a tree
+alias exa='exa -hlF --git --group-directories-first'
+alias ls='exa'
+alias l='exa'
+alias la='exa -a'
+alias lsa='exa -a'
+alias lsd='exa -aD'
+alias l2='exa --tree --level=2'
+alias l3='exa --tree --level=3'
+alias l4='exa --tree --level=4'
+alias l5='exa --tree --level=5'
+
+lsdr() {exa -aDT --level="$1"}
+

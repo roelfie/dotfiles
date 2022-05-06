@@ -18,7 +18,9 @@ EMAIL=58694687+roelfie@users.noreply.github.com
 
 # Check for existing keys
 if ls ~/.ssh/id_* 1> /dev/null 2>&1; then
-    vared -p "SSH key(s) found in ~/.ssh. NOT generating new key pair. NOT uploading public key to GitHub. Press [Enter] to continue. " -c REPLY
+    echo "SSH key(s) found in ~/.ssh. No ssh key pair will be generated. The ssh/github configuration script will be skipped..." 
+    vared -p "Press [Enter] to continue. " -c REPLY
+    exit 0
 fi
 
 # Generate new key pair
