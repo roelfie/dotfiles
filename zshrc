@@ -1,4 +1,4 @@
-echo "Hello from .zshrc"
+echo "Loading .zshrc"
 
 # .zshrc is loaded by interactive shells
 
@@ -19,13 +19,26 @@ path=(
 # Change ZSH options
 
 # Create aliases
-alias exa='exa -laFh --git'
-alias ls='exa -laFh --git'
+
+# exa
+#  -a  Show hidden en dot files
+#  -h  Add a header row to each column
+#  -l  Display extended file metadata as a table
+#  -D  List only directories
+#  -F  Display file kind indicators
+#  -T  Recurse into directories as a tree
+alias exa='exa -hlF --git --group-directories-first'
+alias ls='exa'
+alias l='exa'
+alias la='exa -a'
+alias lsa='exa -a'
+alias lsd='exa -aD'
+lsdr() {exa -aDT --level="$1"}
 alias l2='exa --tree --level=2'
 alias l3='exa --tree --level=3'
 alias l4='exa --tree --level=4'
 alias l5='exa --tree --level=5'
-alias l='ls'
+
 alias cls='clear'
 alias man='batman'
 alias brewdump='brew bundle dump --force'

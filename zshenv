@@ -1,4 +1,4 @@
-echo "Hello from .zshenv"
+echo "Loading .zshenv"
 
 # .zshenv is always sourced
 
