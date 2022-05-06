@@ -46,3 +46,10 @@ source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 # ALIASES
 # Source after oh-my-zsh otherwise some of our aliases may be overwritten by omz
 source ~/.aliases
+
+
+# AWS-CLI Auto Complete   (assuming 'awscli' installed with Homebrew)
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html#cli-command-completion-linux
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C "$HOMEBREW_PREFIX/bin/aws_completer" aws
