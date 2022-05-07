@@ -9,9 +9,17 @@
 #  - commit changes to Brewfile or vscode_extensions automatically
 #  - all other changes: open .dotfiles project in Visual Studio Code for review
 #
+
+echo "------------------------------------------------------------------------"
+echo $(date "+%Y-%m-%d %H:%M:%S")
+
+
 DOTFILES_HOME="/Users/roelfie/.dotfiles"
 BREWFILE="Brewfile"
 VSCODE_EXTENSIONS="vscode_extensions"
+
+PATH="/opt/homebrew/bin:$PATH"
+PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 
 review_dotfiles_project() {
@@ -30,18 +38,23 @@ git_commit_file() {
 
 
 # Upgrade outdated brew packages
+echo "Checking for outdated brew packages."
 OUTDATED_BREW_PKGS=($(brew outdated -q))
+echo $OUTDATED_BREW_PKGS
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
     MESSAGE="Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
     osascript -e 'display notification "'$MESSAGE'" with title "Dotfiles"'
     echo "brew upgrade"
+else
+    echo "No outdated brew packages found."
 fi
 
 
 # Generate Brewfile & vscode_extensions
 cd $DOTFILES_HOME
+echo "Generating Brewfile and vscode_extensions."
 brew bundle dump --force
 code --list-extensions > vscode_extensions
 
@@ -49,13 +62,17 @@ code --list-extensions > vscode_extensions
 # If there are staged changes, review manually
 STAGED=($(git diff --name-only --cached))
 if [[ ${#STAGED} > 0 ]]; then
-    echo "Found staged changes in the .dotfiles project. Review manually."
+    echo "Staged changes in .dotfiles project: \n$STAGED"
     review_dotfiles_project; exit
+else
+    echo "No staged changes found in .dotfiles project."
 fi
 
 
 # Some simple changes can be committed automatically
-DIRTY=("${(f)$(git status -s)}") # one line per file
+DIRTY_RAW=$(git status -s)
+DIRTY=("${(f)DIRTY_RAW}") # one line per file
+echo "Changes in .dotfiles project: \n$DIRTY_RAW"
 if [[ ${#DIRTY} = 1 ]]; then 
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
         git_commit_file $BREWFILE; exit
