@@ -1,5 +1,3 @@
-echo "Loading .zshenv"
-
 # .zshenv is always sourced
 
 mkcd () {

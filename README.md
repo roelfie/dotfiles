@@ -288,8 +288,7 @@ See [README-UDEMY](./README-UDEMY.md) for an example (nano).
 ## HOW TO install a Visual Studio Code extension
 
 1. Install the extension in vscode
-2. Export the complete list of installed extensions:
-   * `cd ~/.dotfiles; ./vscode_extensions_dump.zsh`
+2. Export the complete list of installed extensions: `vscodedump` (see `.aliases`)
 3. commit the change to the `.dotfiles` project
 
 ## macOS 'defaults' command

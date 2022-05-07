@@ -1,5 +1,3 @@
-echo "Loading .zshrc"
-
 # .zshrc is loaded by interactive shells
 
 # VARIABLES

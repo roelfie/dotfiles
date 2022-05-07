@@ -2,8 +2,6 @@ alias cls='clear'
 alias cat='bat'
 alias man='batman'
 alias rm='trash'
-
-alias brewdump='cd ~/.dotfiles; brew bundle dump --force; cd -'
 alias trail='<<<${(F)path}' # each entry in $PATH on a new line
 
 # exa
@@ -26,3 +24,6 @@ alias l5='exa --tree --level=5'
 
 lsdr() {exa -aDT --level="$1"}
 
+# .dotfiles bookkeeping
+alias brewdump='cd ~/.dotfiles; brew bundle dump --force'
+alias vscodedump='cd ~/.dotfiles; code --list-extensions > vscode_extensions'
