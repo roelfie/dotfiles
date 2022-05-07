@@ -34,7 +34,7 @@ It is based on [dotbot](https://github.com/anishathalye/dotbot) and does the fol
    ```
    This will trigger Dotbot to perform all the steps described in [install.conf.yaml](./install.conf.yaml).
 
-NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation
+NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation.
 
 
 #### <a name="manual_steps"></a>Manual steps

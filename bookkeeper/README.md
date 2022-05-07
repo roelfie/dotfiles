@@ -4,10 +4,10 @@
 
 The bookkeeper is a [script](./dotfiles_bookkeeper.zsh) that does a couple of things:
 
-* Keep the system up-to-date (brew packages)
+* Keep the system up-to-date (upgrade brew packages)
 * Keep the .dotfiles project up-to-date (brewfile, vscode extensions)
-* Commit & push simple changes to the .dotfiles project to GitHub
-* Ask the user to review complex changes to the .dotfile project & commit them manually
+* Commit & push simple changes to the .dotfiles project automatically
+* Notify the user of uncommitted changes to the .dotfiles project
 
 By scheduling the bookkeeper to run periodically, you (the macOS user) don't have to think about keeping 
 the .dotfiles project up-to-date anymore; the bookkeeper will (only) notify you when you need to take action.
