@@ -20,29 +20,26 @@ It is based on [dotbot](https://github.com/anishathalye/dotbot) and does the fol
 
 ## Usage
 
-Fresh macOS install on an M1 MacBook: Use the `Erase All Content and Settings` wizard under `System Preferences / System Preferences`.
-
-Then do
-
-```
-xcode-select --install
-```
-
-followed by
-
-```
-git clone https://github.com/roelfie/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-./install
-```
-
-This will trigger Dotbot to perform all the steps described in [install.conf.yaml](./install.conf.yaml).
+1. Fresh macOS install on an M1 MacBook: 
+   * Use the `Erase All Content and Settings` wizard under `System Preferences / System Preferences`.
+2. Install xcode:
+   ```
+   xcode-select --install
+   ```
+3. Install the .dotfiles project:
+   ```
+   git clone https://github.com/roelfie/dotfiles.git ~/.dotfiles
+   cd ~/.dotfiles
+   ./install
+   ```
+   This will trigger Dotbot to perform all the steps described in [install.conf.yaml](./install.conf.yaml).
 
 NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. So all appplications should be ready to use immediately after installation
 
 
 #### <a name="manual_steps"></a>Manual steps
 
+* Configure the [bookkeeper](./bookkeeper/README.md) in LaunchControl
 * System Preferences
   * BlueTooth: pair keyboard, phone & headphone
   * Security & Privacy (see screenshots Dropbox)

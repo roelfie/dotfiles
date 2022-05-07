@@ -11,6 +11,7 @@ instruction "REGISTER the following applications. License keys can be found in 1
     - betterzip
     - daisydisk
     - istatmenus
+    - launchcontrol
     - permute
     - textsniper"
 

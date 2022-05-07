@@ -10,8 +10,13 @@
 #  - all other changes: open .dotfiles project in Visual Studio Code for review
 #
 
-echo "------------------------------------------------------------------------"
-echo $(date "+%Y-%m-%d %H:%M:%S")
+echo " "
+echo "<*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>"
+echo "┌┐ ┌─┐┌─┐┬┌─┬┌─┌─┐┌─┐┌─┐┌─┐┬─┐"
+echo "├┴┐│ ││ │├┴┐├┴┐├┤ ├┤ ├─┘├┤ ├┬┘"
+echo "└─┘└─┘└─┘┴ ┴┴ ┴└─┘└─┘┴  └─┘┴└─"
+echo "$(date "+%Y-%m-%d %H:%M:%S")"
+echo " "
 
 
 DOTFILES_HOME="/Users/roelfie/.dotfiles"
@@ -38,15 +43,16 @@ git_commit_file() {
 
 
 # Upgrade outdated brew packages
-echo "Checking for outdated brew packages."
 OUTDATED_BREW_PKGS=($(brew outdated -q))
-echo $OUTDATED_BREW_PKGS
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
-    echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
+    echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew packages:"
+    echo $OUTDATED_BREW_PKGS
     MESSAGE="Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
     osascript -e 'display notification "'$MESSAGE'" with title "Dotfiles"'
-    echo "brew upgrade"
+    echo "--- [ BEGIN brew upgrade ] ------------------------------------------------------"
+    brew upgrade
+    echo "--- [ END brew upgrade ] --------------------------------------------------------"
 else
     echo "No outdated brew packages found."
 fi
