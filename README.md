@@ -59,7 +59,7 @@ _NB: The installation scripts are idempotent so you can run `~/.dotfiles/install
 
 Before we dive into the details, let's have a look at this diagram:
 
-![macOS Filesystem Diagram](./resources/diagrams/overview.png)
+![macOS Filesystem Diagram](./resources/diagrams/overview.png) TODO !
 
 Each MacBook comes with pre-installed software:
 
@@ -122,7 +122,7 @@ Some applications are only available as mas; some only as cask; some as both; an
 
 Only applications that have already been _purchased in the App Store_ can be automatically installed using `mas`. If you want to install a paid application for the first time, you have to manually pay for it in & install it from the App Store.
 
-I prefer `cask` over mas, since applications stored in the App Store are tied to one account, and it is not possible to transfer a purchased app from one account to another. The only drawback of installing as cask is that you will have to upload your license manually after installation.
+I prefer `cask` over mas, since applications stored in the App Store are tied to one (Apple ID) account, and it is not possible to transfer a purchased app from one account to another. The only drawback of installing as cask is that you will have to upload your license manually after installation.
 
 More info:
 
@@ -151,17 +151,15 @@ As visualized in the diagram above:
 * some config files are backed up to GitHub (as part of this 'dotfiles' project)
 * others are backed up to Dropbox (using [mackup](./scripts/setup_mackup.zsh))
 
-Symlinks are used from the default location to the actual file inside `~/.dotfiles` or `~/Dropbox/Apps/Mackup`. For example: `~/.zshrc` -> `~/.dotfiles/zshrc`.
-
-_NB: Do not store dotfiles with sensitive information in this 'dotfiles' project! Use mackup (i.e. Dropbox) instead._
+Symlinks are used from the default location to the actual file inside `~/.dotfiles` or `~/Dropbox/Apps/Mackup`. For example: `~/.zshrc -> ~/.dotfiles/zshrc`.
 
 
 ### Backup
 
-As explained in the previous section, configuration files / scripts are stored in either `~/.dotfiles` or `~/Dropbox/Apps/Mackup`. 
+As explained in the previous section, configuration files & scripts are stored in either `~/.dotfiles` or `~/Dropbox/Apps/Mackup`. 
 
-* Dotbot restores symlinks from the default locations to the files under `~/.dotfiles`
-* Mackup ([triggered](./scripts/setup_mackup.zsh) by the dotbot installation) restores symlinks from the default locations to the files under `~/Dropbox/Apps/Mackup`.
+* Dotbot restores symlinks from the default locations to the actual files under `~/.dotfiles`
+* Mackup ([triggered](./scripts/setup_mackup.zsh) by the dotbot installation) restores symlinks from the default locations to the actual files under `~/Dropbox/Apps/Mackup`.
 
 Some changes to the system are not automatically reflected in `~/.dotfiles` or `~/Dropbox/Apps/Mackup`:
 
@@ -172,7 +170,7 @@ Some changes to the system are not automatically reflected in `~/.dotfiles` or `
 
 For this purpose I have written the [bookkeeper](./bookkeeper/README.md), which periodically re-generates these files and commits them to GitHub.
 
-_NB: Beware that `dotfiles` and `mackup` can overlap. Always make sure that dot-files stored in this `dotfiles` project are excluded from mackup (`[applications_to_ignore]` section in [mackup.cfg](./mackup.cfg))._
+_NB: Beware that `dotfiles` and `mackup` can overlap. Always make sure that dot-files stored in this `dotfiles` project are excluded from mackup (`[applications_to_ignore]` section in [mackup.cfg](./config/mackup.cfg))._
 
 
 ### Update
@@ -185,10 +183,10 @@ _NB: It is still your own responsibility to upgrade applications that were insta
 ## Best practices
 
 * Installation of packages and applications
-  * use homebrew
+  * always use homebrew (!!!)
   * use the App Store _only_ if an app is not available as a Homebrew cask
   * try to avoid manual installation of tools or applications (hard to retrace, hard to update)
-    * if you do, consider adding it to the [manual steps](manual_steps) section
+    * if you do, consider adding it to the [manual steps](#manual_steps) section
 * Java
   * use homebrew to (un)install JDKs (see below)
   * use 'jenv' to switch versions
@@ -199,6 +197,9 @@ _NB: It is still your own responsibility to upgrade applications that were insta
   * installation / removal of extensions is automatically backed up to [vscode_extensions](./vscode_extensions) by the bookkeeper; no action required
 * Extend bookkeeper 
   * if you discover configuration that can only be _generated_ (like 'Brewfile' and 'vscode_extensions')
+* Use mackup (i.e. Dropbox) to backup configuration files containing sensitive information (passwords, email, etc.)
+  * do not store them in this .dotfile project!
+
 
 
 ## HOW TO
