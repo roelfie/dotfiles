@@ -11,11 +11,14 @@
 
 - link:
     ~/.aliases: 
-    ~/.mackup.cfg: 
     ~/.zshrc: 
     ~/.zshenv: 
+    ~/.mackup.cfg: 
+      path: config/mackup.cfg
     ~/.gitconfig: 
+      path: config/gitconfig
     ~/.gitignore_global: 
+      path: config/gitignore_global
     ~/.config/gh:
       path: ~/Dropbox/Apps/.dotfiles/config/gh
       ignore-missing: true
@@ -33,15 +36,15 @@
   - ~/Documents/Screenshots
 
 - shell:
-  - ./setup/setup_homebrew.zsh
-  - ./setup/setup_apps_essentials.zsh
-  - ./setup/setup_apps.zsh
-  - ./setup/setup_apps_manual.zsh
-  - ./setup/setup_mackup.zsh
-  - ./setup/setup_zsh.zsh
-  - ./setup/setup_ohmyzsh.zsh
-  - ./setup/setup_ssh_github.zsh
-  - ./setup/setup_node.zsh
-  - ./setup/setup_java.zsh
-  - ./setup/setup_dock.zsh
-  - ./setup/setup_macos.zsh
+  - ./scripts/setup_homebrew.zsh
+  - ./scripts/setup_apps_essentials.zsh
+  - ./scripts/setup_apps.zsh
+  - ./scripts/setup_apps_manual.zsh
+  - ./scripts/setup_mackup.zsh
+  - ./scripts/setup_zsh.zsh
+  - ./scripts/setup_ohmyzsh.zsh
+  - ./scripts/setup_ssh_github.zsh
+  - ./scripts/setup_node.zsh
+  - ./scripts/setup_java.zsh
+  - ./scripts/setup_dock.zsh
+  - ./scripts/setup_macos.zsh

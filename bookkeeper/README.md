@@ -1,33 +1,29 @@
+[◄ dotfiles](../README.md)
+
 # Bookkeeper
 
-## What is it?
+Bookkeeper is a [script](./dotfiles_bookkeeper.zsh) that:
 
-The bookkeeper is a [script](./dotfiles_bookkeeper.zsh) that does a couple of things:
+* Keeps the system up-to-date (upgrade brew packages)
+* Keeps the .dotfiles project up-to-date (generate brewfile, vscode extensions)
+* Commits & pushes simple changes to the .dotfiles project automatically
+* Notifies the user of uncommitted changes to the .dotfiles project
 
-* Keep the system up-to-date (upgrade brew packages)
-* Keep the .dotfiles project up-to-date (brewfile, vscode extensions)
-* Commit & push simple changes to the .dotfiles project automatically
-* Notify the user of uncommitted changes to the .dotfiles project
+_NB: bookkeeper automatically upgrades your macOS applications, but only if they were installed as a `cask`. Applications installed from the App Store (`mas`) can not be automatically upgraded with Homebrew (but most applications can be configured to auto-upgrade themselves)._
 
-By scheduling the bookkeeper to run periodically, you (the macOS user) don't have to think about keeping 
-the .dotfiles project up-to-date anymore; the bookkeeper will (only) notify you when you need to take action.
 
-## LaunchControl
+## Background job
 
-There are several ways to schedule a job on macOS. The recommended way is using [launchd](https://en.wikipedia.org/wiki/Launchd).
+If you schedule the bookkeeper as a periodic background job, you don't have to worry about keeping
+the .dotfiles project up-to-date. Bookkeeper will do it for you and notify you when you need 
+to take action.
 
-I use [LaunchControl](https://www.soma-zone.com/LaunchControl) to configure the bookkeeper job and load it into launchd.
+The recommended way of scheduling a job on macOS is using [launchd](https://en.wikipedia.org/wiki/Launchd).
 
-### Configure LaunchControl
 
-On the Utilities tab in the LaunchControl preferences, select
+## Configuring bookkeeper in LaunchControl
 
-* Enable QuickLaunch
-* Enable JobWatch
-
-### Configure bookkeeper job
-
-In the LaunchControl main window
+I use [LaunchControl](https://www.soma-zone.com/LaunchControl) to configure the bookkeeper job and load it into launchd:
 
 * Select `User Agents`
 * Create a new User Agent (`+` button)
@@ -35,16 +31,24 @@ In the LaunchControl main window
 
 ![User Agent configuration](images/LaunchControl-UserAgent.png)
 
-The job is now loaded into launchd and will run every X hours. Missed runs (because the macbook was turned off) will not be retried.
+The job is now loaded into launchd and will run every X hours. 
+Missed job invocations (when the computer is asleep) will be started the next time the computer wakes up. 
+Multiple missed events will be coalesced into one.
 
-### QuickLaunch
+## Configuring bookkeeper in QuickLaunch
 
-In QuickLaunch (accessible from the menu bar), add the bookkeeper job to the favorites:
+QuickLaunch is a menu bar app that comes with LaunchControl.
 
-![QuickLaunch configuration](images/QuickLaunch-Preferences.png)
+* Open LaunchControl Preferences
+* Go to 'Utilities' and check 'Enable QuickLaunch'
 
-You can now easilly access the job from the menu bar:
+The QuickLaunch icon (joystick) will appear in the menu bar
+
+* Open QuickLaunch Preferences
+* Add the bookkeeper job
+
+You can now access the bookkeeper job from the menu bar:
 
 ![QuickLaunch start](images/QuickLaunch-Start.png)
 
-You can load/unload the job from launchd, or you can run it 'on demand'...
+For instance to run it 'on demand' or unload it from launchd.

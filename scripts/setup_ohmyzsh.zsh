@@ -11,7 +11,7 @@ echo "that the commands in 'setup_ohmyzsh.zsh' are still up-to-date."
 echo ""
 vared -p "Do you want to Continue [Enter] or Quit [q] ? " -c ANSWER
 
-if [ $ANSWER && $ANSWER = "q" ]
+if [[ $ANSWER && $ANSWER = "q" ]]
 then
     echo "Quiting oh-my-zsh installation."
     echo "Please fix 'setup_ohmyzsh.zsh' to reflect the newest installation instructions."
@@ -28,7 +28,7 @@ echo "This font should be installed manually."
 echo "Please install the font using the online instructions (see browser)."
 echo "Then select the installed font in macOS Terminal: Preferences → Profiles → Text → Font"
 echo ""
-vared -p "Press [Enter] when done." -c IGNORE_ME
+vared -p "Press [Enter] when done." -c IGNOREME
 
 
 # Pass flags as described in the header of install.sh:
@@ -42,4 +42,4 @@ echo "The first time you open a new zsh shell, the p10k configuration wizard sho
 echo "But you can always run 'p10k configure' at a later moment."
 echo ""
 
-vared -p "Press [Enter] to continue." -c IGNORE_ME
+vared -p "Press [Enter] to continue." -c IGNORE

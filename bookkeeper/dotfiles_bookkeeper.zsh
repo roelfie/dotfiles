@@ -5,7 +5,7 @@
 # 
 #  - upgrade all outdated brew packages
 #  - generate Brewfile
-#  - generate vscode_extensions
+#  - export Visual Studio Code extensions to 'vscode_extensions'
 #  - commit changes to Brewfile or vscode_extensions automatically
 #  - all other changes: open .dotfiles project in Visual Studio Code for review
 #
@@ -27,9 +27,16 @@ PATH="/opt/homebrew/bin:$PATH"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 
+display_notification() {
+    osascript -e 'display notification "'$1'" with title "Dotfiles"'
+}
+
+display_alert() {
+    osascript -e "display alert \"Dotfiles\" message \"$1\""
+}
+
 review_dotfiles_project() {
-    MESSAGE=".dotfiles contains uncommitted work\r\rPLEASE REVIEW" 
-    osascript -e "display alert \"Dotfiles\" message \"$MESSAGE\""
+    display_alert ".dotfiles contains uncommitted work\r\rPLEASE REVIEW"
     # Open .dotfiles in Visual Studio Code
     /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code --new-window ~/.dotfiles
 }
@@ -39,20 +46,26 @@ git_commit_file() {
     git add $1
     git commit -m "Updated $1 (auto-commit)."
     git push
+    display_notification "Committed change in $1."
 }
+
+
+# Update Homebrew
+echo "Updating Homebrew"
+brew update
 
 
 # Upgrade outdated brew packages
 OUTDATED_BREW_PKGS=($(brew outdated -q))
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
+    display_notification "Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
+
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew packages:"
     echo $OUTDATED_BREW_PKGS
-    MESSAGE="Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
-    osascript -e 'display notification "'$MESSAGE'" with title "Dotfiles"'
-    echo "--- [ BEGIN brew upgrade ] ------------------------------------------------------"
+    echo "\n_______________________________________________________________________________"
     brew upgrade
-    echo "--- [ END brew upgrade ] --------------------------------------------------------"
+    echo "_______________________________________________________________________________\n"
 else
     echo "No outdated brew packages found."
 fi
@@ -78,7 +91,7 @@ fi
 # Some simple changes can be committed automatically
 DIRTY_RAW=$(git status -s)
 DIRTY=("${(f)DIRTY_RAW}") # one line per file
-echo "Changes in .dotfiles project: \n$DIRTY_RAW"
+echo "Unstaged changes found in .dotfiles project: \n$DIRTY_RAW"
 if [[ ${#DIRTY} = 1 ]]; then 
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
         git_commit_file $BREWFILE; exit

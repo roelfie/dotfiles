@@ -7,7 +7,7 @@
 echo "\n<<< Setup the Dock >>>\n"
 
 HOME=~
-ICONS_FOLDER=$HOME/.dotfiles/dock/icons
+ICONS_FOLDER=$HOME/.dotfiles/resources/dock/icons
 STACKS_FOLDER=$HOME/.config/dock/stacks
 # each stack has its own icon, and the icon name will be used as the stack (folder) name
 STACKS=($(cd $ICONS_FOLDER; ls -1 *.icns | sed -e 's/\.icns//g'))
