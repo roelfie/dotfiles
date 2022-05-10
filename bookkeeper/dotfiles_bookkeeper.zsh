@@ -59,9 +59,9 @@ brew update
 OUTDATED_BREW_PKGS=($(brew outdated -q))
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
-    display_notification "Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew packages."
+    display_notification "Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 
-    echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew packages:"
+    echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew package(s):"
     echo $OUTDATED_BREW_PKGS
     echo "\n_______________________________________________________________________________"
     brew upgrade

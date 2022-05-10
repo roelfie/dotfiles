@@ -1,15 +1,18 @@
 # dotfiles
 
-I use this project to bootstrap my MacBook.
+This project turns a new (or factory reset) MacBook into a fully installed and fully configured development machine.
+
+Up and running within 30 minutes!
 
 It is based on [dotbot](https://github.com/anishathalye/dotbot).
 
 Before you [start using](#usage) it you may want to know [what it does](#overview).
 
+_NB: This project focuses on Java / JavaScript / Python development. But you can easilly tailor it to your needs._
 
 ## Usage
 
-### Prepare
+### Preparation
 
 * internet connection
 * credentials
@@ -43,8 +46,6 @@ _NB: The installation scripts are idempotent so you can run `~/.dotfiles/install
 * System Preferences:
   * BlueTooth: pair keyboard, phone & headphone
   * Keyboard: Use F1, F2, etc. as standard function keys
-  * Dock & Menu Bar: manual tweaks?
-  * Security & Privacy: manual tweaks?
 * Alfred key bindings:
   | app                |  menu                             | hotkey                    | value     |
   |--------------------|----------------------------------|---------------------------|-----------|
@@ -57,14 +58,15 @@ _NB: The installation scripts are idempotent so you can run `~/.dotfiles/install
 
 ## Overview
 
-Before we dive into the details, let's have a look at this diagram:
+Before we dive into the details, let's have a look at a diagram:
 
-![macOS Filesystem Diagram](./resources/diagrams/overview.png) TODO !
+![diagram](./resources/diagrams/dotfiles-overview.png)
 
 Each MacBook comes with pre-installed software:
 
-* in `/bin` and `/usr/bin`: cat, ls, zsh, ..
-* in `/Applications`: Mail, Maps, Safari, ..
+* in `/bin`: cat, ls, rm, zsh, ..
+* in `/usr/bin`: git, grep, less, more, ..
+* in `/Applications`: Mail, Numbers, Pages, Safari, ..
 * ...
 
 The user can install additional software:
@@ -79,11 +81,11 @@ Configuration files are typically stored somewhere in the user's home directory:
 * under `~/.config`
 * under `~/Library` (like `~/Library/Preferences` and `~/Library/Application Support`) 
 
-Installing all this software and restoring (macOS or application) configurations to the settings you are used to can be a cumbersome task.
+Installing all this software and restoring (macOS or application) configurations to the settings you are used to, can be a cumbersome task.
 
 Dotbot is all about automating the installation & configuration of your macOS system. 
 This dotfiles project is based on dotbot and is specifically tailored to _my_ macOS system. 
-But feel free to use it if you like it.
+But it can be easilly adjusted to your needs.
 
 
 ## What does it do?
@@ -107,7 +109,7 @@ When you run `~/.dotfiles/install` the following will be installed (or upgraded)
 * SSH connection with [GitHub](./scripts/setup_ssh_github.zsh)
 * Node (with [n](https://github.com/tj/n)) 
 * Java / JDK (with [jenv](https://www.jenv.be/))
-* and step-by-step instructions for the user([example](./scripts/setup_apps_manual.zsh)) in case something can not be automated
+* and step-by-step instructions for the user ([example](./scripts/setup_apps_manual.zsh)) in case something can not be automated
 
 _NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. This will disable the macOS Gatekeeper, so that an application can be used immediately after installation._
 
@@ -137,9 +139,8 @@ mas help
 
 Configuration files are scattered all over the system. 
 
-* dotfiles
-  * files, like `~/.zshrc` and `~/.gitignore`
-  * folders, like `~/.ssh` and `~/.config`
+* dotfiles, like `~/.zshrc` and `~/.gitignore`
+* dotfolders, like `~/.ssh` and `~/.config`
 * stuff under `~/Library/Preferences`
 * stuff under `~/Library/Application Support`
 * system preferences 
