@@ -124,6 +124,7 @@ cd $STACKS_FOLDER/graphics
     ln -s /System/Applications/Utilities/Digital\ Color\ Meter.app "Digital Color Meter"
     ln -s /Applications/Permute\ 3.app "Permute"
     ln -s /Applications/Squash.app "Squash"
+    ln -s /Applications/draw.io.app "Draw.io"
 
 cd $STACKS_FOLDER/sys
     ln -s /System/Applications/System\ Preferences.app "System Preferences"
