@@ -16,21 +16,18 @@
     ~/.mackup.cfg: 
       path: config/mackup.cfg
     ~/.gitconfig: 
-      path: config/git/gitconfig
+      path: ~/Dropbox/Apps/dotfiles/config/git/gitconfig
     ~/.gitignore_global: 
-      path: config/git/gitignore_global
+      path: ~/Dropbox/Apps/dotfiles/config/git/gitignore_global
     # gh (GitHub CLI) config contains confidential data, so not backed up in GitHub (unfortunately not supported by mackup)
     ~/.config/gh:
-      path: ~/Dropbox/Apps/.dotfiles/config/gh
+      path: ~/Dropbox/Apps/dotfiles/config/gh
       ignore-missing: true
     ~/.config/bat:
       create: true
       path: config/bat
 
 - create:
-  - ~/workspace
-  - ~/workspace/courses
-  - ~/workspace/sandbox
   # https://github.com/jenv/jenv/issues/167
   - ~/.jenv/versions
   - ~/.config/dock/stacks
@@ -49,3 +46,4 @@
   - ./scripts/setup_java.zsh
   - ./scripts/setup_dock.zsh
   - ./scripts/setup_macos.zsh
+  - ./scripts/setup_workspaces.zsh

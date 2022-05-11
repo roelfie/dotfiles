@@ -1,0 +1,9 @@
+workspaces:
+  - name: "personal"
+    git: 
+      username: "roelfie"
+      email: "roelfie@github.com"
+  - name: "company-a"
+    git:
+      username: "Real Name"
+      email: "real.name@company-a.com"

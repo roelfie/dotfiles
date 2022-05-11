@@ -100,6 +100,7 @@ fi
 
 # Some simple changes can be committed automatically
 if [[ ${#DIRTY} = 1 ]]; then 
+    # regex 'ends with'
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
         git_commit_file $BREWFILE; exit
     fi
