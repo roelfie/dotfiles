@@ -91,7 +91,9 @@ fi
 # Some simple changes can be committed automatically
 DIRTY_RAW=$(git status -s)
 DIRTY=("${(f)DIRTY_RAW}") # one line per file
-echo "Unstaged changes found in .dotfiles project: \n$DIRTY_RAW"
+if [[ ${#DIRTY} > 0 ]]; then 
+    echo "Changes found in .dotfiles project: \n$DIRTY_RAW"
+fi
 if [[ ${#DIRTY} = 1 ]]; then 
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
         git_commit_file $BREWFILE; exit

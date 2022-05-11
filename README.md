@@ -229,7 +229,9 @@ which -a <pkg>
 <pkg> --version
 ```
 
-As long as `/opt/homebrew/bin` appears before `/usr/bin` on the `$PATH` the brew version will take precedence. On the last line you should see the newest version (installed with brew) instead of the pre-installed version. See [this example](./README-UDEMY.md) (nano).
+As long as `/opt/homebrew/bin` appears before `/usr/bin` on the `$PATH` the brew version will take precedence. 
+On the last line you should see the newest version (installed with brew) instead of the pre-installed version. 
+See [this example](./resources/doc/README-UDEMY.md) (nano).
 
 ### HOW TO - (un)install a JDK
 
@@ -250,13 +252,14 @@ _NB: the `oracle-jdk` cask has no version name. How to install multiple Oracle J
 
 ## References
 
-* [dotfiles](https://dotfiles.github.io/)
-* [Dotfiles from Start to Finish-ish](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/) - course (Udemy)
-* [Patrick McDonalds dotfiles repo](https://github.com/eieioxyz/dotfiles_macos) - github
+* [Dotbot](https://github.com/anishathalye/dotbot).
+* [Dotfiles](https://dotfiles.github.io/)
+* [Dotfiles from Start to Finish-ish](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/) (Udemy)
+* [Dotfiles repo](https://github.com/eieioxyz/dotfiles_macos) example (github)
 * [Youtube](https://www.youtube.com/watch?v=kIdiWut8eD8)
 * defaults command:
   * [macos-defaults.com](https://macos-defaults.com/)
-  * Blog post on [cfprefsd](https://eclecticlight.co/2019/08/22/working-safely-and-effectively-with-preferences-in-mojave/)
+  * [cfprefsd](https://eclecticlight.co/2019/08/22/working-safely-and-effectively-with-preferences-in-mojave/)
   * [macOS Prefs Editor](http://apps.tempel.org/PrefsEditor/index.php)
   * Example of a [script with lots of defaults](https://github.com/mathiasbynens/dotfiles/blob/main/.macos)
   * More info on the defaults command:
