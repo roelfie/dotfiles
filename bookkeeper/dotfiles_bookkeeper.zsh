@@ -78,7 +78,17 @@ brew bundle dump --force
 code --list-extensions > vscode_extensions
 
 
-# If there are staged changes, review manually
+# Check if there are changes in the .dotfiles project.
+DIRTY_RAW=$(git status -s)
+DIRTY=("${(f)DIRTY_RAW}") # one line per file
+if [[ ${#DIRTY} = 0 ]]; then 
+    echo "No changes found in .dotfiles project."; exit
+else 
+    echo "Changes found in .dotfiles project: \n$DIRTY_RAW"
+fi
+
+
+# If there are staged changes, always review manually
 STAGED=($(git diff --name-only --cached))
 if [[ ${#STAGED} > 0 ]]; then
     echo "Staged changes in .dotfiles project: \n$STAGED"
@@ -89,11 +99,6 @@ fi
 
 
 # Some simple changes can be committed automatically
-DIRTY_RAW=$(git status -s)
-DIRTY=("${(f)DIRTY_RAW}") # one line per file
-if [[ ${#DIRTY} > 0 ]]; then 
-    echo "Changes found in .dotfiles project: \n$DIRTY_RAW"
-fi
 if [[ ${#DIRTY} = 1 ]]; then 
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
         git_commit_file $BREWFILE; exit
@@ -105,7 +110,5 @@ fi
 
 
 # All other changes must be reviewed manually
-if [[ ${#DIRTY} > 0 ]]; then
-    echo "Found changes in the .dotfiles project. Review manually."
-    review_dotfiles_project; exit
-fi
+echo "Changes should be reviewed manually."
+review_dotfiles_project; exit
