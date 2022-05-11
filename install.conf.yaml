@@ -16,9 +16,9 @@
     ~/.mackup.cfg: 
       path: config/mackup.cfg
     ~/.gitconfig: 
-      path: config/gitconfig
+      path: config/git/gitconfig
     ~/.gitignore_global: 
-      path: config/gitignore_global
+      path: config/git/gitignore_global
     ~/.config/gh:
       path: ~/Dropbox/Apps/.dotfiles/config/gh
       ignore-missing: true
