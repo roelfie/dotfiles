@@ -19,6 +19,7 @@
       path: config/git/gitconfig
     ~/.gitignore_global: 
       path: config/git/gitignore_global
+    # gh (GitHub CLI) config contains confidential data, so not backed up in GitHub (unfortunately not supported by mackup)
     ~/.config/gh:
       path: ~/Dropbox/Apps/.dotfiles/config/gh
       ignore-missing: true

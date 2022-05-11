@@ -15,8 +15,8 @@ _NB: bookkeeper automatically upgrades your macOS applications, but only if they
 ## Background job
 
 If you schedule the bookkeeper as a periodic background job, you don't have to worry about keeping
-the .dotfiles project up-to-date. Bookkeeper will do it for you and notify you when you need 
-to take action.
+your system & your .dotfiles project up-to-date. Bookkeeper will do it for you and notify you 
+when you need to take action.
 
 The recommended way of scheduling a job on macOS is using [launchd](https://en.wikipedia.org/wiki/Launchd).
 
