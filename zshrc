@@ -2,8 +2,10 @@
 
 # VARIABLES
 export HOMEBREW_CASK_OPTS="--no-quarantine"
-export N_PREFIX=$HOME/.n
-export JENV_PREFIX=$HOME/.jenv
+export N_PREFIX="$HOME/.n"
+export JENV_PREFIX="$HOME/.jenv"
+export DOTFILES_HOME="$HOME/.dotfiles"
+export WORKSPACES_HOME="$HOME/workspaces"
 
 # PATH
 # The order of entries in the path is important!

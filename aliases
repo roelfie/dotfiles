@@ -31,3 +31,6 @@ lsdr() {exa -aDT --level="$1"}
 # .dotfiles bookkeeping
 alias brewdump='cd ~/.dotfiles; brew bundle dump --force'
 alias vscodedump='cd ~/.dotfiles; code --list-extensions > vscode_extensions'
+
+# create a new workspace
+alias mkws='python3 "$DOTFILES_HOME/bin/create-workspace.py"'
