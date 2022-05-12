@@ -44,7 +44,7 @@ review_dotfiles_project() {
 git_commit_file() {
     echo "Commit & push $1."
     git add $1
-    git commit --author="bookkeeper <>" -m "Updated $1 (auto-commit)."
+    git -c user.name='bookkeeper' commit -m "Updated $1 (auto-commit)."
     git push
     display_notification "Committed change in $1."
 }
