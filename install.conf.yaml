@@ -28,6 +28,8 @@
       path: config/bat
 
 - create:
+  # you can add individual workspaces inside the ~/workspaces folder with 'mkws'
+  - ~/workspaces
   # https://github.com/jenv/jenv/issues/167
   - ~/.jenv/versions
   - ~/.config/dock/stacks

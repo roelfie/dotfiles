@@ -6,6 +6,8 @@
 # (since it contains confidential data, like company names and email addresses).
 # An example config file can be found in .dotfiles/resources/workspaces.conf.yaml.
 # 
+# You can create additional workspaces afterwards with the 'mkws' alias.
+# 
 # This script uses 'yq' (https://mikefarah.gitbook.io/yq/) to parse the config yaml file.
 
 echo "\n<<< Setup workspaces >>>\n"
