@@ -16,8 +16,6 @@ path=(
     "$N_PREFIX/bin"
     "$JENV_PREFIX/bin"
     $path
-    "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-    "/Applications/Beyond Compare.app/Contents/MacOS"
 )
 
 # jEnv
