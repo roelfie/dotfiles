@@ -134,7 +134,7 @@ brew help bundle
 mas help
 ```
 
-#### command line tools
+#### Command line tools
 
 Some casks are shipped with command line tools. Brew installs them in `/opt/homebrew/bin`:
 

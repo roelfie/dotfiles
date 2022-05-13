@@ -111,6 +111,7 @@ cd $STACKS_FOLDER/dev
     ln -s /Applications/PyCharm\ CE.app "PyCharm"
     ln -s /Applications/Peek.app "Peek (QuickLook plugin)"
     ln -s /Applications/Docker.app "Docker"
+    ln -s /Applications/Sourcetree.app "Sourcetree"
 
 cd $STACKS_FOLDER/docs
     ln -s /Applications/Skim.app "Skim"
