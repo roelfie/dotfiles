@@ -134,6 +134,20 @@ brew help bundle
 mas help
 ```
 
+#### command line tools
+
+Some casks are shipped with command line tools. Brew installs them in `/opt/homebrew/bin`:
+
+```
+$ ls -la /opt/homebrew/bin | grep /Applications/
+  bcomp -> /Applications/Beyond Compare.app/Contents/MacOS/bcomp*
+  code -> /Applications/Visual Studio Code.app/Contents/Resources/app/bin/code*
+  stree -> /Applications/Sourcetree.app/Contents/Resources/stree*
+  ...
+```
+
+Since this folder is in the `$PATH` these tools are automatically available.
+
 
 ### Configuration
 
