@@ -80,8 +80,7 @@ code --list-extensions > vscode_extensions
 
 # Check if there are changes in the .dotfiles project.
 DIRTY_RAW=$(git status -s)
-DIRTY=("${(f)DIRTY_RAW}") # one line per file
-if [[ ${#DIRTY} = 0 ]]; then 
+if [[ ${#DIRTY_RAW} = 0 ]]; then 
     echo "No changes found in .dotfiles project."; exit
 else 
     echo "Changes found in .dotfiles project: \n$DIRTY_RAW"
@@ -99,6 +98,7 @@ fi
 
 
 # Some simple changes can be committed automatically
+DIRTY=("${(f)DIRTY_RAW}") # one line per file
 if [[ ${#DIRTY} = 1 ]]; then 
     # regex 'ends with'
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
