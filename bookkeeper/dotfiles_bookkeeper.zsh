@@ -52,7 +52,7 @@ git_commit_file() {
 
 # Update Homebrew
 echo "Updating Homebrew"
-brew update
+brew update -q
 
 
 # Upgrade outdated brew packages
