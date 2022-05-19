@@ -28,7 +28,13 @@ PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 
 display_notification() {
-    osascript -e 'display notification "'$1'" with title "Dotfiles"'
+    # Use pync (python wrapper around terminal-notifier). Unlike the osascript variant it allows you to use icons, open files etc.
+    # osascript -e 'display notification "'$1'" with title "Dotfiles"'
+    $HOME/.pyenv/shims/python $HOME/.dotfiles/bookkeeper/notify.py \
+        "Dotfiles" \
+        "$1" \
+        "file:///Users/roelfie/.dotfiles/bookkeeper/dotfiles_bookkeeper.log" \
+        "file:///Users/roelfie/.dotfiles/bookkeeper/images/icons8-checked-checkbox-50.png"
 }
 
 display_alert() {

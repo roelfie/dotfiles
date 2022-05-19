@@ -23,19 +23,20 @@ else
 fi
 
 
-# Disabled the following block (symlinking sh -> /bin/zsh instead of -> /bin/bash) because
-# it seems this caused a 'parse error near fi' when installing/compiling python with pyenv.
+# Disable the following block (symlinking sh -> /bin/zsh instead of -> /bin/bash) 
+# if you want to compile a new python version with pyenv.
+# It seems this caused a 'parse error near fi' when installing/compiling python with pyenv.
 # https://bytemeta.vip/repo/pyenv/pyenv/issues/2216
 #
 # Make sh symlink to zsh instead of bash (optional?)
-#if sh --version | grep -q zsh; then
-#  echo '/private/var/select/sh already linked to /bin/zsh'
-#else
-#  echo "Enter superuser (sudo) password to symlink sh to zsh"
-#  sudo ln -sfv /bin/zsh /private/var/select/sh
-#  # I'd like for this to work instead.
-#  # sudo ln -sfv /usr/local/bin/zsh /private/var/select/sh
-#fi
+if sh --version | grep -q zsh; then
+ echo '/private/var/select/sh already linked to /bin/zsh'
+else
+ echo "Enter superuser (sudo) password to symlink sh to zsh"
+ sudo ln -sfv /bin/zsh /private/var/select/sh
+ # I'd like for this to work instead.
+ # sudo ln -sfv /usr/local/bin/zsh /private/var/select/sh
+fi
 
 
 echo "Enter superuser (sudo) password."
