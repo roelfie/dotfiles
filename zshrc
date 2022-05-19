@@ -4,22 +4,27 @@
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export N_PREFIX="$HOME/.n"
 export JENV_PREFIX="$HOME/.jenv"
+export PYENV_ROOT="$HOME/.pyenv"
 export DOTFILES_HOME="$HOME/.dotfiles"
 export WORKSPACES_HOME="$HOME/workspaces"
 
 # PATH
-# The order of entries in the path is important!
-# By putting 'n' and 'jenv' at the top, the node & Java versions installed with
-# n & brew take precedence over pre-installed versions that come with macOS.
+# The order of entries in the path is important! By putting pyenv, jenv & n at the top, the Python/Java/Node
+# versions installed with those tools take precedence over pre-installed versions that come with macOS.
+# NB: cli tools for vscode & bc4 are installed with homebrew and are already on the PATH (/opt/homebrew/bin).
 typeset -U path
 path=(
     "$N_PREFIX/bin"
     "$JENV_PREFIX/bin"
+    "$PYENV_ROOT/bin"
     $path
 )
 
 # jEnv
 eval "$(jenv init -)"
+
+# pyenv
+eval "$(pyenv init -)"
 
 # oh-my-zsh 
 export ZSH="$HOME/.oh-my-zsh"

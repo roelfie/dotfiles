@@ -202,12 +202,6 @@ _NB: It is still your own responsibility to upgrade applications that were insta
   * use the App Store _only_ if an app is not available as a Homebrew cask
   * try to avoid manual installation of tools or applications (hard to retrace, hard to update)
     * if you do, consider adding it to the [manual steps](#manual_steps) section
-* Java
-  * use homebrew to (un)install JDKs (see below)
-  * use 'jenv' to switch versions
-* Node
-  * use 'n' to (un)install Node versions
-  * use 'n' to switch versions
 * Visual Studio Code
   * installation / removal of extensions is automatically backed up to [vscode_extensions](./vscode_extensions) by the bookkeeper; no action required
 * Extend bookkeeper 
@@ -215,6 +209,19 @@ _NB: It is still your own responsibility to upgrade applications that were insta
 * Use mackup (i.e. Dropbox) to backup configuration files containing sensitive information (passwords, email, etc.)
   * do not store them in this .dotfile project!
 
+### Java, Node, Python
+
+* Java
+  * use homebrew to (un)install JDKs (see below)
+  * use [jenv](https://www.jenv.be/) to switch versions
+* Node
+  * use [n](https://github.com/pyenv/pyenv#usage) to (un)install Node versions
+  * use n to switch Node versions
+  * use [npm](https://www.npmjs.com/) to install Node packages
+* Python
+  * use [pyenv](https://github.com/pyenv/pyenv#usage) to (un)install python versions
+  * use pyenv to switch python versions
+  * use [pip](https://pip.pypa.io/) to (un)install python packages
 
 
 ## HOW TO

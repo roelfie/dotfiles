@@ -32,6 +32,7 @@
   - ~/workspaces
   # https://github.com/jenv/jenv/issues/167
   - ~/.jenv/versions
+  - ~/.pyenv
   - ~/.config/dock/stacks
   - ~/Documents/Screenshots
 
@@ -46,6 +47,7 @@
   - ./scripts/setup_ssh_github.zsh
   - ./scripts/setup_node.zsh
   - ./scripts/setup_java.zsh
+  - ./scripts/setup_python.zsh
   - ./scripts/setup_dock.zsh
   - ./scripts/setup_macos.zsh
   - ./scripts/setup_workspaces.zsh
