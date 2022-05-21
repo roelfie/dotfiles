@@ -2,11 +2,13 @@ bierner.markdown-preview-github-styles
 DotJoshJohnson.xml
 esbenp.prettier-vscode
 humao.rest-client
+ms-azuretools.vscode-docker
 ms-python.python
 ms-python.vscode-pylance
 ms-toolsai.jupyter
 ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
+ms-vscode-remote.remote-containers
 redhat.vscode-xml
 redhat.vscode-yaml
 tomoki1207.pdf
