@@ -65,3 +65,4 @@ mas "Kindle", id: 405399194
 mas "Peek", id: 1554235898
 mas "Pixelmator Pro", id: 1289583905
 mas "Xee³", id: 639764244
+mas "Things 3", id: 904280696

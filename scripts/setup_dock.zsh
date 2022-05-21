@@ -103,6 +103,7 @@ cd $STACKS_FOLDER/apps
     ln -s /Applications/iDMSS\ Plus.app "iDMSS Plus (Dahua NVR)"
     ln -s /Applications/Alfred\ 4.app "Alfred"
     ln -s /Applications/LaunchControl.app "LaunchControl"
+    ln -s /Applications/Things3.app "Things"
 
 cd $STACKS_FOLDER/dev
     ln -s /Applications/Oxygen\ XML\ Editor/Oxygen\ XML\ Editor.app "Oxygen XML Editor"
