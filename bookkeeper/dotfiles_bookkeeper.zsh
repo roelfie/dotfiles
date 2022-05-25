@@ -24,8 +24,20 @@ BREWFILE="Brewfile"
 VSCODE_EXTENSIONS="vscode_extensions"
 
 PATH="/opt/homebrew/bin:$PATH"
+PATH="$HOME/.n/bin:$PATH"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
+
+
+###############################################################################
+###   Helper functions                                                      ###
+###############################################################################
+
+section() {
+    echo "_______________________________________________________________________________"
+    echo $1
+    echo "\n"
+}
 
 display_notification() {
     # Use pync (python wrapper around terminal-notifier). Unlike the osascript variant it allows you to use icons, open files etc.
@@ -56,33 +68,72 @@ git_commit_file() {
 }
 
 
-# Update Homebrew
-echo "Updating Homebrew"
-brew update -q
 
+###############################################################################
+###   Upgrade homebrew packages                                             ###
+###############################################################################
+
+section "Upgrading Homebrew packages"
+
+# Update Homebrew
+brew update -q
 
 # Upgrade outdated brew packages
 OUTDATED_BREW_PKGS=($(brew outdated -q))
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     display_notification "Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
-
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew package(s):"
     echo $OUTDATED_BREW_PKGS
-    echo "\n_______________________________________________________________________________"
     brew upgrade
-    echo "_______________________________________________________________________________\n"
 else
     echo "No outdated brew packages found."
 fi
 
 
+
+###############################################################################
+###   Upgrade python packages                                               ###
+###############################################################################
+
+section "Upgrading Python packages"
+
+
+
+###############################################################################
+###   Upgrade node packages                                                 ###
+###############################################################################
+
+section "Upgrading Node packages"
+
+
+
+###############################################################################
+###   Backup installed homebrew, python & node packages                     ###
+###############################################################################
+
 # Generate Brewfile & vscode_extensions
+section "Backup homebrew, python & node packages and vscode extensions"
 cd $DOTFILES_HOME
-echo "Generating Brewfile and vscode_extensions."
+
+echo "Backing up Homebrew packages to 'Brewfile'"
 brew bundle dump --force
+
+echo "Backing up Python packages to '???'"
+echo "TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+echo "Backing up global Node packages to 'npm.global.txt'"
+backup-global backup --no-yarn --output $HOME/.dotfiles/backup/npm.global.txt
+
+echo "Backing up vscode extensions to 'vscode_extensions'"
 code --list-extensions > vscode_extensions
 
+
+###############################################################################
+###   Commit changes                                                        ###
+###############################################################################
+
+section "Commit changes"
 
 # Check if there are changes in the .dotfiles project.
 DIRTY_RAW=$(git status -s)
@@ -92,7 +143,6 @@ else
     echo "Changes found in .dotfiles project: \n$DIRTY_RAW"
 fi
 
-
 # If there are staged changes, always review manually
 STAGED=($(git diff --name-only --cached))
 if [[ ${#STAGED} > 0 ]]; then
@@ -101,7 +151,6 @@ if [[ ${#STAGED} > 0 ]]; then
 else
     echo "No staged changes found in .dotfiles project."
 fi
-
 
 # Some simple changes can be committed automatically
 DIRTY=("${(f)DIRTY_RAW}") # one line per file
@@ -114,7 +163,6 @@ if [[ ${#DIRTY} = 1 ]]; then
         git_commit_file $VSCODE_EXTENSIONS; exit
     fi
 fi
-
 
 # All other changes must be reviewed manually
 echo "Changes should be reviewed manually."
