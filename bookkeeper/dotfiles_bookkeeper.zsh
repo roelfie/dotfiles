@@ -25,10 +25,11 @@ PIP_BACKUP_FILE="pip-requirements.txt"
 NPM_BACKUP_FILE="npm.global.txt"
 PIP_BACKUP="$HOME/.dotfiles/backup/$PIP_BACKUP_FILE"
 NPM_BACKUP="$HOME/.dotfiles/backup/$NPM_BACKUP_FILE"
-VSCODE_EXTENSIONS="vscode_extensions"
+VSCODE_EXTENSIONS="$HOME/.dotfiles/backup/vscode_extensions"
 
 PATH="/opt/homebrew/bin:$PATH"
 PATH="$HOME/.n/bin:$PATH"
+PATH="$HOME/.pyenv/shims:$PATH"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 
@@ -38,9 +39,8 @@ PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 ###############################################################################
 
 section() {
-    echo "_______________________________________________________________________________"
+    echo "________________________________________________________________"
     echo $1
-    echo "\n"
 }
 
 display_notification() {
@@ -116,14 +116,13 @@ section "Upgrading Node packages"
 ###   Backup installed homebrew, python & node packages                     ###
 ###############################################################################
 
-# Generate Brewfile & vscode_extensions
-section "Backup homebrew, python & node packages and vscode extensions"
+section "Backing up homebrew, node, python packages\n"
 cd $DOTFILES_HOME
 
-echo "Backing up Homebrew packages to 'Brewfile'"
+echo "Backing up Homebrew packages to './Brewfile'"
 brew bundle dump --force
 
-echo "Backing up Python packages to '???'"
+echo "Backing up Python packages to './backup/pip-requirements.txt'"
 # NB: 'pip list' also lists all dependencies. 
 # Using the '--not-required' flag will only include everything that is not a dependency.
 # But if you installed (and need) a pkg that happens to be a dependency of another installed pkg,
@@ -133,11 +132,11 @@ echo "Backing up Python packages to '???'"
 # TODO find a way to export only those python packages that I've installed myself.
 pip list --format freeze > $PIP_BACKUP
 
-echo "Backing up global Node packages to 'npm.global.txt'"
+echo "Backing up global Node packages to './backup/npm.global.txt'"
 backup-global backup --no-version --no-yarn --output $NPM_BACKUP
 
-echo "Backing up vscode extensions to 'vscode_extensions'"
-code --list-extensions > vscode_extensions
+echo "Backing up vscode extensions to './backup/vscode_extensions'"
+code --list-extensions > $VSCODE_EXTENSIONS
 
 
 

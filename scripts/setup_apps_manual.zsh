@@ -71,4 +71,4 @@ instruction "whatsapp:
 
 echo "\n<<< Installing Visual Studio Code Extensions >>>\n"
 
-cat vscode_extensions | xargs -L 1 code --install-extension
+cat $HOME/.dotfiles/backup/vscode_extensions | xargs -L 1 code --install-extension
