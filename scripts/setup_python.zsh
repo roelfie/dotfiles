@@ -21,4 +21,8 @@ echo "Latest python 3 version installed. Available versions: "
 pyenv versions
 
 echo "Open a new terminal and do 'pyenv global <version>' to select the latest python version (if necessary)."
+echo "When you have selected the desired version, we will install global python packages."
 vared -p "Press [Enter] when done. " -c REPLY
+
+echo "Installing global python packages."
+pip install -r $HOME/.dotfiles/backup/pip-requirements.txt

@@ -120,13 +120,21 @@ echo "Backing up Homebrew packages to 'Brewfile'"
 brew bundle dump --force
 
 echo "Backing up Python packages to '???'"
-echo "TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+# NB: 'pip list' also lists all dependencies. 
+# Using the '--not-required' flag will only include everything that is not a dependency.
+# But if you installed (and need) a pkg that happens to be a dependency of another installed pkg,
+# 'pip list --not-required' will not include that package in the output anymore!
+# Therefore we do not use the '--not-required' option (and end up with a list with a lot of crap).
+#
+# TODO find a way to export only those python packages that I've installed myself.
+pip list --format freeze > $HOME/.dotfiles/backup/pip-requirements.txt
 
 echo "Backing up global Node packages to 'npm.global.txt'"
 backup-global backup --no-yarn --output $HOME/.dotfiles/backup/npm.global.txt
 
 echo "Backing up vscode extensions to 'vscode_extensions'"
 code --list-extensions > vscode_extensions
+
 
 
 ###############################################################################
