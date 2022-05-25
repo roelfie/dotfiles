@@ -21,6 +21,10 @@ echo " "
 
 DOTFILES_HOME="/Users/roelfie/.dotfiles"
 BREWFILE="Brewfile"
+PIP_BACKUP_FILE="pip-requirements.txt"
+NPM_BACKUP_FILE="npm.global.txt"
+PIP_BACKUP="$HOME/.dotfiles/backup/$PIP_BACKUP_FILE"
+NPM_BACKUP="$HOME/.dotfiles/backup/$NPM_BACKUP_FILE"
 VSCODE_EXTENSIONS="vscode_extensions"
 
 PATH="/opt/homebrew/bin:$PATH"
@@ -127,10 +131,10 @@ echo "Backing up Python packages to '???'"
 # Therefore we do not use the '--not-required' option (and end up with a list with a lot of crap).
 #
 # TODO find a way to export only those python packages that I've installed myself.
-pip list --format freeze > $HOME/.dotfiles/backup/pip-requirements.txt
+pip list --format freeze > $PIP_BACKUP
 
 echo "Backing up global Node packages to 'npm.global.txt'"
-backup-global backup --no-yarn --output $HOME/.dotfiles/backup/npm.global.txt
+backup-global backup --no-version --no-yarn --output $NPM_BACKUP
 
 echo "Backing up vscode extensions to 'vscode_extensions'"
 code --list-extensions > vscode_extensions
@@ -160,12 +164,18 @@ else
     echo "No staged changes found in .dotfiles project."
 fi
 
-# Some simple changes can be committed automatically
+# Some simple changes (homebrew, npm, pip and vscode backup files) can be committed automatically
 DIRTY=("${(f)DIRTY_RAW}") # one line per file
 if [[ ${#DIRTY} = 1 ]]; then 
     # regex 'ends with'
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
         git_commit_file $BREWFILE; exit
+    fi
+    if [[ $DIRTY[1] =~ $NPM_BACKUP_FILE$ ]]; then 
+        git_commit_file $NPM_BACKUP; exit
+    fi
+    if [[ $DIRTY[1] =~ $PIP_BACKUP_FILE$ ]]; then 
+        git_commit_file $PIP_BACKUP; exit
     fi
     if [[ $DIRTY[1] =~ vscode_extensions$ ]]; then 
         git_commit_file $VSCODE_EXTENSIONS; exit

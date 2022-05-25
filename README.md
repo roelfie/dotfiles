@@ -217,11 +217,19 @@ _NB: It is still your own responsibility to upgrade applications that were insta
 * Node
   * use [n](https://github.com/pyenv/pyenv#usage) to (un)install Node versions
   * use n to switch Node versions
-  * use [npm](https://www.npmjs.com/) to install Node packages
+  * use [npm](https://www.npmjs.com/) to (un)install Node packages (into `~/.n/bin`):
+    * install: `npm install --global <pkg>`
+    * uninstall: `npm uninstall --global <pkg>`
 * Python
   * use [pyenv](https://github.com/pyenv/pyenv#usage) to (un)install python versions
   * use pyenv to switch python versions
-  * use [pip](https://pip.pypa.io/) to (un)install python packages
+  * use [pip](https://pip.pypa.io/) to (un)install python packages (into `~/.pyenv/versions/<v>/lib/python<v>/site-packages`):
+    * install: `pip install <pkg>`
+    * uninstall: `pip-autoremove <pkg>` (auto-removes unused dependencies, which `pip uninstall` does not)
+  * useful pip commands:
+    * `pip list` and `pip show <pkg>`
+    * show dependencies of a package: `pip show <pkg> | grep ^Required-by`
+      (tools like `pipdeps` and `pipdeptree` seem not to be working at a global level)
 
 
 ## HOW TO
