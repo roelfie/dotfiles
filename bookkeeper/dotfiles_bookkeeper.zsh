@@ -44,13 +44,13 @@ section() {
 }
 
 display_notification() {
+    osascript -e 'display notification "'$1'" with title "Dotfiles"'
     # Use pync (python wrapper around terminal-notifier). Unlike the osascript variant it allows you to use icons, open files etc.
-    # osascript -e 'display notification "'$1'" with title "Dotfiles"'
-    $HOME/.pyenv/shims/python $HOME/.dotfiles/bookkeeper/notify.py \
-        "Dotfiles" \
-        "$1" \
-        "file:///Users/roelfie/.dotfiles/bookkeeper/dotfiles_bookkeeper.log" \
-        "file:///Users/roelfie/.dotfiles/bookkeeper/images/icons8-checked-checkbox-50.png"
+    # $HOME/.pyenv/shims/python $HOME/.dotfiles/bookkeeper/notify.py \
+    #     "Dotfiles" \
+    #     "$1" \
+    #     "file:///Users/roelfie/.dotfiles/bookkeeper/dotfiles_bookkeeper.log" \
+    #     "file:///Users/roelfie/.dotfiles/bookkeeper/images/icons8-checked-checkbox-50.png"
 }
 
 display_alert() {
@@ -102,9 +102,19 @@ fi
 
 section "Upgrading Python packages"
 
-pip-review --auto
-# Alternative (with 'pip' commands only): 
-# https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
+# Upgrade outdated python packages
+OUTDATED_PIP_PKGS=($(pip list --outdated --format freeze))
+OUTDATED_PIP_PKGS_SIZE=${#OUTDATED_PIP_PKGS}
+if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
+    display_notification "Upgrading $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
+    echo "Found $OUTDATED_PIP_PKGS_SIZE outdated python package(s):"
+    echo $OUTDATED_PIP_PKGS
+    pip-review --auto
+    # Alternative (with 'pip' commands only): 
+    # https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
+else
+    echo "No outdated python packages found."
+fi
 
 
 
@@ -114,8 +124,20 @@ pip-review --auto
 
 section "Upgrading NPM & all outdated global NPM packages"
 
+# Update npm
 npm install npm@latest -g
-npm update -g
+
+# Upgrade outdated npm packages
+OUTDATED_NPM_PKGS=($(npm outdated --global --parseable))
+OUTDATED_NPM_PKGS_SIZE=${#OUTDATED_NPM_PKGS}
+if [ $OUTDATED_NPM_PKGS_SIZE -gt 0 ]; then
+    display_notification "Upgrading $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
+    echo "Found $OUTDATED_NPM_PKGS_SIZE outdated npm package(s):"
+    echo $OUTDATED_NPM_PKGS
+    npm update -g
+else
+    echo "No outdated NPM packages found."
+fi
 
 
 
