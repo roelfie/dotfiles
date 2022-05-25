@@ -1,8 +1,11 @@
-pip==22.1
+packaging==21.3
+pip==22.1.1
 pip-autoremove==0.10.0
+pip-review==1.1.1
 pipdeptree==2.2.1
 pync==2.0.3
+pyparsing==3.0.9
 python-dateutil==2.8.2
-setuptools==58.1.0
+setuptools==62.3.2
 six==1.16.0
 wheel==0.37.1

@@ -102,13 +102,20 @@ fi
 
 section "Upgrading Python packages"
 
+pip-review --auto
+# Alternative (with 'pip' commands only): 
+# https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
+
 
 
 ###############################################################################
 ###   Upgrade node packages                                                 ###
 ###############################################################################
 
-section "Upgrading Node packages"
+section "Upgrading NPM & all outdated global NPM packages"
+
+npm install npm@latest -g
+npm update -g
 
 
 
