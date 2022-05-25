@@ -73,19 +73,24 @@ The user can install additional software:
 
 * with Homebrew (into `/opt/homebrew/opt`) 
 * from the App Store (into `/Applications`) 
+* with `npm` or `pip` (omitted in diagram)
 * or otherwise ...
 
 Configuration files are typically stored somewhere in the user's home directory:
 
-* dotfiles under `~` (like `~/.zshrc` and the `.ssh` folder) 
-* under `~/.config`
+* dotfiles, like `~/.zshrc` and `~/.gitignore`
+* dotfolders, like `~/.ssh` and `~/.config`
 * under `~/Library` (like `~/Library/Preferences` and `~/Library/Application Support`) 
 
 Installing all this software and restoring (macOS or application) configurations to the settings you are used to, can be a cumbersome task.
 
+### Dotbot & bookkeeper 
+
 Dotbot is all about automating the installation & configuration of your macOS system. 
 This dotfiles project is based on dotbot and is specifically tailored to _my_ macOS system. 
 But it can be easilly adjusted to your needs.
+
+Dotbot is _not_ about keeping the software on your system up-to-date. It is also _not_ about automatically backing up changes to your system. This is why I have added the 'bookkeeper' to this project.
 
 
 ## What does it do?
@@ -104,11 +109,14 @@ The instructions for Dotbot are defined in [install.conf.yaml](./install.conf.ya
 
 When you run `~/.dotfiles/install` the following will be installed (or upgraded):
 
-* [Homebrew](./scripts/setup_homebrew.zsh)
-* Homebrew [packages](./Brewfile) and apps
+* package managers & packages
+  |                                          | version manager                         | package manager  | backup                                                         |
+  |------------------------------------------|-----------------------------------------|------------------|----------------------------------------------------------------|
+  | [Homebrew](./scripts/setup_homebrew.zsh) | -                                       | brew             | [Brewfile](./Brewfile)                                         |
+  | [Node](./scripts/setup_node.zsh)         | [n](https://github.com/tj/n)            | npm              | [npm.global.txt](./backup/npm.global.txt)                      |
+  | [Python](./scripts/setup_python.zsh)     | [pyenv](https://github.com/pyenv/pyenv) | pip              | [pip-requirements.txt](./backup/pip-requirements.txt)          |
+* [Java](./scripts/setup_java.zsh) & [jenv](https://www.jenv.be/)
 * SSH connection with [GitHub](./scripts/setup_ssh_github.zsh)
-* Node (with [n](https://github.com/tj/n)) 
-* Java / JDK (with [jenv](https://www.jenv.be/))
 * and step-by-step instructions for the user ([example](./scripts/setup_apps_manual.zsh)) in case something can not be automated
 
 _NB: In [zshrc](./zshrc) we've configured the Homebrew `--no-quarantine` flag. This will disable the macOS Gatekeeper, so that an application can be used immediately after installation._
@@ -126,17 +134,11 @@ Only applications that have already been _purchased in the App Store_ can be aut
 
 I prefer `cask` over mas, since applications stored in the App Store are tied to one (Apple ID) account, and it is not possible to transfer a purchased app from one account to another. The only drawback of installing as cask is that you will have to upload your license manually after installation.
 
-More info:
-
-```
-man brew
-brew help bundle
-mas help
-```
+More info: `man brew` / `brew help bundle` / `mas help`
 
 #### Command line tools
 
-Some casks are shipped with command line tools. Brew installs them in `/opt/homebrew/bin`:
+Some casks are shipped with command line tools. Brew installs (symlinks) them in `/opt/homebrew/bin`:
 
 ```
 $ ls -la /opt/homebrew/bin | grep /Applications/
@@ -153,63 +155,71 @@ Since this folder is in the `$PATH` these tools are automatically available.
 
 Configuration files are scattered all over the system. 
 
-* dotfiles, like `~/.zshrc` and `~/.gitignore`
-* dotfolders, like `~/.ssh` and `~/.config`
-* stuff under `~/Library/Preferences`
-* stuff under `~/Library/Application Support`
-* system preferences 
-  * managed using the `defaults` command (see [setup_macos.zsh](./scripts/setup_macos.zsh))
-* and more ...
+* dotfiles & dotfolders under `~`
+* stuff under `~/Library/...`
+* system preferences (managed using the [`defaults`](./scripts/setup_macos.zsh) command)
+* ...
 
-As visualized in the diagram above: 
+We use two means of backing up config files (no 100% coverage):
 
-* some config files are backed up to GitHub (as part of this 'dotfiles' project)
-* others are backed up to Dropbox (using [mackup](./scripts/setup_mackup.zsh))
-
-Symlinks are used from the default location to the actual file inside `~/.dotfiles` or `~/Dropbox/Apps/Mackup`. For example: `~/.zshrc -> ~/.dotfiles/zshrc`.
+| tool                                 | storage | how      | example                                                                                                                |
+|--------------------------------------|---------|----------|------------------------------------------------------------------------------------------------------------------------|
+| .dotfiles                            | GitHub  | symlinks | `~/Library/Preferences/com.apple.Terminal.plist -> ~/Dropbox/Apps/Mackup/Library/Preferences/com.apple.Terminal.plist` |
+| [mackup](./scripts/setup_mackup.zsh) | Dropbox | symlinks | `~/.zshrc -> ~/.dotfiles/zshrc`                                                                                        |
 
 
 ### Backup
 
-As explained in the previous section, configuration files & scripts are stored in either `~/.dotfiles` or `~/Dropbox/Apps/Mackup`. 
+Beware that `dotfiles` and `mackup` can overlap. Always make sure that dot-files stored in this `dotfiles` project are excluded from mackup (`[applications_to_ignore]` section in [mackup.cfg](./config/mackup.cfg)).
 
-* Dotbot restores symlinks from the default locations to the actual files under `~/.dotfiles`
-* Mackup ([triggered](./scripts/setup_mackup.zsh) by the dotbot installation) restores symlinks from the default locations to the actual files under `~/Dropbox/Apps/Mackup`.
+Not all changes to the system are automatically (via symlinks) reflected in `~/.dotfiles` or `~/Dropbox/Apps/Mackup`:
 
-Some changes to the system are not automatically reflected in `~/.dotfiles` or `~/Dropbox/Apps/Mackup`:
+* (un)installing packages with homebrew
+* (un)installing packages with pip
+* (un)installing packages with npm
+* (un)installing Visual Studio Code extensions
 
-* installing or removing a package with homebrew
-  * not automatically reflected in [Brewfile](./Brewfile) !
-* installing or removing a VScode extension
-  * not automatically reflected in [vscode_extensions](./vscode_extensions) !
-
-For this purpose I have written the [bookkeeper](./bookkeeper/README.md), which periodically re-generates these files and commits them to GitHub.
-
-_NB: Beware that `dotfiles` and `mackup` can overlap. Always make sure that dot-files stored in this `dotfiles` project are excluded from mackup (`[applications_to_ignore]` section in [mackup.cfg](./config/mackup.cfg))._
+That's what [bookkeeper](./bookkeeper/README.md) is for. Bookkeeper periodically re-generates backup files for installed homebrew, pip & npm packages. And commits them to GitHub.
 
 
 ### Update
 
-The [bookkeeper](./bookkeeper/README.md) updates all installed Homebrew packages and applications. Installing bookkeeper as a background job will automate this for you.
+In addition to generating backup files, [bookkeeper](./bookkeeper/README.md) also updates all outdated homebrew / npm / pip packages and applications. Installing bookkeeper as a background job will automate this for you.
 
-_NB: It is still your own responsibility to upgrade applications that were installed manually or from the App Store!_
+_NB: It is still your own responsibility to upgrade applications that were installed from the App Store (or otherwise bypassed the standard package managers)._
 
 
 ## Best practices
 
-* Installation of packages and applications
-  * always use homebrew (!!!)
+* avoid manual installation of tools or apps
+  * if you do, consider adding it to the [manual steps](#manual_steps) section
   * use the App Store _only_ if an app is not available as a Homebrew cask
-  * try to avoid manual installation of tools or applications (hard to retrace, hard to update)
-    * if you do, consider adding it to the [manual steps](#manual_steps) section
-* Visual Studio Code
-  * installation / removal of extensions is automatically backed up to [vscode_extensions](./vscode_extensions) by the bookkeeper; no action required
-* Extend bookkeeper 
-  * if you discover configuration that can only be _generated_ (like 'Brewfile' and 'vscode_extensions')
-* Use mackup (i.e. Dropbox) to backup configuration files containing sensitive information (passwords, email, etc.)
+* extend bookkeeper where possible
+  * for stuff that can not be automatically backed up (like brew/npm/pip packages & vscode extensions)
+* use mackup (i.e. Dropbox) to backup configuration files containing sensitive information (passwords, email, etc.)
   * do not store them in this .dotfile project!
 
-### Java, Node, Python
+### Package management (homebrew, node, python)
+
+|          | package manager               | install                                  | uninstall                      | target              |
+|----------|-------------------------------|------------------------------------------|--------------------------------|---------------------|
+| homebrew | brew                          | `brew install <pkg>`                     | `brew uninstall <pkg>`         | `/opt/homebrew/opt` |
+| node     | [npm](https://www.npmjs.com/) | `npm install --global <pkg>[@<version>]` | `npm uninstall --global <pkg>` | `~/.n/bin`          |
+| python   | [pip](https://pip.pypa.io/)   | `pip install <pkg>[==<version>]`         | `pip-autoremove <pkg>` (*)     | `pip show <pkg>`    |
+
+
+(*) `pip uninstall` does not uninstall (unused) dependencies. `pip-autoremove` does.
+
+Useful pip commands:
+
+```
+pip list
+pip show <pkg>
+# Show package dependencies:
+pip show <pkg> | grep ^Required-by
+```
+
+### Version management (java, node, python)
 
 * Java
   * use homebrew to (un)install JDKs (see below)
@@ -217,19 +227,9 @@ _NB: It is still your own responsibility to upgrade applications that were insta
 * Node
   * use [n](https://github.com/pyenv/pyenv#usage) to (un)install Node versions
   * use n to switch Node versions
-  * use [npm](https://www.npmjs.com/) to (un)install Node packages (into `~/.n/bin`):
-    * install: `npm install --global <pkg>`
-    * uninstall: `npm uninstall --global <pkg>`
 * Python
   * use [pyenv](https://github.com/pyenv/pyenv#usage) to (un)install python versions
   * use pyenv to switch python versions
-  * use [pip](https://pip.pypa.io/) to (un)install python packages (into `~/.pyenv/versions/<v>/lib/python<v>/site-packages`):
-    * install: `pip install <pkg>`
-    * uninstall: `pip-autoremove <pkg>` (auto-removes unused dependencies, which `pip uninstall` does not)
-  * useful pip commands:
-    * `pip list` and `pip show <pkg>`
-    * show dependencies of a package: `pip show <pkg> | grep ^Required-by`
-      (tools like `pipdeps` and `pipdeptree` seem not to be working at a global level)
 
 
 ## HOW TO

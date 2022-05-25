@@ -3,11 +3,11 @@
 # This script attempts to reflect changes to the system in the .dotfiles 
 # project, and (if possible automatically) commit & push them to GitHub:
 # 
-#  - upgrade all outdated brew packages
-#  - generate Brewfile
-#  - export Visual Studio Code extensions to 'vscode_extensions'
-#  - commit changes to Brewfile or vscode_extensions automatically
-#  - all other changes: open .dotfiles project in Visual Studio Code for review
+#  - upgrade all outdated brew, npm & python packages
+#  - backup (a list of) all installed brew, npm & python packages
+#  - backup (a list of) all installed Visual Studio Code extensions
+#  - commit simple changes automatically to GitHub
+#  - for more complex changes: open .dotfiles project in Visual Studio Code for review
 #
 
 echo " "
@@ -20,9 +20,11 @@ echo " "
 
 
 DOTFILES_HOME="/Users/roelfie/.dotfiles"
-BREWFILE="Brewfile"
+
+BREW_BACKUP_FILE="Brewfile"
 PIP_BACKUP_FILE="pip-requirements.txt"
 NPM_BACKUP_FILE="npm.global.txt"
+
 PIP_BACKUP="$HOME/.dotfiles/backup/$PIP_BACKUP_FILE"
 NPM_BACKUP="$HOME/.dotfiles/backup/$NPM_BACKUP_FILE"
 VSCODE_EXTENSIONS="$HOME/.dotfiles/backup/vscode_extensions"
@@ -46,6 +48,7 @@ section() {
 display_notification() {
     osascript -e 'display notification "'$1'" with title "Dotfiles"'
     # Use pync (python wrapper around terminal-notifier). Unlike the osascript variant it allows you to use icons, open files etc.
+    # Disabled because it stopped working on 2022-05-25.
     # $HOME/.pyenv/shims/python $HOME/.dotfiles/bookkeeper/notify.py \
     #     "Dotfiles" \
     #     "$1" \
@@ -86,10 +89,10 @@ brew update -q
 OUTDATED_BREW_PKGS=($(brew outdated -q))
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
-    display_notification "Upgrading $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew package(s):"
     echo $OUTDATED_BREW_PKGS
     brew upgrade
+    display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 else
     echo "No outdated brew packages found."
 fi
@@ -97,7 +100,7 @@ fi
 
 
 ###############################################################################
-###   Upgrade python packages                                               ###
+###   Upgrade global python packages                                        ###
 ###############################################################################
 
 section "Upgrading Python packages"
@@ -106,10 +109,10 @@ section "Upgrading Python packages"
 OUTDATED_PIP_PKGS=($(pip list --outdated --format freeze))
 OUTDATED_PIP_PKGS_SIZE=${#OUTDATED_PIP_PKGS}
 if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
-    display_notification "Upgrading $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
     echo "Found $OUTDATED_PIP_PKGS_SIZE outdated python package(s):"
     echo $OUTDATED_PIP_PKGS
     pip-review --auto
+    display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
     # Alternative (with 'pip' commands only): 
     # https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
 else
@@ -119,7 +122,7 @@ fi
 
 
 ###############################################################################
-###   Upgrade node packages                                                 ###
+###   Upgrade global NPM packages                                           ###
 ###############################################################################
 
 section "Upgrading NPM & all outdated global NPM packages"
@@ -131,10 +134,10 @@ npm install npm@latest -g
 OUTDATED_NPM_PKGS=($(npm outdated --global --parseable))
 OUTDATED_NPM_PKGS_SIZE=${#OUTDATED_NPM_PKGS}
 if [ $OUTDATED_NPM_PKGS_SIZE -gt 0 ]; then
-    display_notification "Upgrading $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
     echo "Found $OUTDATED_NPM_PKGS_SIZE outdated npm package(s):"
     echo $OUTDATED_NPM_PKGS
     npm update -g
+    display_notification "Upgraded $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
 else
     echo "No outdated NPM packages found."
 fi
@@ -142,29 +145,31 @@ fi
 
 
 ###############################################################################
-###   Backup installed homebrew, python & node packages                     ###
+###   Backup installed homebrew, python & npm packages                      ###
 ###############################################################################
 
-section "Backing up homebrew, node, python packages\n"
+# NB: Files generated below are used in the homebrew, python and node setup scripts to restore installed packages.
+
+section "Backing up homebrew, node & python packages\n"
 cd $DOTFILES_HOME
 
-echo "Backing up Homebrew packages to './Brewfile'"
+echo "Backing up Homebrew packages"
 brew bundle dump --force
 
-echo "Backing up Python packages to './backup/pip-requirements.txt'"
-# NB: 'pip list' also lists all dependencies. 
-# Using the '--not-required' flag will only include everything that is not a dependency.
-# But if you installed (and need) a pkg that happens to be a dependency of another installed pkg,
-# 'pip list --not-required' will not include that package in the output anymore!
-# Therefore we do not use the '--not-required' option (and end up with a list with a lot of crap).
-#
-# TODO find a way to export only those python packages that I've installed myself.
+echo "Backing up Python packages"
+# NB: 'pip list' also lists all dependencies of installed packages. 
+# Using the '--not-required' flag will only include everything that is *not* a dependency.
+# But if you installed a pkg yourself, that happens to be a dependency of another installed pkg,
+# 'pip list --not-required' will not include that package in the output!
+# Therefore we do not use the '--not-required' option. As a result, our backup will not only 
+# contain 'level 0' packages but also all of its dependencies.
+# TODO find a way to export only those python packages that we've installed ourselves.
 pip list --format freeze > $PIP_BACKUP
 
-echo "Backing up global Node packages to './backup/npm.global.txt'"
+echo "Backing up NPM packages"
 backup-global backup --no-version --no-yarn --output $NPM_BACKUP
 
-echo "Backing up vscode extensions to './backup/vscode_extensions'"
+echo "Backing up vscode extensions"
 code --list-extensions > $VSCODE_EXTENSIONS
 
 
@@ -197,7 +202,7 @@ DIRTY=("${(f)DIRTY_RAW}") # one line per file
 if [[ ${#DIRTY} = 1 ]]; then 
     # regex 'ends with'
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
-        git_commit_file $BREWFILE "Backup Homebrew packages"; exit
+        git_commit_file $BREW_BACKUP_FILE "Backup Homebrew packages"; exit
     fi
     if [[ $DIRTY[1] =~ $NPM_BACKUP_FILE$ ]]; then 
         git_commit_file $NPM_BACKUP "Backup NPM packages"; exit

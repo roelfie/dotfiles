@@ -4,8 +4,8 @@
 
 Bookkeeper is a [script](./dotfiles_bookkeeper.zsh) that:
 
-* Keeps the system up-to-date (upgrade brew packages)
-* Keeps the .dotfiles project up-to-date (generate brewfile, vscode extensions)
+* Keeps the system up-to-date (upgrade outdated brew, python & NPM packages)
+* Keeps the .dotfiles project up-to-date (backup lists of (un)installed brew, python & NPM packages)
 * Commits & pushes simple changes to the .dotfiles project automatically
 * Notifies the user of uncommitted changes to the .dotfiles project
 
