@@ -66,9 +66,9 @@ review_dotfiles_project() {
 git_commit_file() {
     echo "Commit & push $1."
     git add $1
-    git commit --author="bookkeeper <>" -m "Updated $1 (auto-commit)."
+    git commit --author="bookkeeper <>" -m "$2 (auto-commit)."
     git push
-    display_notification "Committed change in $1."
+    display_notification "GitHub auto-commit: $2"
 }
 
 
@@ -168,16 +168,16 @@ DIRTY=("${(f)DIRTY_RAW}") # one line per file
 if [[ ${#DIRTY} = 1 ]]; then 
     # regex 'ends with'
     if [[ $DIRTY[1] =~ Brewfile$ ]]; then 
-        git_commit_file $BREWFILE; exit
+        git_commit_file $BREWFILE "Backup Homebrew packages"; exit
     fi
     if [[ $DIRTY[1] =~ $NPM_BACKUP_FILE$ ]]; then 
-        git_commit_file $NPM_BACKUP; exit
+        git_commit_file $NPM_BACKUP "Backup NPM packages"; exit
     fi
     if [[ $DIRTY[1] =~ $PIP_BACKUP_FILE$ ]]; then 
-        git_commit_file $PIP_BACKUP; exit
+        git_commit_file $PIP_BACKUP "Backup Python packages"; exit
     fi
     if [[ $DIRTY[1] =~ vscode_extensions$ ]]; then 
-        git_commit_file $VSCODE_EXTENSIONS; exit
+        git_commit_file $VSCODE_EXTENSIONS "Backup vscode extensions"; exit
     fi
 fi
 
