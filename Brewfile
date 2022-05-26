@@ -64,5 +64,6 @@ cask "whatsapp"
 mas "Kindle", id: 405399194
 mas "Peek", id: 1554235898
 mas "Pixelmator Pro", id: 1289583905
+mas "Pluralsight", id: 431748264
 mas "Things", id: 904280696
 mas "Xee³", id: 639764244

@@ -63,6 +63,9 @@ instruction "oxygen-xml-editor:
     - Download & install v22
     - Open v22 and register (see 1Password)"
 
+instruction "pluralsight:
+    - Open the Pluralsight app and log in (see 1Password)"
+
 instruction "whatsapp:
     - Open WhatsApp Desktop
       it should display a QR code when opened for the first time
