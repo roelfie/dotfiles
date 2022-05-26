@@ -22,7 +22,7 @@ echo " "
 DOTFILES_HOME="/Users/roelfie/.dotfiles"
 
 BREW_BACKUP_FILE="Brewfile"
-PIP_BACKUP_FILE="pip-requirements.txt"
+PIP_BACKUP_FILE="pip.requirements.txt"
 NPM_BACKUP_FILE="npm.global.txt"
 
 PIP_BACKUP="$HOME/.dotfiles/backup/$PIP_BACKUP_FILE"

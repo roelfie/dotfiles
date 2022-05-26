@@ -25,4 +25,4 @@ echo "When you have selected the desired version, we will install global python 
 vared -p "Press [Enter] when done. " -c REPLY
 
 echo "Installing global python packages."
-pip install -r $HOME/.dotfiles/backup/pip-requirements.txt
+pip install -r $HOME/.dotfiles/backup/pip.requirements.txt

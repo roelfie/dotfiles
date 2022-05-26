@@ -114,7 +114,7 @@ When you run `~/.dotfiles/install` the following will be installed (or upgraded)
   |------------------------------------------|-----------------------------------------|------------------|----------------------------------------------------------------|
   | [Homebrew](./scripts/setup_homebrew.zsh) | -                                       | brew             | [Brewfile](./Brewfile)                                         |
   | [Node](./scripts/setup_node.zsh)         | [n](https://github.com/tj/n)            | npm              | [npm.global.txt](./backup/npm.global.txt)                      |
-  | [Python](./scripts/setup_python.zsh)     | [pyenv](https://github.com/pyenv/pyenv) | pip              | [pip-requirements.txt](./backup/pip-requirements.txt)          |
+  | [Python](./scripts/setup_python.zsh)     | [pyenv](https://github.com/pyenv/pyenv) | pip              | [pip.requirements.txt](./backup/pip.requirements.txt)          |
 * [Java](./scripts/setup_java.zsh) & [jenv](https://www.jenv.be/)
 * SSH connection with [GitHub](./scripts/setup_ssh_github.zsh)
 * and step-by-step instructions for the user ([example](./scripts/setup_apps_manual.zsh)) in case something can not be automated
