@@ -54,7 +54,8 @@ _NB: The installation scripts are idempotent so you can run `~/.dotfiles/install
   | Alfred             | General                          | Alfred Hotkey             | `⌘ Space` |
   | Alfred             | Features                         | Clipboard History         | `⌥ ⌘ C`   |
   | Alfred             | Features                         | Snippets                  | `⌥ ⌘ S`   |
-
+* Configure the menu bar:
+  ![menu bar](./resources/diagrams/menubar.png)
 
 ## Overview
 
@@ -219,6 +220,8 @@ pip show <pkg>
 pip show <pkg> | grep ^Required-by
 ```
 
+See the 'HOW TO' below on how to install a specific version of a package (instead of the latest version) with brew, npm and pip.
+
 ### Version management (java, node, python)
 
 * Java
@@ -233,6 +236,21 @@ pip show <pkg> | grep ^Required-by
 
 
 ## HOW TO
+
+### HOW TO - install a specific package version
+
+|          | search                      | show versions              | install version                             |
+|----------|-----------------------------|----------------------------|---------------------------------------------|
+| homebrew | `brew search <pkg>`         | `brew search <pkg>`        | `brew install <pkg>@<version>` (*)          |
+| node     | `npm search <pkg>`          | `npm show <pkg> versions`  | `npm install --global <pkg>@<version>` (**) |
+| python   | `poetry search <pkg>` (***) | `pip index versions <pkg>` | `pip install <pkg>==<version>` (**)         |
+
+(*) _Homebrew has limited support for installing old versions. It does [support multiple versions](https://docs.brew.sh/Versions) with a special naming format, but most packages are available only as most recent version. Some packages (like openjdk, postgresql, python, ..) are available in older versions (openjdk@11, openjdk@17, ..)._
+
+(**) _with npm and pip it's only possible to install one version at a time. If you do `npm install --global <pkg>@<2nd_version>` or `pip install <pkg>==<2nd_version>` packages that are already installed will be removed._
+
+(***) _`pip search` is deprecated. You can either use poetry, or search online at https://pypi.org/ (Python Package Index)._
+
 
 ### HOW TO - replace pre-installed software with a Homebrew package
 
@@ -264,24 +282,32 @@ See [this example](./resources/doc/README-UDEMY.md) (nano).
 
 ### HOW TO - (un)install a JDK
 
-There are detailed [instructions](https://docs.oracle.com/en/java/javase/18/install/installation-jdk-macos.html) on the Oracle website on the installation & removal of a JDK on macOS.
+Situation May 2022.
 
-* Installation
-  * `brew install --cask oracle-jdk`
-  * check that the JDK ends up in `/Library/Java/JavaVirtualMachines`
-  * add JDK Home directory to [JAVA_HOME_LOCATIONS](./scripts/setup_java.zsh) in `setup_java.sh`
-    * Example: `/Library/Java/JavaVirtualMachines/jdk-18.jdk/Contents/Home`
-  * re-run `~/.dotfiles/setup_java.sh` to have the new JDK version added to jenv
-* Removal
-  * `brew uninstall --cask oracle-jdk`
-  * remove JDK Home directory from [JAVA_HOME_LOCATIONS](./scripts/setup_java.zsh) in `setup_java.sh`
-  * remove symlink manually from `~/.jenv/versions`
+#### Installing a JDK
 
-_NB: the `oracle-jdk` cask has no version name. How to install multiple Oracle JDK versions alongside each other?_
+|   |                                    | Oracle JDK                                        | OpenJDK                                           |
+|---|------------------------------------|---------------------------------------------------|---------------------------------------------------|
+| 1 | choose jdk version                 | `oracle-jdk`                                      | `openjdk` and `openjdk@<lts>` (*)                 |
+| 2 | install jdk                        | `brew install oracle-jdk`                         | `brew install openjdk@<version>`                  |
+| 3 | /Library/Java/JavaVirtualMachines/ | symlink created automatically                     | create symlink manually (**)                      |
+| 4 | add jdk to `JAVA_HOME_LOCATIONS`   | update [setup_java.zsh](./scripts/setup_java.zsh) | update [setup_java.zsh](./scripts/setup_java.zsh) |
+| 5 | add jdk to `jenv`                  | run [setup_java.zsh](./scripts/setup_java.zsh)    | run [setup_java.zsh](./scripts/setup_java.zsh)    |
+
+(*) _Oracle JDK comes in just one version (most recent). For OpenJDK also some recent LTS (long term support) versions can be installed (8, 11, 17)._
+
+(**) _When you install the Oracle JDK a symlink from /Library/Java/JavaVirtualMachines to /opt/homebrew/opt is automatically created. When you install openjdk you will have to create the symlink manually. Do `brew info openjdk@17` for more information._
+
+#### Removing a JDK
+
+  * `brew uninstall openjdk@17`
+  * remove JDK from [JAVA_HOME_LOCATIONS](./scripts/setup_java.zsh) in `setup_java.sh`
+  * remove symlink from `~/.jenv/versions`
+  * remove symlink from `/Library/Java/JavaVirtualMachines`
 
 ## References
 
-* [Dotbot](https://github.com/anishathalye/dotbot).
+* [Dotbot](https://github.com/anishathalye/dotbot)
 * [Dotfiles](https://dotfiles.github.io/)
 * [Dotfiles from Start to Finish-ish](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/) (Udemy)
 * [Dotfiles repo](https://github.com/eieioxyz/dotfiles_macos) example (github)
