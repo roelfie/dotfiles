@@ -10,6 +10,27 @@ Before you [start using](#usage) it you may want to know [what it does](#overvie
 
 _NB: This project focuses on Java / JavaScript / Python development. But you can easilly tailor it to your needs._
 
+## Table of contents
+
+* [Usage](#usage)
+  * [Preparation](#preparation)
+  * [Run](#run)
+  * [Manual steps](#manual-steps)
+* [Overview](#overview)
+* [What does it do](#what-does-it-do)
+  * [Installation](#installation)
+  * [Configuration](#configuration)
+  * [Backup](#backup)
+  * [Update](#update)
+* [Best practices](#best-practices)
+  * [Package management](#package-management-homebrew-node-python)
+  * [Version management](#version-management-java-node-python)
+* [HOW TO](#how-to)
+  * [Install a specific package version](#how-to---install-a-specific-package-version)
+  * [Replace pre-installed software](#how-to---replace-pre-installed-software-with-a-homebrew-package)
+  * [Install a JDK](#how-to---uninstall-a-jdk)
+* [References](#references)
+
 ## Usage
 
 ### Preparation
