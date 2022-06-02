@@ -1,42 +1,42 @@
-CacheControl==0.12.11
-cachy==0.3.0
-certifi==2022.5.18.1
-charset-normalizer==2.0.12
-cleo==0.8.1
-clikit==0.6.2
-crashtest==0.3.1
-distlib==0.3.4
-filelock==3.7.1
-html5lib==1.1
-idna==3.3
-importlib-metadata==4.11.4
-keyring==23.5.1
-lockfile==0.12.2
-msgpack==1.0.3
-packaging==21.3
-pastel==0.2.1
-pexpect==4.8.0
-pip==22.1.2
-pip-autoremove==0.10.0
-pip-chill==1.0.1
-pip-review==1.1.1
-pkginfo==1.8.2
-platformdirs==2.5.2
-poetry==1.1.13
-poetry-core==1.0.8
-ptyprocess==0.7.0
-pylev==1.4.0
-pync==2.0.3
-pyparsing==3.0.9
-python-dateutil==2.8.2
-requests==2.27.1
-requests-toolbelt==0.9.1
-setuptools==62.3.2
-shellingham==1.4.0
-six==1.16.0
-tomlkit==0.11.0
-urllib3==1.26.9
-virtualenv==20.14.1
-webencodings==0.5.1
-wheel==0.37.1
-zipp==3.8.0
+lockfile
+pip-autoremove
+pip-chill
+pip-review
+poetry
+pync
+wheel
+# cachecontrol # Installed as dependency for poetry
+# cachy # Installed as dependency for poetry
+# certifi # Installed as dependency for requests
+# charset-normalizer # Installed as dependency for requests
+# cleo # Installed as dependency for poetry
+# clikit # Installed as dependency for poetry, cleo
+# crashtest # Installed as dependency for poetry, clikit
+# distlib # Installed as dependency for virtualenv
+# filelock # Installed as dependency for virtualenv
+# html5lib # Installed as dependency for poetry
+# idna # Installed as dependency for requests
+# importlib-metadata # Installed as dependency for keyring
+# keyring # Installed as dependency for poetry
+# msgpack # Installed as dependency for cachecontrol
+# packaging # Installed as dependency for poetry, pip-review
+# pastel # Installed as dependency for clikit
+# pexpect # Installed as dependency for poetry
+# pip # Installed as dependency for pip-review, pip-autoremove
+# pkginfo # Installed as dependency for poetry
+# platformdirs # Installed as dependency for virtualenv
+# poetry-core # Installed as dependency for poetry
+# ptyprocess # Installed as dependency for pexpect
+# pylev # Installed as dependency for clikit
+# pyparsing # Installed as dependency for packaging
+# python-dateutil # Installed as dependency for pync
+# requests # Installed as dependency for poetry, requests-toolbelt, cachecontrol
+# requests-toolbelt # Installed as dependency for poetry
+# setuptools # Installed as dependency for pip-autoremove
+# shellingham # Installed as dependency for poetry
+# six # Installed as dependency for python-dateutil, virtualenv, html5lib
+# tomlkit # Installed as dependency for poetry
+# urllib3 # Installed as dependency for requests
+# virtualenv # Installed as dependency for poetry
+# webencodings # Installed as dependency for html5lib
+# zipp # Installed as dependency for importlib-metadata
