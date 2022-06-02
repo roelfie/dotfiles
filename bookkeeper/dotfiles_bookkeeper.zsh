@@ -164,7 +164,8 @@ echo "Backing up Python packages"
 # Therefore we do not use the '--not-required' option. As a result, our backup will not only 
 # contain 'level 0' packages but also all of its dependencies.
 # TODO find a way to export only those python packages that we've installed ourselves.
-pip list --format freeze > $PIP_BACKUP
+# (does pip-chill have the same problem???)
+pip-chill --all --no-version --verbose > $PIP_BACKUP
 
 echo "Backing up NPM packages"
 backup-global backup --no-version --no-yarn --output $NPM_BACKUP
