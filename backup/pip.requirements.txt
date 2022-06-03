@@ -22,7 +22,7 @@ wheel
 # packaging # Installed as dependency for poetry, pip-review
 # pastel # Installed as dependency for clikit
 # pexpect # Installed as dependency for poetry
-# pip # Installed as dependency for pip-review, pip-autoremove
+# pip # Installed as dependency for pip-autoremove, pip-review
 # pkginfo # Installed as dependency for poetry
 # platformdirs # Installed as dependency for virtualenv
 # poetry-core # Installed as dependency for poetry
@@ -34,7 +34,7 @@ wheel
 # requests-toolbelt # Installed as dependency for poetry
 # setuptools # Installed as dependency for pip-autoremove
 # shellingham # Installed as dependency for poetry
-# six # Installed as dependency for python-dateutil, virtualenv, html5lib
+# six # Installed as dependency for html5lib, python-dateutil, virtualenv
 # tomlkit # Installed as dependency for poetry
 # urllib3 # Installed as dependency for requests
 # virtualenv # Installed as dependency for poetry
