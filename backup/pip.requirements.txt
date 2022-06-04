@@ -10,8 +10,8 @@ wheel
 # certifi # Installed as dependency for requests
 # charset-normalizer # Installed as dependency for requests
 # cleo # Installed as dependency for poetry
-# clikit # Installed as dependency for poetry, cleo
-# crashtest # Installed as dependency for poetry, clikit
+# clikit # Installed as dependency for cleo, poetry
+# crashtest # Installed as dependency for clikit, poetry
 # distlib # Installed as dependency for virtualenv
 # filelock # Installed as dependency for virtualenv
 # html5lib # Installed as dependency for poetry
@@ -19,10 +19,10 @@ wheel
 # importlib-metadata # Installed as dependency for keyring
 # keyring # Installed as dependency for poetry
 # msgpack # Installed as dependency for cachecontrol
-# packaging # Installed as dependency for poetry, pip-review
+# packaging # Installed as dependency for pip-review, poetry
 # pastel # Installed as dependency for clikit
 # pexpect # Installed as dependency for poetry
-# pip # Installed as dependency for pip-autoremove, pip-review
+# pip # Installed as dependency for pip-review, pip-autoremove
 # pkginfo # Installed as dependency for poetry
 # platformdirs # Installed as dependency for virtualenv
 # poetry-core # Installed as dependency for poetry
@@ -30,11 +30,11 @@ wheel
 # pylev # Installed as dependency for clikit
 # pyparsing # Installed as dependency for packaging
 # python-dateutil # Installed as dependency for pync
-# requests # Installed as dependency for poetry, requests-toolbelt, cachecontrol
+# requests # Installed as dependency for requests-toolbelt, poetry, cachecontrol
 # requests-toolbelt # Installed as dependency for poetry
 # setuptools # Installed as dependency for pip-autoremove
 # shellingham # Installed as dependency for poetry
-# six # Installed as dependency for html5lib, python-dateutil, virtualenv
+# six # Installed as dependency for python-dateutil, html5lib, virtualenv
 # tomlkit # Installed as dependency for poetry
 # urllib3 # Installed as dependency for requests
 # virtualenv # Installed as dependency for poetry
