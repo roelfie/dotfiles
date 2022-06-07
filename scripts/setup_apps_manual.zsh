@@ -44,7 +44,9 @@ instruction "google-drive:
 
 instruction "intellij-idea:
     - Get license from = 'JB Account'
-       (we don't upload a license file; we just login)"
+       (we don't upload a license file; we just login)
+    - Go to 'Tools > Create Command-line Launcher' and choose default folder '/usr/local/bin/'
+       This creates an 'idea' command that can be used to launch IDEA from the Terminal"
 
 instruction "microsoft-office:
     - Open Excel

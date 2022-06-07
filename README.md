@@ -29,6 +29,7 @@ _NB: This project focuses on Java / JavaScript / Python development. But you can
   * [Install a specific package version](#how-to---install-a-specific-package-version)
   * [Replace pre-installed software](#how-to---replace-pre-installed-software-with-a-homebrew-package)
   * [Install a JDK](#how-to---uninstall-a-jdk)
+* [Command-line Launchers](#command-line-launchers)
 * [References](#references)
 
 ## Usage
@@ -325,6 +326,19 @@ Situation May 2022.
   * remove JDK from [JAVA_HOME_LOCATIONS](./scripts/setup_java.zsh) in `setup_java.sh`
   * remove symlink from `~/.jenv/versions`
   * remove symlink from `/Library/Java/JavaVirtualMachines`
+
+## Command-line Launchers
+
+Some Applications come with a command-line launcher:
+
+|                    | command        | opens                       |
+|--------------------|----------------|-----------------------------|
+| /opt/homebrew/bin/ | `bcomp .`      | Beyond Compare              |
+| /opt/homebrew/bin/ | `code .`       | Visual Studio Code          |
+| /opt/homebrew/bin/ | `skimpdf help` | Merge/extract PDF with Skim |
+| /opt/homebrew/bin/ | `stree .`      | SourceTree                  |
+| /usr/local/bin/    | `idea .`       | IntelliJ IDEA               |
+
 
 ## References
 
