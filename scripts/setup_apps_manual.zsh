@@ -28,6 +28,13 @@ instruction "boxcryptor:
 
     NB: You may want to save this step (in particular the reboot) until the Dotbot installation process has completed"
 
+instruction "Docker Desktop:
+    - Click on the Docker icon in the menu bar, and open the Preferences
+    - Open tab 'Kubernetes'
+    - Check 'Enable Kubernetes'
+      This will install Kubernetes & kubectl
+    - Eventually you should see 'Kubernetes is running' under the Docker Desktop menu"
+
 instruction "forklift:
     - Register (see 1Password)
     - General: Compare Tool = beyond compare 
