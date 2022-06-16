@@ -34,3 +34,6 @@ alias vscodedump='cd ~/.dotfiles; code --list-extensions > vscode_extensions'
 
 # create a new workspace
 alias mkws='python3 "$DOTFILES_HOME/bin/create-workspace.py"'
+
+alias wspersonal='cd ~/workspaces/personal'
+alias wsrestor='cd ~/workspaces/restor'
