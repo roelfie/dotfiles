@@ -339,6 +339,17 @@ Some Applications come with a command-line launcher:
 | /opt/homebrew/bin/ | `stree .`      | SourceTree                  |
 | /usr/local/bin/    | `idea .`       | IntelliJ IDEA               |
 
+## Launching a Web App from the Dock
+
+1. Create a `*.zsh` script to open the web page. For example [~/.dotfiles/bin/asciiflow.zsh](./bin/asciiflow.zsh):
+   ```shell
+   #!/usr/bin/env zsh
+   open https://asciiflow.com/
+   ```
+2. `chmod 755 asciiflow.zsh`
+3. Create an Automator application that `Runs Shell Script`
+4. Save the application to [~/.dotfiles/bin/apps/ASCIIFlow.app](./bin/apps/ASCIIFlow.app)
+5. Add the app to [setup_dock.zsh](./scripts/setup_dock.zsh)
 
 ## References
 
