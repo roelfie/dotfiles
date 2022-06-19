@@ -3,3 +3,9 @@ Brewfile.essentials.lock.json
 .DS_Store
 dotfiles_bookkeeper.log
 ~$dotfiles-overview.drawio.bkp
+npm.log
+npm.err.log
+pip.log
+pip.err.log
+brew.log
+brew.err.log

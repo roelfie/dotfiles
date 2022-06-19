@@ -34,7 +34,14 @@ PATH="$HOME/.n/bin:$PATH"
 PATH="$HOME/.pyenv/shims:$PATH"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
+BREW_LOG="$DOTFILES_HOME/bookkeeper/log/brew.log"
+NPM_LOG="$DOTFILES_HOME/bookkeeper/log/npm.log"
+PIP_LOG="$DOTFILES_HOME/bookkeeper/log/pip.log"
+BREW_ERR_LOG="$DOTFILES_HOME/bookkeeper/log/brew.err.log"
+NPM_ERR_LOG="$DOTFILES_HOME/bookkeeper/log/npm.err.log"
+PIP_ERR_LOG="$DOTFILES_HOME/bookkeeper/log/pip.err.log"
 
+mkdir -p $DOTFILES_HOME/bookkeeper/log
 
 ###############################################################################
 ###   Helper functions                                                      ###
@@ -91,6 +98,9 @@ OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew package(s):"
     echo $OUTDATED_BREW_PKGS
+    # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
+    brew outdated | ts '%Y-%m-%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
+    # Perform update of global packages 
     brew upgrade
     display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 else
@@ -111,6 +121,10 @@ OUTDATED_PIP_PKGS_SIZE=${#OUTDATED_PIP_PKGS}
 if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_PIP_PKGS_SIZE outdated python package(s):"
     echo $OUTDATED_PIP_PKGS
+    # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
+    # pip list --format columns | ts '%Y-%m-%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
+    pip list --format columns | ts '%Y-%m-%d  ' >> $PIP_LOG 2>> $PIP_ERR_LOG
+    # Perform update of global packages 
     pip-review --auto
     display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
     # Alternative (with 'pip' commands only): 
@@ -136,6 +150,10 @@ OUTDATED_NPM_PKGS_SIZE=${#OUTDATED_NPM_PKGS}
 if [ $OUTDATED_NPM_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_NPM_PKGS_SIZE outdated npm package(s):"
     echo $OUTDATED_NPM_PKGS
+    # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
+    # npm outdated -g | ts '%Y-%m-%d  ' | tail --lines +2 >> $NPM_LOG 2>> $NPM_ERR_LOG
+    npm outdated -g | ts '%Y-%m-%d  ' >> $NPM_LOG 2>> $NPM_ERR_LOG
+    # Perform update of global packages
     npm update -g
     display_notification "Upgraded $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
 else
