@@ -151,8 +151,7 @@ if [ $OUTDATED_NPM_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_NPM_PKGS_SIZE outdated npm package(s):"
     echo $OUTDATED_NPM_PKGS
     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
-    # npm outdated -g | ts '%Y-%m-%d  ' | tail --lines +2 >> $NPM_LOG 2>> $NPM_ERR_LOG
-    npm outdated -g | ts '%Y-%m-%d  ' >> $NPM_LOG 2>> $NPM_ERR_LOG
+    npm outdated -g | ts '%Y-%m-%d  ' | tail --lines +2 >> $NPM_LOG 2>> $NPM_ERR_LOG
     # Perform update of global packages
     npm update -g
     display_notification "Upgraded $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
