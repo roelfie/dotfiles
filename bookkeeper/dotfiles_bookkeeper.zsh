@@ -102,7 +102,7 @@ if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     brew outdated | ts '%Y%m%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
     # Perform update of global packages 
     brew upgrade
-    display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
+    # display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 else
     echo "No outdated brew packages found."
 fi
@@ -123,10 +123,10 @@ if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
     echo $OUTDATED_PIP_PKGS
     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
     # pip list --format columns | ts '%Y%m%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
-    pip list --format columns | ts '%Y%m%d  ' >> $PIP_LOG 2>> $PIP_ERR_LOG
+    pip list --outdated --format columns | ts '%Y%m%d  ' | tail --lines +1 >> $PIP_LOG 2>> $PIP_ERR_LOG
     # Perform update of global packages 
     pip-review --auto
-    display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
+    # display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
     # Alternative (with 'pip' commands only): 
     # https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
 else
@@ -154,7 +154,7 @@ if [ $OUTDATED_NPM_PKGS_SIZE -gt 0 ]; then
     npm outdated -g | ts '%Y%m%d  ' | tail --lines +2 >> $NPM_LOG 2>> $NPM_ERR_LOG
     # Perform update of global packages
     npm update -g
-    display_notification "Upgraded $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
+    # display_notification "Upgraded $OUTDATED_NPM_PKGS_SIZE outdated npm package(s)."
 else
     echo "No outdated NPM packages found."
 fi
