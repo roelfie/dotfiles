@@ -39,8 +39,26 @@ alias ls9='exa -a --no-permissions --no-user --no-filesize --no-time --tree --le
 
 
 lsdr() {exa -aDT --level="$1"}
-# Example usage: "l3 | highlight kafka" shows directory structure 3 levels deep & highlights each occurrence of 'kafka' 
-highlight() {less -p "$1"}
+
+# highlight 'word' in stdout (example: "l3 | highlight kafka" shows all 'kafka' max 3 levels deep) 
+highlight() {less -Ip "$1"}
+
+# recursively find files and folders with given name, displaying them in full tree structure.
+# Stage 1: Use 'tree' to find matching files and folders
+#    tree -F         : appends '/' after each directory. Used in stage 2 to keep non-matching intermediate directories.
+#    tree --prune    : omit directories with no matching children
+#    tree --matchdirs: apply -P pattern also to directories
+#    Problem: this tree command will include *all* children of a matching directory (even the filenames with no match)
+# Stage 2: Use 'grep' to keep only matches ($1) or directories (/) (without the latter, the tree structure will break)
+find1() {tree -aFL 1 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find2() {tree -aFL 2 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find3() {tree -aFL 3 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find4() {tree -aFL 4 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find5() {tree -aFL 5 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find6() {tree -aFL 6 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find7() {tree -aFL 7 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find8() {tree -aFL 8 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+find9() {tree -aFL 9 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
 
 # .dotfiles bookkeeping
 alias brewdump='cd ~/.dotfiles; brew bundle dump --force'
