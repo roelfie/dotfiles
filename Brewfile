@@ -1,3 +1,4 @@
+tap "deviceinsight/packages"
 tap "eth-p/software"
 tap "homebrew/bundle"
 tap "homebrew/cask"
