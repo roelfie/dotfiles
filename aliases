@@ -50,15 +50,16 @@ highlight() {less -Ip "$1"}
 #    tree --matchdirs: apply -P pattern also to directories
 #    Problem: this tree command will include *all* children of a matching directory (even the filenames with no match)
 # Stage 2: Use 'grep' to keep only matches ($1) or directories (/) (without the latter, the tree structure will break)
-find1() {tree -aFL 1 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find2() {tree -aFL 2 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find3() {tree -aFL 3 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find4() {tree -aFL 4 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find5() {tree -aFL 5 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find6() {tree -aFL 6 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find7() {tree -aFL 7 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find8() {tree -aFL 8 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
-find9() {tree -aFL 9 --prune --matchdirs -P "*$1*" | grep -Ei "$1|/" | highlight "$1"}
+findInTree() { tree -aFL $1 --prune --matchdirs -P "*$2*" | grep -Ei "$2|/" }
+find1() {findInTree 1 $1}
+find2() {findInTree 2 $1}
+find3() {findInTree 3 $1}
+find4() {findInTree 4 $1}
+find5() {findInTree 5 $1}
+find6() {findInTree 6 $1}
+find7() {findInTree 7 $1}
+find8() {findInTree 8 $1}
+find9() {findInTree 9 $1}
 
 # .dotfiles bookkeeping
 alias brewdump='cd ~/.dotfiles; brew bundle dump --force'
