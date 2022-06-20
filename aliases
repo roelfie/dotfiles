@@ -17,6 +17,8 @@ alias l='exa'
 alias la='exa -a'
 alias lsa='exa -a'
 alias lsd='exa -aD'
+
+# Tree view
 alias l2='exa -a --tree --level=2'
 alias l3='exa -a --tree --level=3'
 alias l4='exa -a --tree --level=4'
@@ -25,8 +27,20 @@ alias l6='exa -a --tree --level=6'
 alias l7='exa -a --tree --level=7'
 alias l8='exa -a --tree --level=8'
 alias l9='exa -a --tree --level=9'
+# Tree view without meta data
+alias ls2='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=2'
+alias ls3='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=3'
+alias ls4='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=4'
+alias ls5='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=5'
+alias ls6='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=6'
+alias ls7='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=7'
+alias ls8='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=8'
+alias ls9='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=9'
+
 
 lsdr() {exa -aDT --level="$1"}
+# Example usage: "l3 | highlight kafka" shows directory structure 3 levels deep & highlights each occurrence of 'kafka' 
+highlight() {less -p "$1"}
 
 # .dotfiles bookkeeping
 alias brewdump='cd ~/.dotfiles; brew bundle dump --force'
