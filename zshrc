@@ -18,6 +18,7 @@ path=(
     "$JENV_PREFIX/bin"
     "$PYENV_ROOT/bin"
     $path
+    "$HOME/.dotfiles/bin"
 )
 
 # jEnv

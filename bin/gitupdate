@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+cd $(pwd)
+for dir in $(ls -d */)
+do
+    if [ -d "$dir/.git" ]; then
+        echo "================================================================================"
+        echo "UPDATE REPO: '$dir'\n"
+        cd $dir
+        git pull --all
+        cd -
+    fi
+done
