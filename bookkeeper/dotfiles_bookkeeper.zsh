@@ -34,14 +34,14 @@ PATH="$HOME/.n/bin:$PATH"
 PATH="$HOME/.pyenv/shims:$PATH"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
-BREW_LOG="$DOTFILES_HOME/bookkeeper/log/brew.log"
-NPM_LOG="$DOTFILES_HOME/bookkeeper/log/npm.log"
-PIP_LOG="$DOTFILES_HOME/bookkeeper/log/pip.log"
-BREW_ERR_LOG="$DOTFILES_HOME/bookkeeper/log/brew.err.log"
-NPM_ERR_LOG="$DOTFILES_HOME/bookkeeper/log/npm.err.log"
-PIP_ERR_LOG="$DOTFILES_HOME/bookkeeper/log/pip.err.log"
-
-mkdir -p $DOTFILES_HOME/bookkeeper/log
+LOG_HOME="$HOME/log"
+BOOKKEEPER_LOG="$LOG_HOME/bookkeeper.log"
+BREW_LOG="$LOG_HOME/brew.log"
+NPM_LOG="$LOG_HOME/npm.log"
+PIP_LOG="$LOG_HOME/pip.log"
+BREW_ERR_LOG="$LOG_HOME/brew.err.log"
+NPM_ERR_LOG="$LOG_HOME/npm.err.log"
+PIP_ERR_LOG="$LOG_HOME/pip.err.log"
 
 ###############################################################################
 ###   Helper functions                                                      ###
