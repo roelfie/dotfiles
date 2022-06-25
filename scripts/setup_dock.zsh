@@ -133,7 +133,7 @@ cd $STACKS_FOLDER/graphics
     ln -s /Applications/Permute\ 3.app "Permute"
     ln -s /Applications/Squash.app "Squash"
     ln -s /Applications/draw.io.app "Draw.io"
-    ln -s /Users/roelfie/.dotfiles/bin/apps/ASCIIFlow.app "ASCIIFlow"
+    ln -s /Users/roelfie/.dotfiles/apps/ASCIIFlow.app "ASCIIFlow"
 
 cd $STACKS_FOLDER/sys
     ln -s /System/Applications/System\ Preferences.app "System Preferences"
