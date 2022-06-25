@@ -35,7 +35,7 @@ PATH="$HOME/.pyenv/shims:$PATH"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 LOG_HOME="$HOME/log"
-BOOKKEEPER_LOG="$LOG_HOME/bookkeeper.log"
+
 BREW_LOG="$LOG_HOME/brew.log"
 NPM_LOG="$LOG_HOME/npm.log"
 PIP_LOG="$LOG_HOME/pip.log"
@@ -59,7 +59,7 @@ display_notification() {
     # $HOME/.pyenv/shims/python $HOME/.dotfiles/bookkeeper/notify.py \
     #     "Dotfiles" \
     #     "$1" \
-    #     "file:///Users/roelfie/.dotfiles/bookkeeper/dotfiles_bookkeeper.log" \
+    #     "file:///Users/roelfie/log/bookkeeper.log" \
     #     "file:///Users/roelfie/.dotfiles/bookkeeper/images/icons8-checked-checkbox-50.png"
 }
 

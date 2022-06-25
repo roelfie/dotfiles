@@ -35,6 +35,7 @@
   - ~/.pyenv
   - ~/.config/dock/stacks
   - ~/Documents/Screenshots
+  - ~/log
 
 - shell:
   - ./scripts/setup_homebrew.zsh
