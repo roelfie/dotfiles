@@ -18,8 +18,19 @@ path=(
     "$JENV_PREFIX/bin"
     "$PYENV_ROOT/bin"
     $path
-    "$HOME/.dotfiles/bin"
+    "$HOME/bin/personal"
 )
+# Add all client scripts to PATH
+for dir in $HOME/bin/work/*
+do
+    if [ -d "$dir" ]; then
+        path=(
+            $path
+            "$dir"
+        )
+    fi
+done
+
 
 # jEnv
 eval "$(jenv init -)"
