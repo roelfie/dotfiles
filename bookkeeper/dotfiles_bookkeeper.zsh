@@ -93,15 +93,15 @@ section "Upgrading Homebrew packages"
 brew update -q
 
 # Upgrade outdated brew packages
-OUTDATED_BREW_PKGS=($(brew outdated -q))
+OUTDATED_BREW_PKGS=($(brew outdated -q --greedy-auto-updates))
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew package(s):"
     echo $OUTDATED_BREW_PKGS
     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
-    brew outdated | ts '%Y%m%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
+    brew outdated --greedy-auto-updates | ts '%Y%m%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
     # Perform update of global packages 
-    brew upgrade
+    brew upgrade --greedy-auto-updates
     # display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 else
     echo "No outdated brew packages found."
@@ -122,8 +122,7 @@ if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_PIP_PKGS_SIZE outdated python package(s):"
     echo $OUTDATED_PIP_PKGS
     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
-    # pip list --format columns | ts '%Y%m%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
-    pip list --outdated --format columns | ts '%Y%m%d  ' | tail --lines +1 >> $PIP_LOG 2>> $PIP_ERR_LOG
+    pip list --outdated --format columns | ts '%Y%m%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
     # Perform update of global packages 
     pip-review --auto
     # display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
