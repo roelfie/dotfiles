@@ -18,15 +18,15 @@ path=(
     "$JENV_PREFIX/bin"
     "$PYENV_ROOT/bin"
     $path
-    "$HOME/bin/personal"
+    "$HOME/bin"
 )
 # Add all client scripts to PATH
-for dir in $HOME/bin/work/*
+for dir in $HOME/work/*
 do
     if [ -d "$dir" ]; then
         path=(
             $path
-            "$dir"
+            "$dir/bin"
         )
     fi
 done

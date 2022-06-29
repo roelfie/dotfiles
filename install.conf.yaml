@@ -10,9 +10,8 @@
 - clean: ['~']
 
 - create:
-  - ~/bin/work
   - ~/log
-  # you can add individual workspaces inside the ~/workspaces folder with 'mkws'
+  # you can add individual workspaces inside the ~/workspaces folder with 'mkws' (or use "new-client")
   - ~/workspaces
   # https://github.com/jenv/jenv/issues/167
   - ~/.jenv/versions
@@ -22,7 +21,8 @@
 
 - link:
     ~/.aliases: 
-    ~/bin/personal: bin
+    ~/bin: bin
+    ~/work: ~/Dropbox/work
     # /bin/work/<CLIENT> symlinks are defined in scripts/setup_bin.zsh
     ~/.zshrc: 
     ~/.zshenv: 
@@ -45,7 +45,6 @@
   - ./scripts/setup_apps_essentials.zsh
   - ./scripts/setup_apps.zsh
   - ./scripts/setup_apps_manual.zsh
-  - ./scripts/setup_bin.zsh
   - ./scripts/setup_mackup.zsh
   - ./scripts/setup_zsh.zsh
   - ./scripts/setup_ohmyzsh.zsh

@@ -1,27 +1,25 @@
 #!/usr/bin/env zsh
 # 
-# Run this script to initialize a new client on my macbook.
-# It will create a new (empty) workspace with appropriate git config, 
-# and a new (empty) scripts folder.
+# Run this script to initialize a new client on my macbook:
+# 1. ~/workspaces/<CLIENT>
+# 2. ~/Dropbox/work/<CLIENT>/bin
+#                           /doc
+#
+# The new bin folder will be automatically added to the $PATH by .zshrc
 
 DOTFILES_SCRIPTS="/Users/roelfie/.dotfiles/scripts"
 
-
-
 # Step 1: Create scripts folder for client scripts
-vared -p "Klantnaam: " -c KLANT
+vared -p "Client name: " -c CLIENT
 
-SCRIPTS_FOLDER="$HOME/Dropbox/bin/work/$KLANT"
+CLIENT_FOLDER="$HOME/Dropbox/work/$CLIENT"
 
-echo "\n\nCreating scripts folder: $SCRIPTS_FOLDER"
-mkdir -p $SCRIPTS_FOLDER
-# Create symlinks from ~/bin/work folder
-$DOTFILES_SCRIPTS/setup_bin.zsh
-
-
+echo "\n\nCreating new client folder: $CLIENT_FOLDER"
+mkdir -p $CLIENT_FOLDER
+mkdir -p "$CLIENT_FOLDER/bin"
+mkdir -p "$CLIENT_FOLDER/doc"
 
 # Step 2: Create new workspace
 echo "\n\n"
 . ~/.aliases
 mkws
-
