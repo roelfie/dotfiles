@@ -27,6 +27,7 @@ do
         path=(
             $path
             "$dir/bin"
+            "$dir/bin/git"
         )
     fi
 done
