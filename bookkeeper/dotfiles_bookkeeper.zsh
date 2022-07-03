@@ -93,15 +93,18 @@ section "Upgrading Homebrew packages"
 brew update -q
 
 # Upgrade outdated brew packages
-OUTDATED_BREW_PKGS=($(brew outdated -q --greedy-auto-updates))
+#   Do not pass '--greedy-auto-updates' since that will lead to error:
+#   "sudo: a terminal is required to read the password;"
+#   "either use the -S option to read from standard input or configure an askpass helper".
+OUTDATED_BREW_PKGS=($(brew outdated -q))
 OUTDATED_BREW_PKGS_SIZE=${#OUTDATED_BREW_PKGS}
 if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     echo "Found $OUTDATED_BREW_PKGS_SIZE outdated brew package(s):"
     echo $OUTDATED_BREW_PKGS
     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
-    brew outdated --greedy-auto-updates | ts '%Y%m%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
+    brew outdated | ts '%Y%m%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
     # Perform update of global packages 
-    brew upgrade --greedy-auto-updates
+    brew upgrade
     # display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 else
     echo "No outdated brew packages found."
