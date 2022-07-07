@@ -69,3 +69,8 @@ source ~/.aliases
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 complete -C "$HOMEBREW_PREFIX/bin/aws_completer" aws
+
+# Google Cloud SDK
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+# needed when running kubectl version < 1.25
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
