@@ -82,6 +82,7 @@ cask "sourcetree"
 cask "textsniper"
 cask "visual-studio-code"
 cask "whatsapp"
+cask "whoozle-android-file-transfer"
 mas "Kindle", id: 405399194
 mas "Peek", id: 1554235898
 mas "Pixelmator Pro", id: 1289583905
