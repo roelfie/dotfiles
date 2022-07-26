@@ -74,3 +74,11 @@ complete -C "$HOMEBREW_PREFIX/bin/aws_completer" aws
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
 # needed when running kubectl version < 1.25
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# Source customer specific init scripts
+for dir in $HOME/work/*
+do
+    if [ -d "$dir" ]; then
+        source $dir/.zshrc
+    fi
+done
