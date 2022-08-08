@@ -127,13 +127,14 @@ cd $STACKS_FOLDER/docs
     ln -s /Applications/Microsoft\ PowerPoint.app "MS PowerPoint"
 
 cd $STACKS_FOLDER/graphics
-    ln -s /Applications/Xee³.app "Xee"
+    ln -s /Applications/albelli.app "Albelli"
     ln -s /Applications/Pixelmator\ Pro.app "Pixelmator"
     ln -s /System/Applications/Utilities/Digital\ Color\ Meter.app "Digital Color Meter"
     ln -s /Applications/Permute\ 3.app "Permute"
     ln -s /Applications/Squash.app "Squash"
     ln -s /Applications/draw.io.app "Draw.io"
     ln -s /Users/roelfie/.dotfiles/apps/ASCIIFlow.app "ASCIIFlow"
+    ln -s /Applications/Xee³.app "Xee"
 
 cd $STACKS_FOLDER/sys
     ln -s /System/Applications/System\ Preferences.app "System Preferences"

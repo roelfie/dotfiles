@@ -11,5 +11,6 @@ echo "\nThe following apps were not installed with homebrew / mas:"
 echo " - Aeon Timeline            (not purchased via AppStore)"
 echo " - Squash 3                 (not purchased via AppStore)"
 echo " - iDMSS Plus (and DMSS?)   (not available in the AppStore)"
+echo " - albelli                  (not available in the AppStore)"
 echo "Download & install them manually if needed.\n\n"
 vared -p "Press [Enter] to continue. " -c REPLY
