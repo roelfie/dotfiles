@@ -1,8 +1,8 @@
+clikit
 importlib-metadata
 lockfile
 pip-autoremove
 pip-chill
 pip-review
-poetry
 pync
 wheel
