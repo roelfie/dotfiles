@@ -80,6 +80,10 @@ _NB: The installation scripts are idempotent so you can run `~/.dotfiles/install
   | Alfred             | Features                         | Snippets                  | `⌥ ⌘ S`   |
 * Configure the menu bar:
   ![menu bar](./resources/diagrams/menubar.png)
+* Configure the JetBrains Toolbox:
+  ![JetBrains Toolbox](./resources/diagrams/JetBrains-Toolbox-config.png)
+
+_NB: All JetBrains applications should be installed from the JetBrains Toolbox. Do not install them with Homebrew / cask._
 
 ## Overview
 
