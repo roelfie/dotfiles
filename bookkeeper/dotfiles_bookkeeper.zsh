@@ -174,6 +174,11 @@ cd $DOTFILES_HOME
 
 echo "Backing up Homebrew packages"
 brew bundle dump --force
+# BUG: above command sometimes does not include the mas applications (causing needless commits).
+# See https://github.com/Homebrew/homebrew-bundle/issues/1112
+# To avoid needless commits, for now simply exclude the mas lines from the Brewfile:
+sed '/^mas/d' Brewfile > Brewfile_without_mas
+mv Brewfile_without_mas Brewfile
 
 echo "Backing up Python packages"
 # NB: 'pip list' also lists all dependencies of installed packages. 
