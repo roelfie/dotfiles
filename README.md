@@ -59,9 +59,7 @@ _NB: This project focuses on Java / JavaScript / Python development. But you can
    ```
    This will trigger Dotbot to perform all the steps described in [install.conf.yaml](./install.conf.yaml).
 
-{% note %}
-If this [issue #19](https://github.com/roelfie/dotfiles/issues/19) still not resolved you may have to place back the 'mas' entries to `Brewfile` (either manually, or by reverting [0d56700](https://github.com/roelfie/dotfiles/commit/0d567000a96d157175ccdf66dae198be4c718b07)) before installing. 
-{% endnote %}
+_**NB: If this [issue #19](https://github.com/roelfie/dotfiles/issues/19) still not resolved you may have to place back the 'mas' entries to `Brewfile` (either manually, or by reverting [0d56700](https://github.com/roelfie/dotfiles/commit/0d567000a96d157175ccdf66dae198be4c718b07)) before installing.**_
 
 _NB: The installation scripts are idempotent so you can run `~/.dotfiles/install` as many times as you wish._
 
