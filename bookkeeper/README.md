@@ -2,7 +2,7 @@
 
 # Bookkeeper
 
-Bookkeeper is a [script](./dotfiles_bookkeeper.zsh) that:
+Bookkeeper is a [script](./bookkeeper.zsh) that:
 
 * Keeps the system up-to-date (upgrade outdated brew, python & NPM packages)
 * Keeps the .dotfiles project up-to-date (backup lists of (un)installed brew, python & NPM packages)
@@ -27,7 +27,7 @@ I use [LaunchControl](https://www.soma-zone.com/LaunchControl) to configure the 
 
 * Select `User Agents`
 * Create a new User Agent (`+` button)
-* Configure the `dotfiles_bookkeeper` job and click on the `load` button:
+* Configure the `bookkeeper` job and click on the `load` button:
 
 ![User Agent configuration](images/LaunchControl-UserAgent.png)
 

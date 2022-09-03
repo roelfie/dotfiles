@@ -104,7 +104,7 @@ if [ $OUTDATED_BREW_PKGS_SIZE -gt 0 ]; then
     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
     brew outdated | ts '%Y%m%d  ' >> $BREW_LOG 2>> $BREW_ERR_LOG
     # Perform update of global packages 
-    brew upgrade
+    brew upgrade -i
     # display_notification "Upgraded $OUTDATED_BREW_PKGS_SIZE outdated brew package(s)."
 else
     echo "No outdated brew packages found."
