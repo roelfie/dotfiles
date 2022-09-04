@@ -105,6 +105,7 @@ cd $STACKS_FOLDER/apps
     ln -s /Applications/LaunchControl.app "LaunchControl"
     ln -s /Applications/Linear.app "Linear"
     ln -s /Applications/Things3.app "Things"
+    ln -s /Applications/Google\ Earth\ Pro.app "Google Earth"
 
 cd $STACKS_FOLDER/dev
     ln -s /Applications/Oxygen\ XML\ Editor/Oxygen\ XML\ Editor.app "Oxygen XML Editor"
