@@ -110,10 +110,6 @@ cd $STACKS_FOLDER/apps
 cd $STACKS_FOLDER/dev
     ln -s /Applications/Oxygen\ XML\ Editor/Oxygen\ XML\ Editor.app "Oxygen XML Editor"
     ln -s /Applications/Beyond\ Compare.app "Beyond Compare"
-    ln -s /Applications/DataGrip.app "Jetbrains - DataGrip"
-    ln -s /Applications/IntelliJ\ IDEA.app "Jetbrains - IntelliJ IDEA"
-    ln -s /Applications/Jetbrains\ Toolbox.app "Jetbrains - Toolbox"
-    ln -s /Applications/PyCharm.app "Jetbrains - PyCharm"
     ln -s /Applications/Peek.app "Peek (QuickLook plugin)"
     ln -s /Applications/Pluralsight.app "Pluralsight (courses)"
     ln -s /Applications/Postman.app "Postman"
