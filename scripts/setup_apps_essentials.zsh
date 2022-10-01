@@ -22,6 +22,7 @@ instruction "1Password:
     1Password should automatically detect 'Dropbox/Apps/1Password/1Password.ovault'."
 
 instruction "Boxcryptor:
+    Install Boxcryptor if you haven't already (I removed the homebrew version in Oct. 2022).
     Login to Boxcryptor app.
     Link your Dropbox account in the Boxcryptor Preferences."
 
