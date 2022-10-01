@@ -1,12 +1,10 @@
 # This is a comment, this line will be ignored.
 # You can use # to comment a line manually.
 
-@bazel/bazelisk
+@tmcw/togeojson-cli
 backup-global
-corepack
 http-server
 json-server
-jwt-cli
 npm
 trash-cli
 typescript
