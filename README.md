@@ -261,6 +261,9 @@ See the 'HOW TO' below on how to install a specific version of a package (instea
 * Python
   * use [pyenv](https://github.com/pyenv/pyenv#usage) to (un)install python versions
   * use pyenv to switch python versions
+* Terraform
+  * use [tfenv](https://github.com/tfutils/tfenv) to (un)install terraform versions
+  * use tfenv to switch terraform versions
 
 
 ## HOW TO

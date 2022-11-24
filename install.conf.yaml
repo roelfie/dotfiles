@@ -55,3 +55,4 @@
   - ./scripts/setup_dock.zsh
   - ./scripts/setup_macos.zsh
   - ./scripts/setup_workspaces.zsh
+  - ./scripts/setup_terraform.zsh
