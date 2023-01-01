@@ -20,14 +20,6 @@ instruction "beyond-compare:
     - It will ask to install Rosetta (bc4 was built for Intel)
     - Register (see 1Password)"
 
-instruction "boxcryptor:
-    - When first opening Boxcryptor, it will prompt you to install system extensions
-      Boxcryptor will guide you through it
-      (you will have to restart the system and hold the Touch ID or power button to launch Startup Security Utility)
-    - Preferences / Locations: Dropbox
-
-    NB: You may want to save this step (in particular the reboot) until the Dotbot installation process has completed"
-
 instruction "Docker Desktop:
     - Click on the Docker icon in the menu bar, and open the Preferences
     - Open tab 'Kubernetes'
