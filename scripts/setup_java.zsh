@@ -5,7 +5,7 @@
 echo "\n<<< Setup jEnv >>>\n"
 
 JAVA_HOME_LOCATIONS=(
-    /Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk/Contents/Home
+    /Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home
     /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
 )
 
