@@ -7,7 +7,7 @@ tap "romkatv/powerlevel10k"
 brew "argocd"
 brew "readline"
 brew "xz"
-brew "awscli", link: false
+brew "awscli"
 brew "bash"
 brew "bat"
 brew "exa"
