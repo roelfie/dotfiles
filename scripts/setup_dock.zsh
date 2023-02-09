@@ -115,6 +115,7 @@ cd $STACKS_FOLDER/dev
     ln -s /Applications/Postman.app "Postman"
     ln -s /Applications/Docker.app "Docker"
     ln -s /Applications/Sourcetree.app "Sourcetree"
+    ln -s /Applications/QGIS.app "QGIS"
 
 cd $STACKS_FOLDER/docs
     ln -s /Applications/Skim.app "Skim"
