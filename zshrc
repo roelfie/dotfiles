@@ -74,6 +74,9 @@ complete -C "$HOMEBREW_PREFIX/bin/aws_completer" aws
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
 # needed when running kubectl version < 1.25
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+# brew instruction v425.0.0: "To add gcloud components to your PATH, add this to your profile"
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # Source customer specific init scripts
 for dir in $HOME/work/*
