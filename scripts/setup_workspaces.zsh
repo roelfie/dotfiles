@@ -57,12 +57,27 @@ create_workspace() {
     WORKSPACE_NAME="$1"
     GIT_USER="$2"
     GIT_EMAIL="$3"
+    GIT_ORG="$4"
     WORKSPACE="$WORKSPACES_PREFIX/$WORKSPACE_NAME"
     GIT_CONFIG="$WORKSPACE/.gitconfig"
+
+    echo "\n\nCreating workspace $WORKSPACE_NAME with Git user $GIT_USER, email $GIT_EMAIL and org $GIT_ORG.\n\n" 
 
     if [ ! -d "$WORKSPACE" ]; then
         echo "Creating folder:    $WORKSPACE"
         mkdir "$WORKSPACE"
+
+        echo "Cloning repositories ..."
+        cd "$WORKSPACE"
+        gh repo list "$GIT_ORG" | while read -r repo _; do
+            printf "\n\n\n\n"
+            git clone git@github.com:$repo.git
+        done
+        cd ..
+        echo "\nAll repositories have been cloned into $WORKSPACE."
+        echo "Remove any repositories that you don't need now.\n\n"
+        vared -p "Press [Enter] when done. " -c REPLY
+
         echo "Creating gitconfig: $GIT_CONFIG"
         cat <<EOF > "$GIT_CONFIG"
 [user] 
@@ -80,8 +95,8 @@ create_workspaces_root
 # Read items from a list with yq; no idea how this works but it works...
 # https://stackoverflow.com/questions/62898925/using-yq-in-for-loop-bash 
 # https://stackoverflow.com/a/70841936
-while IFS=$'\t' read -r name git_username git_email _; do
+while IFS=$'\t' read -r name git_username git_email git_org _; do
     echo "\n[$name]"
-    create_workspace $name $git_username $git_email
-done < <(yq e '.workspaces[] | [.name, .git.username, .git.email] | @tsv' $WORKSPACES_CONFIG)
+    create_workspace $name $git_username $git_email $git_org
+done < <(yq e '.workspaces[] | [.name, .git.username, .git.email, .git.org] | @tsv' $WORKSPACES_CONFIG)
 
