@@ -26,7 +26,9 @@ echo "The 'powerlevel10k' theme was installed earlier with Homebrew."
 echo "This theme requires the 'Meslo Nerd Font'."
 echo "This font should be installed manually."
 echo "Please install the font using the online instructions (see browser)."
-echo "Then select the installed font in macOS Terminal: Preferences → Profiles → Text → Font"
+echo "Then change your Terminal Profile to 'Pro' (black background)."
+echo "Next, select the installed font in macOS Terminal: Preferences → Profiles → Text → Font"
+echo ""
 echo ""
 vared -p "Press [Enter] when done." -c IGNOREME
 

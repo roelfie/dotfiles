@@ -42,6 +42,7 @@ instruction "google-drive:
     - Sign in with the same account as you did with Google Chrome"
 
 instruction "intellij-idea:
+    - Open the Jetbrains Toolbox. We install all of our Jetbrains products from with the Toolbox.
     - Get license from = 'JB Account'
        (we don't upload a license file; we just login)
     - Go to 'Tools > Create Command-line Launcher' and choose default folder '/usr/local/bin/'
