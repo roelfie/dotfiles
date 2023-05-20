@@ -2,8 +2,8 @@
 
 echo "\n<<< Install all Homebrew Packages, Casks and Applications >>>\n"
 
-echo "Please log in to the AppStore."
-vared -p "Then press [Enter] to continue. " -c REPLY
+# AppStore login instruction removed. You're automatically logged in 
+# with the Apple ID that you authenticated with earlier in the macOS setup process.
 
 brew bundle --verbose
 
