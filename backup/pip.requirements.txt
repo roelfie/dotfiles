@@ -1,8 +1,7 @@
-clikit
-importlib-metadata
-lockfile
-pip-autoremove
+cffi
+docutils
 pip-chill
 pip-review
-pync
+setuptools
+six
 wheel
