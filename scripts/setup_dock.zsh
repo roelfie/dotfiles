@@ -125,6 +125,7 @@ cd $STACKS_FOLDER/docs
     ln -s /Applications/Microsoft\ PowerPoint.app "MS PowerPoint"
 
 cd $STACKS_FOLDER/graphics
+    ln -s /Applications/Dropbox\ Capture.app "Dropbox Capture"
     ln -s /Applications/albelli.app "Albelli"
     ln -s /Applications/Pixelmator\ Pro.app "Pixelmator"
     ln -s /System/Applications/Utilities/Digital\ Color\ Meter.app "Digital Color Meter"
