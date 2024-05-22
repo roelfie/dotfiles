@@ -1,10 +1,5 @@
 # This is a comment, this line will be ignored.
 # You can use # to comment a line manually.
 
-@tmcw/togeojson-cli
-backup-global
-http-server
-json-server
+corepack
 npm
-trash-cli
-typescript
