@@ -7,6 +7,8 @@ export JENV_PREFIX="$HOME/.jenv"
 export PYENV_ROOT="$HOME/.pyenv"
 export DOTFILES_HOME="$HOME/.dotfiles"
 export WORKSPACES_HOME="$HOME/workspaces"
+export GIT_TMPDIR=/Users/roelfie/temp/git
+
 
 # PATH
 # The order of entries in the path is important! By putting pyenv, jenv & n at the top, the Python/Java/Node
