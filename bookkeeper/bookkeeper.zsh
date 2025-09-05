@@ -119,22 +119,34 @@ fi
 section "Upgrading Python packages"
 
 # Upgrade outdated python packages
-OUTDATED_PIP_PKGS=($(pip list --outdated --format freeze))
-OUTDATED_PIP_PKGS_SIZE=${#OUTDATED_PIP_PKGS}
-if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
-    echo "Found $OUTDATED_PIP_PKGS_SIZE outdated python package(s):"
-    echo $OUTDATED_PIP_PKGS
-    # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
-    pip list --outdated --format columns | ts '%Y%m%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
-    # Perform update of global packages 
-    pip-review --auto
-    # display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
-    # Alternative (with 'pip' commands only): 
-    # https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
-else
-    echo "No outdated python packages found."
-fi
+#
+# Disabled below script because it complains:
+# ERROR: List format 'freeze' can not be used with the --outdated option.
+#
+# OUTDATED_PIP_PKGS=($(pip3 list --outdated --format freeze))
+# OUTDATED_PIP_PKGS_SIZE=${#OUTDATED_PIP_PKGS}
+# if [ $OUTDATED_PIP_PKGS_SIZE -gt 0 ]; then
+#     echo "Found $OUTDATED_PIP_PKGS_SIZE outdated python package(s):"
+#     echo $OUTDATED_PIP_PKGS
+#     # Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
+#     pip3 list --outdated --format columns | ts '%Y%m%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
+#     # Perform update of global packages 
+#     pip-review --auto
+#     # display_notification "Upgraded $OUTDATED_PIP_PKGS_SIZE outdated python package(s)."
+#     # Alternative (with 'pip' commands only): 
+#     # https://fedingo.com/how-to-upgrade-all-python-packages-with-pip/
+# else
+#     echo "No outdated python packages found."
+# fi
 
+PIP_PKGS=($(pip3 list --format freeze))
+PIP_PKGS_SIZE=${#PIP_PKGS}
+echo "Found $PIP_PKGS_SIZE installed python package(s):"
+echo $PIP_PKGS
+# Append outdated packages to logfile (prefixing each line with current date; skip header line(s)).
+pip3 list --outdated --format columns | ts '%Y%m%d  ' | tail --lines +3 >> $PIP_LOG 2>> $PIP_ERR_LOG
+# Perform update of global packages 
+pip-review --auto
 
 
 ###############################################################################

@@ -34,14 +34,22 @@ _NB: This project focuses on Java / JavaScript / Python development. But you can
 
 ## Usage
 
-### Preparation
+### Requirements
 
 * internet connection
 * credentials
-  * Dropbox
-  * 1Password
   * Apple ID (iCloud & App Store)
+  * 1Password
 
+### Preparation
+
+* terminal
+  * preferences > profiles
+    * choose 'Pro' and make it the default
+    * Text > Background: opacity 100%
+* System Settings
+  * Bluetooth: Connect wireless mouse and keyboard
+  * Trackpad > Scroll & Zoom: Uncheck 'Natural Scrolling' 
 
 ### Run
 

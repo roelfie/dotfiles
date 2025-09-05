@@ -77,3 +77,6 @@ alias wsrestor='cd ~/workspaces/restor'
 alias wrestor='cd ~/work/restor'
 alias wsrestoropen='cd ~/workspaces/restor; idea .'
 alias wrestoropen='cd ~/work/restor; code .'
+
+alias git-overview='for dir in */; do echo -n "$dir: "; (cd "$dir" && git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "Not a Git repository"); done'
+alias git-pull-all='for dir in */; do printf "%s " "$dir"; (cd "$dir" && git pull); done'

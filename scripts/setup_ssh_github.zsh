@@ -81,7 +81,7 @@ gh auth login
 gh auth refresh -h github.com -s admin:public_key
 
 echo "\nUPLOAD KEY\n\n"
-gh ssh-key add "$KEY_FILE.pub" --title "mbp2021"
+gh ssh-key add "$KEY_FILE.pub" --title "mbp2023"
 gh config set git_protocol ssh --host github.com
 
 # check that we can establish an SSH connection to github

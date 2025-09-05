@@ -14,14 +14,11 @@ instruction "Dropbox:
     Wait until Dropbox folder is full synchronized to the desktop."
 
 instruction "1Password:
-    Open 1Password.
-    Register 1Password; a backup of my 1Password 7 standalone license can be found here:
-      - in 1Password under Software Licenses
-      - in Dropbox folder 'prive/software'
-    Choose 'Sync using Dropbox'.
-    1Password should automatically detect 'Dropbox/Apps/1Password/1Password.ovault'."
+    1Password successfully installed. 
+    I don't use the standalone license anymore. 
+    I use the cloud version."
 
 instruction "Google Chrome
-    Login to Google Chrome with [at] hnu.
+    Login to Google Chrome with [at] hnu (phone needed for 2FA).
     Do *not* use profiles for other accounts.
     Settings: Sync > Manage what you sync: Apps, Bookmarks, Extensions, Settings, Open Tabs, Passwords."

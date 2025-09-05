@@ -45,11 +45,9 @@ instruction "intellij-idea:
     - Open the Jetbrains Toolbox. We install all of our Jetbrains products from with the Toolbox.
     - Get license from = 'JB Account'
        (we don't upload a license file; we just login)
-    - Go to 'Tools > Create Command-line Launcher' and choose default folder '/usr/local/bin/'
-       This creates an 'idea' command that can be used to launch IDEA from the Terminal
-    - Same for other Jetbrains products, like 
-        - DataGrip ('datagrip')
-        - PyCharm ('charm')"
+    - In the JetBrains Toolbox App, go to IntelliJ > Settings > Configuration > Configure Shell Scripts Generation...
+        and choose the default settings. This will install the 'idea' command line launcher.
+        Do the same for DataGrip, PyCharm, etc."
 
 instruction "microsoft-office:
     - Open Excel
