@@ -11,34 +11,34 @@ alias trail='<<<${(F)path}' # each entry in $PATH on a new line
 #  -D  List only directories
 #  -F  Display file kind indicators
 #  -T  Recurse into directories as a tree
-alias exa='exa -hlF --git --group-directories-first'
-alias ls='exa'
-alias l='exa'
-alias la='exa -a'
-alias lsa='exa -a'
-alias lsd='exa -aD'
+alias eza='eza -hlF --git --group-directories-first'
+alias ls='eza'
+alias l='eza'
+alias la='eza -a'
+alias lsa='eza -a'
+alias lsd='eza -aD'
 
 # Tree view
-alias l2='exa -a --tree --level=2'
-alias l3='exa -a --tree --level=3'
-alias l4='exa -a --tree --level=4'
-alias l5='exa -a --tree --level=5'
-alias l6='exa -a --tree --level=6'
-alias l7='exa -a --tree --level=7'
-alias l8='exa -a --tree --level=8'
-alias l9='exa -a --tree --level=9'
+alias l2='eza -a --tree --level=2'
+alias l3='eza -a --tree --level=3'
+alias l4='eza -a --tree --level=4'
+alias l5='eza -a --tree --level=5'
+alias l6='eza -a --tree --level=6'
+alias l7='eza -a --tree --level=7'
+alias l8='eza -a --tree --level=8'
+alias l9='eza -a --tree --level=9'
 # Tree view without meta data
-alias ls2='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=2'
-alias ls3='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=3'
-alias ls4='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=4'
-alias ls5='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=5'
-alias ls6='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=6'
-alias ls7='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=7'
-alias ls8='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=8'
-alias ls9='exa -a --no-permissions --no-user --no-filesize --no-time --tree --level=9'
+alias ls2='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=2'
+alias ls3='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=3'
+alias ls4='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=4'
+alias ls5='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=5'
+alias ls6='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=6'
+alias ls7='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=7'
+alias ls8='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=8'
+alias ls9='eza -a --no-permissions --no-user --no-filesize --no-time --tree --level=9'
 
 
-lsdr() {exa -aDT --level="$1"}
+lsdr() {eza -aDT --level="$1"}
 
 # highlight 'word' in stdout (example: "l3 | highlight kafka" shows all 'kafka' max 3 levels deep) 
 highlight() {less -Ip "$1"}
