@@ -6,6 +6,7 @@ echo "\n<<< Setup jEnv >>>\n"
 
 JAVA_HOME_LOCATIONS=(
     /Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home
+    /Library/Java/JavaVirtualMachines/openjdk-27.jdk/Contents/Home
 )
 
 for location in ${JAVA_HOME_LOCATIONS[@]}; do
