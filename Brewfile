@@ -13,10 +13,10 @@ brew "awscli"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Platform keystore credential helper for Docker
-brew "docker-credential-helper"
 # C library implementing the SSH2 protocol
 brew "libssh2"
+# Platform keystore credential helper for Docker
+brew "docker-credential-helper"
 # Modern replacement for 'ls'
 brew "exa"
 # Modern, maintained replacement for ls
@@ -41,6 +41,8 @@ brew "gradle"
 brew "helm"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Java language specific implementation of the Language Server Protocol
+brew "jdtls"
 # Manage your Java environment
 brew "jenv"
 # Lightweight and flexible command-line JSON processor
@@ -63,6 +65,8 @@ brew "moreutils"
 brew "n"
 # Development kit for the Java programming language
 brew "openjdk@21"
+# Development kit for the Java programming language
+brew "openjdk@25"
 # Object-relational database system
 brew "postgresql@14"
 # Theme for zsh
@@ -101,6 +105,12 @@ cask "1password-cli"
 cask "betterzip"
 # Compare files and folders
 cask "beyond-compare"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# Menu bar app for monitoring AI coding assistant usage quotas
+cask "claudebar"
 # Enables developers to manage Confluent Cloud or Confluent Platform
 cask "confluent-cli"
 # Write, edit, and chat about your code with AI
