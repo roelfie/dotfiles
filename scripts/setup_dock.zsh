@@ -118,6 +118,7 @@ cd $STACKS_FOLDER/dev
     ln -s /Applications/QGIS.app "QGIS"
 
 cd $STACKS_FOLDER/docs
+    ln -s /Applications/Obsidian.app "Obsidian"
     ln -s /Applications/Skim.app "Skim"
     ln -s /Applications/Visual\ Studio\ Code.app "vscode"
     ln -s /Applications/Microsoft\ Word.app "MS Word"
